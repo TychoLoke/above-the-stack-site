@@ -19,12 +19,12 @@ export default function HomePage() {
       >
         <Card
           eyebrow="Research"
-          title="European MSP Landscape 2025 — Preview"
+          title="Global MSP Landscape 2025 — Preview"
           href="/research"
           cta="Read the outline"
         >
           Early signals, customer acquisition data, and tooling benchmarks gathered from leaders
-          across 14 countries.
+          across five regions.
         </Card>
         <Card
           eyebrow="Playbook"
@@ -41,8 +41,8 @@ export default function HomePage() {
           href="/events"
           cta="Reserve your seat"
         >
-          Live operator session exploring the pricing levers that resonate with European buyers this
-          year.
+          Live operator session exploring the pricing levers that resonate with buyers in mature and
+          emerging markets this year.
         </Card>
       </Section>
 
@@ -52,8 +52,8 @@ export default function HomePage() {
         columns="three"
       >
         <Card title="Always-on market radar">
-          Access research briefs, curated signal reports, and quick analysis drops covering vendor
-          movements, regulation updates, and investment trends.
+          Access research briefs, curated signal reports, and quick analysis drops covering ecosystem
+          shifts, regulation updates, and investment trends.
         </Card>
         <Card title="Actionable blueprints">
           Download playbooks that translate research into go-to-market sequences, service design
@@ -61,7 +61,7 @@ export default function HomePage() {
         </Card>
         <Card title="Peer accountability">
           Join Above Connect, our moderated member portal where MSPs work through shared challenges
-          in public while vendors and ISVs contribute as sales-neutral partners.
+          in public while solution partners contribute under sales-neutral guidelines.
         </Card>
       </Section>
 
@@ -71,9 +71,9 @@ export default function HomePage() {
         description={
           <>
             Above Connect is the member portal of Above The Stack — the independent, MSP-first
-            community. It’s where providers, vendors, and ISVs connect to exchange ideas, challenge
-            assumptions, and build the future of managed services together. Here’s a taste of the
-            latest signal.
+            community. It’s where providers and trusted solution partners connect under neutral
+            guardrails to exchange ideas, challenge assumptions, and build the future of managed
+            services together. Here’s a taste of the latest signal.
           </>
         }
         columns="two"
@@ -100,9 +100,9 @@ export default function HomePage() {
             </li>
           </ul>
           <div className="rounded-2xl bg-atsOcean/5 p-4 text-sm text-atsMidnight">
-            Company membership is €150 per year with space for every teammate. Verified MSPs receive
-            direct access to Above Connect, while vendors participate by requesting partner lounges
-            and sharing knowledge without a sales pitch.
+            Company membership is €150 / $165 per year per team, with local currency equivalents
+            available. Verified MSPs receive direct access to Above Connect, while partners join via
+            curated lounges focused on knowledge-sharing without a sales pitch.
           </div>
         </div>
         <LatestThreads />
@@ -122,8 +122,8 @@ export default function HomePage() {
           community afterwards.
         </Card>
         <Card title="Partner workshops" href="/community" cta="Request an Invite">
-          Vendors collaborate with MSPs on real go-to-market motions, stress testing value props and
-          co-selling agreements.
+          Neutral collaboration spaces where solution partners and MSPs stress test value
+          propositions, delivery models, and co-selling agreements.
         </Card>
         <Card title="Office hours" href={`${portalUrl}/latest`} cta="See schedule">
           Weekly drop-in clinics with fellow members to debug tooling, share dashboards, and trade
@@ -194,8 +194,8 @@ export default function HomePage() {
                 Join Above The Stack as a member
               </h2>
               <p className="text-sm leading-relaxed text-white/80">
-                Membership is €150 per year per company, and every team member is included. Vendors
-                and ISVs can request partner access as long as they contribute in a sales-neutral,
+                Membership is €150 / $165 per year per company, and every team member is included.
+                Partners can request access as long as they contribute in a sales-neutral,
                 knowledge-sharing role.
               </p>
             </div>

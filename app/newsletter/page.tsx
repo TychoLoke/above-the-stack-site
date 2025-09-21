@@ -17,8 +17,9 @@ export default function Page() {
           Connect.
         </p>
         <p>
-          Company membership is €150 per year, unlocking access for every teammate. Vendors and ISVs
-          can request curated participation so conversations stay collaborative and sales-neutral.
+          Company membership is €150 / $165 per year, unlocking access for every teammate with local
+          currency equivalents available. Partners can request curated participation so
+          conversations stay collaborative and sales-neutral.
         </p>
         <div className="flex flex-wrap gap-3">
           <a className="btn-primary" href={portalUrl}>

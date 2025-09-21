@@ -16,8 +16,8 @@ export default function Hero() {
             </h1>
             <p className="max-w-2xl text-lg leading-relaxed text-slate-700">
               Above The Stack distills the noise of the channel into practical direction. We work
-              with European MSPs and vendors to surface the market signals, regulation updates, and
-              operating models that matter now.
+              alongside MSPs and ecosystem partners worldwide to surface the market signals,
+              regulation updates, and operating models that matter now.
             </p>
           </div>
           <div className="flex flex-wrap gap-3">
@@ -61,10 +61,10 @@ export default function Hero() {
         <div className="card space-y-6 border-atsOcean/20 bg-gradient-to-br from-white via-white to-atsSky/10">
           <div className="space-y-2">
             <span className="tag">Next research drop</span>
-            <h3 className="text-2xl font-semibold text-atsMidnight">European MSP Landscape 2025</h3>
+            <h3 className="text-2xl font-semibold text-atsMidnight">Global MSP Landscape 2025</h3>
             <p className="text-sm leading-relaxed text-slate-600">
               Benchmarks, partner expectations, and pricing signals gathered from 120+ MSP leaders
-              across the continent.
+              across multiple regions.
             </p>
           </div>
           <ul className="space-y-3 text-sm text-slate-700">
