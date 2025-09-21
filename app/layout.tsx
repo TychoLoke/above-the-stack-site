@@ -55,7 +55,7 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
                 className="hidden text-sm font-medium text-slate-600 transition hover:text-atsOcean lg:inline-flex"
                 href="/community"
               >
-                Explore the forum
+                Explore Above Connect
               </Link>
               <Link className="btn-primary text-sm shadow-none" href={portalUrl}>
                 Member login
@@ -74,8 +74,8 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
                 Above The Stack
               </Link>
               <p className="max-w-sm leading-relaxed">
-                Independent MSP research, actionable playbooks, and a private Discourse community for
-                managed service leaders across Europe and beyond.
+                Independent MSP research, actionable playbooks, and Above Connect — our private
+                member portal for managed service leaders across Europe and beyond.
               </p>
               <div className="flex gap-4 text-xs uppercase tracking-[0.2em] text-atsOcean/70">
                 <span>Vendor neutral</span>

@@ -39,7 +39,7 @@ export default function Page() {
         </p>
         <div className="flex flex-wrap gap-3">
           <a className="btn-primary" href={`${portalUrl}/latest`}>
-            View schedule in the forum
+            View schedule in Above Connect
           </a>
           <a className="btn-ghost" href="mailto:events@abovethestack.com">
             Suggest a topic
@@ -50,7 +50,7 @@ export default function Page() {
       <Section
         eyebrow="Upcoming"
         title="Next sessions"
-        description="All sessions are hosted on Zoom with collaborative workspace tools. Members receive access links in Discourse."
+        description="All sessions are hosted on Zoom with collaborative workspace tools. Members receive access links inside Above Connect."
         columns="three"
       >
         {sessions.map((session) => (

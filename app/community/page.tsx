@@ -26,12 +26,17 @@ export default function Page() {
     <div className="space-y-24">
       <section className="grid gap-10 rounded-[2.5rem] bg-white/80 p-10 shadow-[0_28px_60px_-30px_rgba(15,31,75,0.5)] lg:grid-cols-[1.2fr_1fr]">
         <div className="space-y-6 text-slate-700">
-          <span className="tag">Discourse-powered</span>
-          <h1 className="h1 text-balance text-atsMidnight">A private, high-signal forum for MSPs and trusted partners</h1>
+          <span className="tag">Above Connect</span>
+          <h1 className="h1 text-balance text-atsMidnight">A private, high-signal portal for MSPs and trusted partners</h1>
           <p className="text-lg leading-relaxed">
-            Above The Stack runs on Discourse to keep the conversation searchable, accountable, and
-            member-led. Log in to access curated lounges, download playbooks in progress, and help us
-            build the benchmarks you need next.
+            Above Connect is the member portal of Above The Stack — the independent, MSP-first
+            community. It’s where providers, vendors, and ISVs connect to exchange ideas, challenge
+            assumptions, and build the future of managed services together.
+          </p>
+          <p className="text-lg leading-relaxed">
+            Log in to access curated lounges, download playbooks in progress, and help us build the
+            benchmarks you need next. Every conversation is searchable, accountable, and led by the
+            community.
           </p>
           <div className="flex flex-wrap gap-3">
             <a className="btn-primary" href={portalUrl}>
@@ -79,8 +84,8 @@ export default function Page() {
 
       <Section
         eyebrow="Live signal"
-        title="Recent conversations from the forum"
-        description="Log in with Discourse to view the full threads, join the debate, and access shared files."
+        title="Recent conversations from Above Connect"
+        description="Log in to Above Connect to view the full threads, join the debate, and access shared files."
         columns="two"
         action={
           <a className="btn-ghost" href={`${portalUrl}/latest`}>

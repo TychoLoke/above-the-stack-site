@@ -23,11 +23,11 @@ export default function LatestThreads() {
   if (error) {
     return (
       <div className="card text-sm text-slate-600">
-        Unable to load the latest conversations right now. Jump into the forum directly to see
+        Unable to load the latest conversations right now. Jump into Above Connect directly to see
         what everyone is talking about.
         <div className="mt-4">
           <a className="btn-ghost" href={`${portal}/latest`}>
-            Open the forum
+            Open Above Connect
           </a>
         </div>
       </div>
@@ -41,9 +41,9 @@ export default function LatestThreads() {
   if (!threads.length) {
     return (
       <div className="card">
-        No community conversations yet. Be among the first to share insights in the portal.
+        No community conversations yet. Be among the first to share insights in Above Connect.
         <div className="mt-4">
-          <a className="btn-ghost" href={`${portal}/signup`}>Join the community</a>
+          <a className="btn-ghost" href={`${portal}/signup`}>Join Above Connect</a>
         </div>
       </div>
     )
@@ -75,7 +75,7 @@ export default function LatestThreads() {
       </div>
       <div>
         <a className="btn-ghost" href={`${portal}/latest`}>
-          View all conversations
+          View all conversations in Above Connect
         </a>
       </div>
     </div>

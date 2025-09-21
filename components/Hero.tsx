@@ -12,7 +12,7 @@ export default function Hero() {
           <div className="space-y-3">
             <span className="eyebrow">Vendor-neutral knowledge for MSP leaders</span>
             <h1 className="h1 text-balance text-atsMidnight">
-              Stay ahead of the stack with research, playbooks, and a private Discourse community
+              Stay ahead of the stack with research, playbooks, and Above Connect — our private member portal
             </h1>
             <p className="max-w-2xl text-lg leading-relaxed text-slate-700">
               Above The Stack distills the noise of the channel into practical direction. We work
@@ -53,7 +53,7 @@ export default function Hero() {
                 Community
               </dt>
               <dd className="mt-2 text-base font-semibold text-atsMidnight">
-                Curated Discourse forum
+                Above Connect member portal
               </dd>
             </div>
           </dl>

@@ -2,6 +2,8 @@ import Hero from '@/components/Hero'
 import Section from '@/components/Section'
 import Card from '@/components/Card'
 import LatestThreads from '@/components/LatestThreads'
+import MemberCard from '@/components/MemberCard'
+import { foundingMembers } from '@/data/foundingMembers'
 
 export default function HomePage() {
   const portalUrl = process.env.NEXT_PUBLIC_PORTAL_URL || 'https://portal.abovethestack.com'
@@ -58,15 +60,22 @@ export default function HomePage() {
           templates, customer messaging, and board-ready metrics.
         </Card>
         <Card title="Peer accountability">
-          Join a moderated Discourse forum with MSPs, vendors, and ecosystem partners working
-          through similar challenges in public.
+          Join Above Connect, our moderated member portal where MSPs, vendors, and ecosystem
+          partners work through similar challenges in public.
         </Card>
       </Section>
 
       <Section
         eyebrow="Community pulse"
-        title="What members are unpacking in Discourse this week"
-        description="Above The Stack runs on a private Discourse instance. MSPs join for free, vendors by invitation. Here’s a taste of the latest signal."
+        title="What members are unpacking in Above Connect this week"
+        description={
+          <>
+            Above Connect is the member portal of Above The Stack — the independent, MSP-first
+            community. It’s where providers, vendors, and ISVs connect to exchange ideas, challenge
+            assumptions, and build the future of managed services together. Here’s a taste of the
+            latest signal.
+          </>
+        }
         columns="two"
         action={
           <a className="btn-ghost" href={`${portalUrl}/signup`}>
@@ -75,7 +84,7 @@ export default function HomePage() {
         }
       >
         <div className="card space-y-4">
-          <h3 className="text-lg font-semibold text-atsMidnight">Inside the forum</h3>
+          <h3 className="text-lg font-semibold text-atsMidnight">Inside Above Connect</h3>
           <ul className="space-y-3 text-sm leading-relaxed text-slate-600">
             <li className="flex items-start gap-3">
               <span className="mt-1 h-2 w-2 rounded-full bg-atsOcean" />
@@ -91,8 +100,8 @@ export default function HomePage() {
             </li>
           </ul>
           <div className="rounded-2xl bg-atsOcean/5 p-4 text-sm text-atsMidnight">
-            Verified MSPs get instant access. Vendors can request participation to collaborate in
-            dedicated partner lounges.
+            Verified MSPs get instant access to Above Connect. Vendors can request participation to
+            collaborate in dedicated partner lounges.
           </div>
         </div>
         <LatestThreads />
@@ -121,6 +130,17 @@ export default function HomePage() {
         </Card>
       </Section>
 
+      <Section
+        eyebrow="Founding members"
+        title="Meet the Above Connect founding cohort"
+        description="These community builders steward Above Connect and keep the experience grounded in MSP reality."
+        columns="two"
+      >
+        {foundingMembers.map((member) => (
+          <MemberCard key={member.name} member={member} />
+        ))}
+      </Section>
+
       <section className="mt-24">
         <div className="card bg-gradient-to-r from-atsMidnight via-atsOcean to-atsSky/80 text-white">
           <div className="grid gap-8 lg:grid-cols-[1.4fr_1fr] lg:items-center">
@@ -131,8 +151,7 @@ export default function HomePage() {
               </h2>
               <p className="text-sm leading-relaxed text-white/80">
                 Membership is free for MSPs. Vendors and partners can request access to collaborate
-                transparently. Log in with your Discourse account or request an invite and we’ll set
-                you up.
+                transparently. Log in to Above Connect or request an invite and we’ll set you up.
               </p>
             </div>
             <div className="space-y-3">

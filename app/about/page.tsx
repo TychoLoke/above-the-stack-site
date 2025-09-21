@@ -1,14 +1,9 @@
 import Card from '@/components/Card'
 import Section from '@/components/Section'
+import MemberCard from '@/components/MemberCard'
+import { foundingMembers } from '@/data/foundingMembers'
 
 export const metadata = { title: 'About — Above The Stack' }
-
-const foundingMembers = [
-  { name: 'Ashley Schut', company: 'Arctic Wolf' },
-  { name: 'Tycho Löke', company: 'AvePoint' },
-  { name: 'Pierre Kleine-Schaars', company: 'Q-Cyber' },
-  { name: 'Timon Bergsma', company: 'Pax8' },
-]
 
 const differentiators = [
   {
@@ -54,18 +49,15 @@ export default function Page() {
         </p>
         <p>
           The initiative is led by four founding members with deep roots in the MSP and channel
-          ecosystem, each bringing unique expertise and prior community experience.
+          ecosystem, each bringing unique expertise and prior community experience. They help steward
+          Above Connect — our private member portal — and ensure every conversation stays anchored in
+          real operator needs.
         </p>
-        <ul className="space-y-2 text-base leading-relaxed text-slate-700">
+        <div className="grid gap-6 pt-4 sm:grid-cols-2">
           {foundingMembers.map((member) => (
-            <li key={member.name} className="flex gap-3">
-              <span className="mt-2 h-2 w-2 flex-shrink-0 rounded-full bg-atsOcean" />
-              <span>
-                {member.name} – {member.company}
-              </span>
-            </li>
+            <MemberCard key={member.name} member={member} />
           ))}
-        </ul>
+        </div>
         <p className="text-base">
           Our guiding principle is simple: the MSP is always at the center. We officially launch on
           November 1st, followed by our first in-person meetup in December.
