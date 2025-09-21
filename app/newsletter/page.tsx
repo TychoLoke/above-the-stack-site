@@ -10,18 +10,25 @@ export default function Page() {
     <div className="space-y-24">
       <section className="mx-auto max-w-3xl space-y-6 text-lg leading-relaxed text-slate-700">
         <span className="eyebrow">Member access</span>
-        <h1 className="h1 text-balance text-atsMidnight">Log in to Above The Stack</h1>
+        <h1 className="h1 text-balance text-atsMidnight">Log in to Above Connect</h1>
         <p>
           The newsletter has evolved into our community digest. Log in to the member portal to access
           research drops, playbooks in progress, and the weekly summary of what happened inside Above
           Connect.
         </p>
+        <p>
+          Company membership is €150 per year, unlocking access for every teammate. Vendors and ISVs
+          can request curated participation so conversations stay collaborative and sales-neutral.
+        </p>
         <div className="flex flex-wrap gap-3">
           <a className="btn-primary" href={portalUrl}>
-            Member login
+            Log in to Above Connect
           </a>
           <a className="btn-ghost" href={`${portalUrl}/signup`}>
-            Request an invite
+            Become a Member
+          </a>
+          <a className="btn-ghost" href="mailto:partnerships@abovethestack.com">
+            Request an Invite
           </a>
         </div>
       </section>

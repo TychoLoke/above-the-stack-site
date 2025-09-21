@@ -1,4 +1,4 @@
-export type FoundingMember = {
+export type LeadershipMember = {
   name: string
   role: string
   region: string
@@ -27,7 +27,7 @@ const createMonogramHeadshot = (initials: string, gradient: [string, string]) =>
   return `data:image/svg+xml,${encodeURIComponent(svg)}`
 }
 
-export const foundingMembers: FoundingMember[] = [
+export const leadershipTeam: LeadershipMember[] = [
   {
     name: 'Tycho Löke',
     role: 'Channel Pre-Sales Solutions Engineer @ AvePoint',

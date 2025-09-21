@@ -1,7 +1,7 @@
 import Card from '@/components/Card'
 import Section from '@/components/Section'
 import MemberCard from '@/components/MemberCard'
-import { foundingMembers } from '@/data/foundingMembers'
+import { leadershipTeam } from '@/data/leadershipTeam'
 
 export const metadata = { title: 'About — Above The Stack' }
 
@@ -48,13 +48,12 @@ export default function Page() {
           knowledge without the noise.
         </p>
         <p>
-          The initiative is led by four founding members with deep roots in the MSP and channel
-          ecosystem, each bringing unique expertise and prior community experience. They help steward
-          Above Connect — our private member portal — and ensure every conversation stays anchored in
-          real operator needs.
+          The initiative is stewarded by the Above The Stack Leadership Team — Ashley Schut, Tycho
+          Löke, Pierre Kleine-Schaars, and Timon Bergsma. Their role is to ensure every member’s voice
+          is heard, documented, and turned into action inside Above Connect.
         </p>
         <div className="grid gap-6 pt-4 sm:grid-cols-2">
-          {foundingMembers.map((member) => (
+          {leadershipTeam.map((member) => (
             <MemberCard key={member.name} member={member} />
           ))}
         </div>

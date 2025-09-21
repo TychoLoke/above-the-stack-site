@@ -38,12 +38,20 @@ export default function Page() {
             benchmarks you need next. Every conversation is searchable, accountable, and led by the
             community.
           </p>
+          <p className="text-lg leading-relaxed">
+            Company membership is €150 per year per MSP, giving every team member a seat. Vendors and
+            ISVs join as partners in a sales-neutral, knowledge-sharing capacity by requesting
+            curated access.
+          </p>
           <div className="flex flex-wrap gap-3">
-            <a className="btn-primary" href={portalUrl}>
-              Member login
+            <a className="btn-primary" href={`${portalUrl}/signup`}>
+              Become a Member
             </a>
-            <a className="btn-ghost" href={`${portalUrl}/signup`}>
-              Request an invite
+            <a className="btn-ghost" href="mailto:partnerships@abovethestack.com">
+              Request an Invite
+            </a>
+            <a className="btn-ghost" href={portalUrl}>
+              Log in to Above Connect
             </a>
             <a className="btn-ghost" href="mailto:community@abovethestack.com">
               Talk to a moderator
@@ -118,8 +126,9 @@ export default function Page() {
         title="Join in three steps"
         columns="three"
       >
-        <Card title="1. Apply or log in" cta="Go to portal" href={portalUrl}>
-          MSPs join for free. Vendors and partners can request an invite so we keep the space curated.
+        <Card title="1. Become a member" cta="Become a Member" href={`${portalUrl}/signup`}>
+          Membership is €150 per company and covers every teammate. Vendors and partners use the same
+          flow to request curated, sales-neutral participation.
         </Card>
         <Card title="2. Complete your profile">
           Share your role, region, and focus areas. We use this to recommend discussions and small

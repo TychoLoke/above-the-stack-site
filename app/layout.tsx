@@ -58,7 +58,7 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
                 Explore Above Connect
               </Link>
               <Link className="btn-primary text-sm shadow-none" href={portalUrl}>
-                Member login
+                Log in to Above Connect
               </Link>
             </div>
           </div>
@@ -96,7 +96,7 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
               <h3 className="text-sm font-semibold text-atsMidnight">Stay connected</h3>
               <div className="flex flex-col gap-2">
                 <Link className="transition hover:text-atsOcean" href={portalUrl}>
-                  Member login
+                  Log in to Above Connect
                 </Link>
                 <Link className="transition hover:text-atsOcean" href="/contact">
                   Contact
