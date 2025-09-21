@@ -18,27 +18,66 @@ const formatDate = (value?: string) => {
 
 export default function LatestThreads() {
   const { data, error, isLoading } = useSWR('/api/discourse/latest', fetcher, { revalidateOnFocus: false })
-  if (error) return <div className="card">Unable to load the latest threads.</div>
-  if (isLoading) return <div className="card">Loading…</div>
-  if (!data?.length) {
+  const portal = process.env.NEXT_PUBLIC_PORTAL_URL || 'https://portal.abovethestack.com'
+
+  if (error) {
     return (
-      <div className="card">
-        No community conversations yet. Be among the first to share insights in the portal.
+      <div className="card text-sm text-slate-600">
+        Unable to load the latest conversations right now. Jump into the forum directly to see
+        what everyone is talking about.
+        <div className="mt-4">
+          <a className="btn-ghost" href={`${portal}/latest`}>
+            Open the forum
+          </a>
+        </div>
       </div>
     )
   }
+
+  if (isLoading) return <div className="card">Loading community updates…</div>
+
+  const threads = Array.isArray(data) ? data : []
+
+  if (!threads.length) {
+    return (
+      <div className="card">
+        No community conversations yet. Be among the first to share insights in the portal.
+        <div className="mt-4">
+          <a className="btn-ghost" href={`${portal}/signup`}>Join the community</a>
+        </div>
+      </div>
+    )
+  }
+
   return (
-    <div className="grid md:grid-cols-2 gap-4">
-      {data.map((t:any) => (
-        <a
-          key={t.id}
-          href={`${process.env.NEXT_PUBLIC_PORTAL_URL || 'https://portal.abovethestack.com'}/t/${t.slug}/${t.id}`}
-          className="card transition duration-200 hover:-translate-y-1 hover:border-atsOcean/40 hover:shadow-glow"
-        >
-          <div className="font-medium text-atsMidnight">{t.title}</div>
-          <div className="muted mt-1 text-xs">Last activity: {formatDate(t.last_posted_at)}</div>
+    <div className="space-y-4">
+      <div className="grid gap-4 md:grid-cols-2">
+        {threads.map((t:any) => (
+          <a
+            key={t.id}
+            href={`${portal}/t/${t.slug}/${t.id}`}
+            className="card group flex h-full flex-col justify-between"
+          >
+            <div className="space-y-2">
+              <div className="text-sm font-semibold uppercase tracking-[0.2em] text-atsOcean/60">
+                Discussion
+              </div>
+              <div className="font-semibold text-atsMidnight group-hover:text-atsOcean">
+                {t.title}
+              </div>
+            </div>
+            <div className="mt-6 flex items-center justify-between text-xs text-slate-500">
+              <span>Last activity</span>
+              <span className="font-medium text-atsMidnight/80">{formatDate(t.last_posted_at)}</span>
+            </div>
+          </a>
+        ))}
+      </div>
+      <div>
+        <a className="btn-ghost" href={`${portal}/latest`}>
+          View all conversations
         </a>
-      ))}
+      </div>
     </div>
   )
 }

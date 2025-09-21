@@ -9,18 +9,12 @@
 html,
 body {
   @apply min-h-screen bg-white text-slate-900 antialiased;
-  background-color: #f7faff;
-  background-image:
-    radial-gradient(circle at 0 0, rgba(51, 199, 255, 0.18), transparent 55%),
-    radial-gradient(circle at 100% 0, rgba(38, 65, 214, 0.15), transparent 45%),
-    radial-gradient(circle at 50% 120%, rgba(255, 122, 89, 0.22), transparent 55%),
-    theme('backgroundImage.grid');
-  background-size: cover, cover, cover, 20px 20px;
-  background-repeat: no-repeat, no-repeat, no-repeat, repeat;
+  background: linear-gradient(180deg, #f7faff 0%, #ffffff 38%, #f3f6ff 100%);
+  font-feature-settings: 'liga' on, 'kern' on;
 }
 
 .container {
-  @apply mx-auto max-w-6xl px-4;
+  @apply mx-auto max-w-7xl px-5 md:px-8;
 }
 
 .btn {
@@ -34,7 +28,11 @@ body {
 }
 
 .card {
-  @apply rounded-3xl border border-slate-200 bg-white/90 p-6 shadow-[0_18px_40px_-20px_rgba(15,31,75,0.3)];
+  @apply relative overflow-hidden rounded-3xl border border-slate-200/70 bg-white/80 p-6 shadow-[0_22px_45px_-22px_rgba(15,31,75,0.45)] backdrop-blur-sm transition duration-300;
+}
+
+.card:hover {
+  @apply border-atsOcean/40 shadow-glow;
 }
 .h1 {
   @apply text-4xl md:text-5xl font-bold tracking-tight;
@@ -44,4 +42,20 @@ body {
 }
 .muted {
   @apply text-slate-600;
+}
+
+.eyebrow {
+  @apply text-xs font-semibold uppercase tracking-[0.3em] text-atsOcean/80;
+}
+
+.tag {
+  @apply inline-flex items-center rounded-full border border-atsOcean/30 bg-atsOcean/5 px-3 py-1 text-xs font-medium uppercase tracking-wider text-atsOcean;
+}
+
+.prose-list li {
+  @apply text-slate-700;
+}
+
+.text-balance {
+  text-wrap: balance;
 }
