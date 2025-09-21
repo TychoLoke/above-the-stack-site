@@ -7,9 +7,10 @@ type CardProps = {
   children?: ReactNode
   eyebrow?: string
   cta?: string
+  className?: string
 }
 
-export default function Card({ title, href, children, eyebrow, cta }: CardProps) {
+export default function Card({ title, href, children, eyebrow, cta, className }: CardProps) {
   const content = (
     <div className="space-y-3">
       {eyebrow && <span className="eyebrow text-[0.65rem] text-atsOcean/60">{eyebrow}</span>}
@@ -24,20 +25,18 @@ export default function Card({ title, href, children, eyebrow, cta }: CardProps)
     </div>
   )
 
+  const baseClasses = ['card', 'h-full', className].filter(Boolean).join(' ')
+
   if (href) {
     return (
       <Link
         href={href}
-        className="card block h-full transition duration-200 hover:-translate-y-1"
+        className={`${baseClasses} block transition duration-200 hover:-translate-y-1`}
       >
         {content}
       </Link>
     )
   }
 
-  return (
-    <div className="card h-full">
-      {content}
-    </div>
-  )
+  return <div className={baseClasses}>{content}</div>
 }
