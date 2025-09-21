@@ -4,90 +4,146 @@ import Card from '@/components/Card'
 import LatestThreads from '@/components/LatestThreads'
 
 export default function HomePage() {
+  const portalUrl = process.env.NEXT_PUBLIC_PORTAL_URL || 'https://portal.abovethestack.com'
+
   return (
     <>
       <Hero />
 
-      {/* What’s New Section */}
       <Section
-        title="What’s New"
-        subtitle="Fresh research, playbooks, events, and community discussions."
+        eyebrow="Fresh intelligence"
+        title="The next drops shipping to Above The Stack members"
+        description="From market maps to regulation playbooks, every release is developed with MSP operators and partner managers inside our community."
       >
         <Card
+          eyebrow="Research"
           title="European MSP Landscape 2025 — Preview"
-          href="/research/european-msp-landscape-2025"
+          href="/research"
+          cta="Read the outline"
         >
-          Early insights and trends shaping the European channel.
+          Early signals, customer acquisition data, and tooling benchmarks gathered from leaders
+          across 14 countries.
         </Card>
         <Card
-          title="Playbook: Data Sovereignty & NIS2 Compliance"
-          href="/playbooks/data-sovereignty"
+          eyebrow="Playbook"
+          title="Operationalising NIS2 inside your service catalogue"
+          href="/playbooks"
+          cta="See the chapters"
         >
-          Practical steps to align your services with Europe’s regulations.
+          Practical workflows that help MSPs align with sovereignty requirements without derailing
+          margins or delivery velocity.
         </Card>
         <Card
-          title="Roundtable: MSP Pricing Strategies 2025"
-          href="/events/pricing-2025"
+          eyebrow="Roundtable"
+          title="Pricing Strategy 2025: Seats, bundles & outcomes"
+          href="/events"
+          cta="Reserve your seat"
         >
-          Join peers to explore smarter pricing in a shifting market.
+          Live operator session exploring the pricing levers that resonate with European buyers this
+          year.
         </Card>
       </Section>
 
-      {/* Forum Highlights */}
       <Section
-        title="From the Community"
-        subtitle="Join peers across Europe and beyond to share best practices."
+        eyebrow="Designed for members"
+        title="Why the community keeps Above The Stack open on a second screen"
+        columns="three"
       >
-        <div className="md:col-span-3">
-          <LatestThreads />
-        </div>
+        <Card title="Always-on market radar">
+          Access research briefs, curated signal reports, and quick analysis drops covering vendor
+          movements, regulation updates, and investment trends.
+        </Card>
+        <Card title="Actionable blueprints">
+          Download playbooks that translate research into go-to-market sequences, service design
+          templates, customer messaging, and board-ready metrics.
+        </Card>
+        <Card title="Peer accountability">
+          Join a moderated Discourse forum with MSPs, vendors, and ecosystem partners working
+          through similar challenges in public.
+        </Card>
       </Section>
 
-      {/* Why ATS Section */}
-      <Section title="Why Above The Stack?">
-        <div className="card">
-          <h3 className="font-semibold mb-1">Research</h3>
-          <p className="muted">
-            Independent analysis and benchmarks tailored for MSPs — built in
-            Europe, relevant worldwide.
-          </p>
+      <Section
+        eyebrow="Community pulse"
+        title="What members are unpacking in Discourse this week"
+        description="Above The Stack runs on a private Discourse instance. MSPs join for free, vendors by invitation. Here’s a taste of the latest signal."
+        columns="two"
+        action={
+          <a className="btn-ghost" href={`${portalUrl}/signup`}>
+            Become a member
+          </a>
+        }
+      >
+        <div className="card space-y-4">
+          <h3 className="text-lg font-semibold text-atsMidnight">Inside the forum</h3>
+          <ul className="space-y-3 text-sm leading-relaxed text-slate-600">
+            <li className="flex items-start gap-3">
+              <span className="mt-1 h-2 w-2 rounded-full bg-atsOcean" />
+              Service catalogue swaps between security-first and AI-enabled bundles.
+            </li>
+            <li className="flex items-start gap-3">
+              <span className="mt-1 h-2 w-2 rounded-full bg-atsSky" />
+              Shared tooling reviews covering RMM, PSA, and customer success platforms.
+            </li>
+            <li className="flex items-start gap-3">
+              <span className="mt-1 h-2 w-2 rounded-full bg-atsCoral" />
+              Real-world adaptations to NIS2, DORA, and GDPR enforcement trends.
+            </li>
+          </ul>
+          <div className="rounded-2xl bg-atsOcean/5 p-4 text-sm text-atsMidnight">
+            Verified MSPs get instant access. Vendors can request participation to collaborate in
+            dedicated partner lounges.
+          </div>
         </div>
-        <div className="card">
-          <h3 className="font-semibold mb-1">Playbooks</h3>
-          <p className="muted">
-            Actionable frameworks that help MSPs scale, stay compliant, and
-            build trust.
-          </p>
-        </div>
-        <div className="card">
-          <h3 className="font-semibold mb-1">Community</h3>
-          <p className="muted">
-            A trusted forum for MSPs and vendors to collaborate — launching in
-            Europe, expanding globally.
-          </p>
-        </div>
+        <LatestThreads />
       </Section>
 
-      {/* Call to Action */}
-      <section className="mt-16 text-center">
-        <h2 className="h2">Ready to stay ahead?</h2>
-        <p className="muted mt-2">
-          Access our playbooks, join the conversation, and shape the future of
-          the MSP ecosystem.
-        </p>
-        <div className="mt-6 flex flex-wrap gap-3 justify-center">
-          <a className="btn-primary" href="/playbooks">
-            Explore Playbooks
-          </a>
-          <a
-            className="btn-ghost"
-            href={process.env.NEXT_PUBLIC_PORTAL_URL || 'https://portal.abovethestack.com'}
-          >
-            Join the Community
-          </a>
-          <a className="btn-ghost" href="/newsletter">
-            Subscribe to Newsletter
-          </a>
+      <Section
+        eyebrow="Programs & events"
+        title="We run small, high-signal sessions with people building the future stack"
+        columns="two"
+      >
+        <Card title="Operator roundtables" href="/events" cta="Explore sessions">
+          12-person digital rooms moderated by Above The Stack editors to unpack pricing shifts,
+          service design, and customer success.
+        </Card>
+        <Card title="Research briefings" href="/research" cta="Get notified">
+          Monthly broadcast deep dives reviewing our latest datasets, with Q&A directly inside the
+          community afterwards.
+        </Card>
+        <Card title="Partner workshops" href="/community" cta="Request an invite">
+          Vendors collaborate with MSPs on real go-to-market motions, stress testing value props and
+          co-selling agreements.
+        </Card>
+        <Card title="Office hours" href={`${portalUrl}/latest`} cta="See schedule">
+          Weekly drop-in clinics with fellow members to debug tooling, share dashboards, and trade
+          lessons.
+        </Card>
+      </Section>
+
+      <section className="mt-24">
+        <div className="card bg-gradient-to-r from-atsMidnight via-atsOcean to-atsSky/80 text-white">
+          <div className="grid gap-8 lg:grid-cols-[1.4fr_1fr] lg:items-center">
+            <div className="space-y-4">
+              <span className="eyebrow text-white/70">Launch cohort</span>
+              <h2 className="text-3xl font-semibold tracking-tight text-balance">
+                Join Above The Stack as a founding member
+              </h2>
+              <p className="text-sm leading-relaxed text-white/80">
+                Membership is free for MSPs. Vendors and partners can request access to collaborate
+                transparently. Log in with your Discourse account or request an invite and we’ll set
+                you up.
+              </p>
+            </div>
+            <div className="space-y-3">
+              <a className="btn-primary w-full justify-center bg-white text-atsMidnight hover:opacity-90" href={portalUrl}>
+                Member login
+              </a>
+              <a className="btn-ghost w-full justify-center border-white/30 bg-white/10 text-white hover:bg-white/20" href={`${portalUrl}/signup`}>
+                Request an invite
+              </a>
+            </div>
+          </div>
         </div>
       </section>
     </>
