@@ -1,43 +1,42 @@
 # Above The Stack — Website (Next.js / Tailwind)
 
-Vendor‑neutrale inzichten, playbooks en community voor MSP’s.  
-MVP met App Router, Tailwind, en Discourse integratie (laatste topics).
+Vendor-neutral insights, playbooks, and community for MSPs.
+MVP built with the App Router, Tailwind CSS, and a Discourse integration for the latest topics.
 
-## Snel starten
+## Quick start
 
 ```bash
-pnpm i # of npm i / yarn
-pnpm dev # of npm run dev
+pnpm i # or npm i / yarn
+pnpm dev # or npm run dev
 ```
 
-Open http://localhost:3000
+Open http://localhost:3000.
 
-## Omgevingsvariabelen
+## Environment variables
 
-Maak `.env.local` met:
+Create `.env.local` with:
 
 ```
 NEXT_PUBLIC_PORTAL_URL=https://portal.abovethestack.com
 DISCOURSE_URL=https://portal.abovethestack.com
-DISC_API_KEY= # optioneel (leesrechten)
+DISC_API_KEY= # optional (read access)
 DISC_API_USERNAME=system
 ```
 
-> Zonder API key valt de widget terug op dummy data.
+> Without an API key the widget falls back to dummy data.
 
 ## Deploy
 
-- Push naar GitHub en importeer in Vercel.
-- Zet `.env` variabelen in Vercel Project Settings.
-- (Optioneel) Vercel Analytics/PostHog toevoegen.
+- Push to GitHub and import the repo in Vercel.
+- Configure the `.env` variables in your Vercel Project Settings.
+- (Optional) Add Vercel Analytics or PostHog.
 
-## Verder bouwen
+## Next steps
 
-- Content als MDX + Contentlayer (later toevoegen).
-- SSO met Discourse (DiscourseConnect) via `/api/auth/discourse` (stub nog toevoegen).
-- Events pagina koppelen aan een CMS of MDX.
-- Nieuwsbrief: vervang `YOUR_WEB3FORMS_KEY` of koppel aan je provider.
-```
+- Move content to MDX + Contentlayer (to be added later).
+- Implement DiscourseConnect SSO via `/api/auth/discourse` (stub still pending).
+- Power the Events page with a CMS or MDX.
+- Newsletter: replace `YOUR_WEB3FORMS_KEY` or connect to your provider.
 
-## Licentie
+## License
 MIT

@@ -8,12 +8,17 @@ export default {
   theme: {
     extend: {
       colors: {
-        atsRed: "#E01949",
-        atsViolet: "#6D28D9",
+        atsSky: "#33C7FF",
+        atsOcean: "#2641D6",
+        atsMidnight: "#0F1F4B",
+        atsCoral: "#FF7A59",
       },
       backgroundImage: {
-        'grid': "radial-gradient(circle at 1px 1px, rgba(255,255,255,0.07) 1px, transparent 0)",
-      }
+        grid: "radial-gradient(circle at 1px 1px, rgba(15,31,75,0.08) 1px, transparent 0)",
+      },
+      boxShadow: {
+        glow: "0 25px 60px -15px rgba(38,65,214,0.25)",
+      },
     },
   },
   plugins: [],
