@@ -37,7 +37,7 @@ export default function Hero() {
                 Focus
               </dt>
               <dd className="mt-2 text-base font-semibold text-atsMidnight">
-                Sovereign MSP growth
+                Operator-led MSP growth
               </dd>
             </div>
             <div className="rounded-2xl border border-slate-200/70 bg-white/70 p-4">
