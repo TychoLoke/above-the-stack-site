@@ -22,6 +22,7 @@ export default function HomePage() {
           title="Global MSP Landscape 2025 — Preview"
           href="/research"
           cta="Read the outline"
+          className="border-transparent bg-gradient-to-br from-white via-atsSky/15 to-atsOcean/10 shadow-glow"
         >
           Early signals, customer acquisition data, and tooling benchmarks gathered from leaders
           across five regions.
@@ -32,7 +33,7 @@ export default function HomePage() {
           href="/playbooks"
           cta="See the chapters"
         >
-          Practical workflows that help MSPs align with sovereignty requirements without derailing
+          Practical workflows that help MSPs meet regional compliance requirements without derailing
           margins or delivery velocity.
         </Card>
         <Card
@@ -40,6 +41,7 @@ export default function HomePage() {
           title="Pricing Strategy 2025: Seats, bundles & outcomes"
           href="/events"
           cta="Reserve your seat"
+          className="border-transparent bg-gradient-to-br from-white via-atsCoral/20 to-atsSky/15 shadow-glow"
         >
           Live operator session exploring the pricing levers that resonate with buyers in mature and
           emerging markets this year.
@@ -51,7 +53,10 @@ export default function HomePage() {
         title="Why the community keeps Above The Stack open on a second screen"
         columns="three"
       >
-        <Card title="Always-on market radar">
+        <Card
+          title="Always-on market radar"
+          className="border-transparent bg-gradient-to-br from-white via-atsSky/15 to-atsOcean/10 shadow-glow"
+        >
           Access research briefs, curated signal reports, and quick analysis drops covering ecosystem
           shifts, regulation updates, and investment trends.
         </Card>
@@ -59,7 +64,10 @@ export default function HomePage() {
           Download playbooks that translate research into go-to-market sequences, service design
           templates, customer messaging, and board-ready metrics.
         </Card>
-        <Card title="Peer accountability">
+        <Card
+          title="Peer accountability"
+          className="border-transparent bg-gradient-to-br from-white via-atsCoral/20 to-atsOcean/10 shadow-glow"
+        >
           Join Above Connect, our moderated member portal where MSPs work through shared challenges
           in public while solution partners contribute under sales-neutral guidelines.
         </Card>
@@ -113,7 +121,12 @@ export default function HomePage() {
         title="We run small, high-signal sessions with people building the future stack"
         columns="two"
       >
-        <Card title="Operator roundtables" href="/events" cta="Explore sessions">
+        <Card
+          title="Operator roundtables"
+          href="/events"
+          cta="Explore sessions"
+          className="border-transparent bg-gradient-to-br from-white via-atsSky/15 to-atsOcean/10 shadow-glow"
+        >
           12-person digital rooms moderated by Above The Stack editors to unpack pricing shifts,
           service design, and customer success.
         </Card>
@@ -137,7 +150,10 @@ export default function HomePage() {
         description="Every company member can propose research, shape playbooks, and host sessions that keep the MSP agenda front and centre — every voice is welcomed and respected."
         columns="three"
       >
-        <Card title="Open contributions">
+        <Card
+          title="Open contributions"
+          className="border-transparent bg-gradient-to-br from-white via-atsSky/15 to-atsOcean/10 shadow-glow"
+        >
           Share briefs, templates, and questions directly inside Above Connect. The community votes on
           what ships next, and leadership turns the most-requested ideas into programmes.
         </Card>

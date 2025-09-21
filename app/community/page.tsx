@@ -8,14 +8,55 @@ const lounges = [
   {
     title: 'Operator lounge',
     description: 'MSP founders and leadership teams swap pricing experiments, customer success tactics, and hiring frameworks.',
+    accent: 'border-transparent bg-gradient-to-br from-white via-atsSky/15 to-atsOcean/10 shadow-glow',
   },
   {
     title: 'Service delivery guild',
     description: 'Technicians and delivery leads compare tooling stacks, workflow automations, and best practices for resilient operations.',
+    accent: 'border-transparent bg-gradient-to-br from-white via-atsOcean/15 to-atsSky/10 shadow-glow',
   },
   {
     title: 'Partner strategy space',
     description: 'Solution and distribution teams co-design launch plans, explore MDF collaborations, and gather honest product feedback under neutral guardrails.',
+    accent: 'border-transparent bg-gradient-to-br from-white via-atsCoral/20 to-atsSky/15 shadow-glow',
+  },
+]
+
+const highlights = [
+  {
+    title: 'Curated lounges & living playbooks',
+    description:
+      'Log in to access curated lounges, download playbooks in progress, and help us build the benchmarks you need next.',
+  },
+  {
+    title: 'Searchable, accountable knowledge',
+    description: 'Every conversation is searchable, accountable, and led by the community from day one.',
+  },
+  {
+    title: 'Membership for whole teams',
+    description:
+      'Company membership is €150 / $165 per year per MSP with local currency equivalents. Partners join in a sales-neutral, knowledge-sharing capacity by requesting curated access.',
+  },
+]
+
+const commitments = [
+  {
+    label: 'Context',
+    title: 'Lead with context',
+    description: 'Use real names, share context, and show your work so peers can learn alongside you.',
+    gradient: 'from-atsOcean via-atsSky to-atsCoral',
+  },
+  {
+    label: 'Neutral',
+    title: 'Stay vendor-neutral',
+    description: 'Keep discussions focused on member outcomes and be explicit when sharing partner perspectives.',
+    gradient: 'from-atsSky via-atsOcean to-atsMidnight',
+  },
+  {
+    label: 'Reciprocate',
+    title: 'Give back what you take',
+    description: 'If you download a resource or adopt an idea, report back so everyone benefits from the results.',
+    gradient: 'from-atsCoral via-atsSky to-atsOcean',
   },
 ]
 
@@ -24,7 +65,7 @@ export default function Page() {
 
   return (
     <div className="space-y-24">
-      <section className="grid gap-10 rounded-[2.5rem] bg-white/80 p-10 shadow-[0_28px_60px_-30px_rgba(15,31,75,0.5)] lg:grid-cols-[1.2fr_1fr]">
+      <section className="grid gap-10 rounded-[2.5rem] border border-atsOcean/10 bg-gradient-to-br from-white via-white to-atsSky/20 p-10 shadow-[0_32px_70px_-35px_rgba(15,31,75,0.55)] lg:grid-cols-[1.2fr_1fr]">
         <div className="space-y-6 text-slate-700">
           <span className="tag">Above Connect</span>
           <h1 className="h1 text-balance text-atsMidnight">A private, high-signal portal for MSPs and trusted partners</h1>
@@ -34,16 +75,17 @@ export default function Page() {
             vendor-neutral guardrails to exchange ideas, challenge assumptions, and build the future
             of managed services together.
           </p>
-          <p className="text-lg leading-relaxed">
-            Log in to access curated lounges, download playbooks in progress, and help us build the
-            benchmarks you need next. Every conversation is searchable, accountable, and led by the
-            community.
-          </p>
-          <p className="text-lg leading-relaxed">
-            Company membership is €150 / $165 per year per MSP, giving every team member a seat with
-            local currency equivalents available. Partners join in a sales-neutral, knowledge-sharing
-            capacity by requesting curated access.
-          </p>
+          <div className="grid gap-4 sm:grid-cols-2">
+            {highlights.map((item) => (
+              <div
+                key={item.title}
+                className="flex h-full flex-col justify-between rounded-2xl border border-atsOcean/15 bg-gradient-to-br from-white via-atsSky/10 to-atsOcean/5 p-5 text-sm leading-relaxed text-slate-700 shadow-[0_24px_55px_-32px_rgba(15,31,75,0.6)]"
+              >
+                <h3 className="text-base font-semibold text-atsMidnight">{item.title}</h3>
+                <p className="mt-2">{item.description}</p>
+              </div>
+            ))}
+          </div>
           <div className="flex flex-wrap gap-3">
             <a className="btn-primary" href={`${portalUrl}/signup`}>
               Become a Member
@@ -59,22 +101,29 @@ export default function Page() {
             </a>
           </div>
         </div>
-        <div className="card space-y-4 border-atsOcean/20 bg-gradient-to-br from-white via-white to-atsSky/10">
-          <h2 className="text-xl font-semibold text-atsMidnight">Community commitments</h2>
-          <ul className="space-y-3 text-sm leading-relaxed text-slate-600">
-            <li className="flex items-start gap-3">
-              <span className="mt-1 h-2 w-2 rounded-full bg-atsOcean" />
-              Use real names, share context, and show your work so peers can learn alongside you.
-            </li>
-            <li className="flex items-start gap-3">
-              <span className="mt-1 h-2 w-2 rounded-full bg-atsSky" />
-              Keep discussions vendor-neutral; be explicit when sharing partner perspectives.
-            </li>
-            <li className="flex items-start gap-3">
-              <span className="mt-1 h-2 w-2 rounded-full bg-atsCoral" />
-              Reciprocate — if you download a resource, tell the group how it landed with your team.
-            </li>
-          </ul>
+        <div className="card space-y-6 border-transparent bg-gradient-to-br from-white via-atsSky/20 to-atsOcean/10 text-slate-800 shadow-glow">
+          <div className="flex items-center justify-between gap-3">
+            <h2 className="text-xl font-semibold text-atsMidnight">Community commitments</h2>
+            <span className="hidden rounded-full border border-white/50 bg-white/60 px-3 py-1 text-[0.65rem] font-semibold uppercase tracking-[0.2em] text-atsOcean/80 md:inline-flex">
+              Built with members
+            </span>
+          </div>
+          <div className="grid gap-4 sm:grid-cols-3">
+            {commitments.map((item) => (
+              <div
+                key={item.title}
+                className="flex h-full flex-col gap-2 rounded-2xl border border-white/60 bg-white/70 p-4 text-sm leading-relaxed text-slate-600 backdrop-blur"
+              >
+                <span
+                  className={`inline-flex h-10 w-10 items-center justify-center rounded-2xl bg-gradient-to-br ${item.gradient} text-[0.65rem] font-semibold uppercase tracking-wide text-white shadow-glow`}
+                >
+                  {item.label}
+                </span>
+                <h3 className="text-sm font-semibold text-atsMidnight">{item.title}</h3>
+                <p>{item.description}</p>
+              </div>
+            ))}
+          </div>
         </div>
       </section>
 
@@ -85,7 +134,7 @@ export default function Page() {
         columns="three"
       >
         {lounges.map((item) => (
-          <Card key={item.title} title={item.title}>
+          <Card key={item.title} title={item.title} className={item.accent}>
             {item.description}
           </Card>
         ))}
@@ -103,7 +152,7 @@ export default function Page() {
         }
       >
         <LatestThreads />
-        <div className="card space-y-4">
+        <div className="card space-y-4 border-transparent bg-gradient-to-br from-white via-atsSky/15 to-atsOcean/10 shadow-glow">
           <h3 className="text-lg font-semibold text-atsMidnight">What to expect</h3>
           <ul className="space-y-3 text-sm leading-relaxed text-slate-600">
             <li className="flex items-start gap-3">
@@ -127,7 +176,12 @@ export default function Page() {
         title="Join in three steps"
         columns="three"
       >
-        <Card title="1. Become a member" cta="Become a Member" href={`${portalUrl}/signup`}>
+        <Card
+          title="1. Become a member"
+          cta="Become a Member"
+          href={`${portalUrl}/signup`}
+          className="border-transparent bg-gradient-to-br from-white via-atsSky/15 to-atsOcean/10 shadow-glow"
+        >
           Membership is €150 / $165 per company and covers every teammate, with local currency options
           available. Partners use the same flow to request curated, sales-neutral participation.
         </Card>
