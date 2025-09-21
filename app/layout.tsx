@@ -16,38 +16,65 @@ export const metadata: Metadata = {
 
 export default function RootLayout({ children }: { children: React.ReactNode }) {
   return (
-    <html lang="nl">
+    <html lang="en">
       <body>
-        <header className="sticky top-0 z-50 border-b border-neutral-800 backdrop-blur bg-neutral-950/60">
-          <div className="container flex items-center justify-between h-14">
-            <Link href="/" className="font-semibold">Above The Stack</Link>
-            <nav className="flex gap-6 text-sm">
-              <Link href="/research">Research</Link>
-              <Link href="/playbooks">Playbooks</Link>
-              <Link href="/events">Events</Link>
-              <Link href="/community">Community</Link>
-              <Link href="/about">Over</Link>
-              <Link href="/newsletter" className="btn-primary">Nieuwsbrief</Link>
+        <header className="sticky top-0 z-50 border-b border-slate-200/80 bg-white/80 backdrop-blur">
+          <div className="container flex h-16 items-center justify-between">
+            <Link
+              href="/"
+              className="text-lg font-semibold text-atsMidnight transition hover:text-atsOcean"
+            >
+              Above The Stack
+            </Link>
+            <nav className="flex flex-wrap items-center gap-4 text-sm font-medium text-slate-700">
+              <Link className="transition hover:text-atsOcean" href="/research">
+                Research
+              </Link>
+              <Link className="transition hover:text-atsOcean" href="/playbooks">
+                Playbooks
+              </Link>
+              <Link className="transition hover:text-atsOcean" href="/events">
+                Events
+              </Link>
+              <Link className="transition hover:text-atsOcean" href="/community">
+                Community
+              </Link>
+              <Link className="transition hover:text-atsOcean" href="/about">
+                About
+              </Link>
+              <Link className="btn-primary text-sm shadow-none" href="/newsletter">
+                Newsletter
+              </Link>
             </nav>
           </div>
         </header>
-        <main className="container py-10">{children}</main>
-        <footer className="border-t border-neutral-800 mt-10">
-  <div className="container py-10 text-sm text-neutral-400">
-    <div className="flex flex-col md:flex-row items-start md:items-center justify-between gap-4">
-      <p>
-        © {new Date().getFullYear()} Above The Stack. Launching in Europe. Built for the world.
-      </p>
-      <div className="flex gap-4">
-        <a href="/privacy">Privacy</a>
-        <a href="/contact">Contact</a>
-        <a href={process.env.NEXT_PUBLIC_PORTAL_URL || 'https://portal.abovethestack.com'}>
-          Community
-        </a>
-      </div>
-    </div>
-  </div>
-</footer>
+        <main className="container py-16">{children}</main>
+        <footer className="mt-16 border-t border-slate-200/80 bg-white/80">
+          <div className="container py-10 text-sm text-slate-600">
+            <div className="flex flex-col items-start justify-between gap-4 md:flex-row md:items-center">
+              <p>
+                © {new Date().getFullYear()} Above The Stack. Launching in Europe. Built for the
+                world.
+              </p>
+              <div className="flex gap-4">
+                <a className="transition hover:text-atsOcean" href="/privacy">
+                  Privacy
+                </a>
+                <a className="transition hover:text-atsOcean" href="/contact">
+                  Contact
+                </a>
+                <a
+                  className="transition hover:text-atsOcean"
+                  href={
+                    process.env.NEXT_PUBLIC_PORTAL_URL || 'https://portal.abovethestack.com'
+                  }
+                >
+                  Community
+                </a>
+              </div>
+            </div>
+          </div>
+        </footer>
       </body>
     </html>
   )
