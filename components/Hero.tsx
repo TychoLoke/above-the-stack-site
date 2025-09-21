@@ -22,7 +22,7 @@ export default function Hero() {
           </div>
           <div className="flex flex-wrap gap-3">
             <a className="btn-primary" href={portalUrl}>
-              Member login
+              Log in to Above Connect
             </a>
             <a className="btn-ghost" href="/community">
               Tour the community

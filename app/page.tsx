@@ -3,7 +3,7 @@ import Section from '@/components/Section'
 import Card from '@/components/Card'
 import LatestThreads from '@/components/LatestThreads'
 import MemberCard from '@/components/MemberCard'
-import { foundingMembers } from '@/data/foundingMembers'
+import { leadershipTeam } from '@/data/leadershipTeam'
 
 export default function HomePage() {
   const portalUrl = process.env.NEXT_PUBLIC_PORTAL_URL || 'https://portal.abovethestack.com'
@@ -60,8 +60,8 @@ export default function HomePage() {
           templates, customer messaging, and board-ready metrics.
         </Card>
         <Card title="Peer accountability">
-          Join Above Connect, our moderated member portal where MSPs, vendors, and ecosystem
-          partners work through similar challenges in public.
+          Join Above Connect, our moderated member portal where MSPs work through shared challenges
+          in public while vendors and ISVs contribute as sales-neutral partners.
         </Card>
       </Section>
 
@@ -79,7 +79,7 @@ export default function HomePage() {
         columns="two"
         action={
           <a className="btn-ghost" href={`${portalUrl}/signup`}>
-            Become a member
+            Become a Member
           </a>
         }
       >
@@ -100,8 +100,9 @@ export default function HomePage() {
             </li>
           </ul>
           <div className="rounded-2xl bg-atsOcean/5 p-4 text-sm text-atsMidnight">
-            Verified MSPs get instant access to Above Connect. Vendors can request participation to
-            collaborate in dedicated partner lounges.
+            Company membership is €150 per year with space for every teammate. Verified MSPs receive
+            direct access to Above Connect, while vendors participate by requesting partner lounges
+            and sharing knowledge without a sales pitch.
           </div>
         </div>
         <LatestThreads />
@@ -120,7 +121,7 @@ export default function HomePage() {
           Monthly broadcast deep dives reviewing our latest datasets, with Q&A directly inside the
           community afterwards.
         </Card>
-        <Card title="Partner workshops" href="/community" cta="Request an invite">
+        <Card title="Partner workshops" href="/community" cta="Request an Invite">
           Vendors collaborate with MSPs on real go-to-market motions, stress testing value props and
           co-selling agreements.
         </Card>
@@ -131,12 +132,55 @@ export default function HomePage() {
       </Section>
 
       <Section
-        eyebrow="Founding members"
-        title="Meet the Above Connect founding cohort"
-        description="These community builders steward Above Connect and keep the experience grounded in MSP reality."
+        eyebrow="By Members, For Members"
+        title="The community runs on open contributions and peer-driven growth"
+        description="Every company member can propose research, shape playbooks, and host sessions that keep the MSP agenda front and centre — every voice is welcomed and respected."
+        columns="three"
+      >
+        <Card title="Open contributions">
+          Share briefs, templates, and questions directly inside Above Connect. The community votes on
+          what ships next, and leadership turns the most-requested ideas into programmes.
+        </Card>
+        <Card title="Peer accountability">
+          Members challenge each other in the open, report back on outcomes, and elevate the playbooks
+          with real-world proof so everyone keeps growing faster together.
+        </Card>
+        <Card title="Neutral guardrails">
+          Our rules keep discussions fair and sales-neutral. Everyone participates under their company
+          name and earns trust by respecting time, context, and transparency.
+        </Card>
+      </Section>
+
+      <Section
+        eyebrow="Channel Context"
+        title="Putting MSPs at the heart of the IT channel"
+        description={
+          <>
+            In our eyes, the MSP is the most important player in the channel because they are closest
+            to the customer and deliver the services that make everything work.
+          </>
+        }
         columns="two"
       >
-        {foundingMembers.map((member) => (
+        <Card title="What the channel means here">
+          We cover the entire ecosystem of vendors, distributors, marketplaces, consultants, and the
+          service providers connecting it all. Above The Stack tracks how these forces converge around
+          the customer.
+        </Card>
+        <Card title="Who we call an MSP">
+          MSPs, MSSPs, MIPs, SPs, and consultancies building managed offerings are welcome. If your
+          team delivers ongoing services that keep customers secure, productive, and informed, you
+          belong inside Above Connect.
+        </Card>
+      </Section>
+
+      <Section
+        eyebrow="Leadership Team"
+        title="Meet the Above The Stack Leadership Team"
+        description="Ashley Schut, Tycho Löke, Pierre Kleine-Schaars, and Timon Bergsma ensure every member’s voice is heard and turned into action."
+        columns="two"
+      >
+        {leadershipTeam.map((member) => (
           <MemberCard key={member.name} member={member} />
         ))}
       </Section>
@@ -147,19 +191,32 @@ export default function HomePage() {
             <div className="space-y-4">
               <span className="eyebrow text-white/70">Launch cohort</span>
               <h2 className="text-3xl font-semibold tracking-tight text-balance">
-                Join Above The Stack as a founding member
+                Join Above The Stack as a member
               </h2>
               <p className="text-sm leading-relaxed text-white/80">
-                Membership is free for MSPs. Vendors and partners can request access to collaborate
-                transparently. Log in to Above Connect or request an invite and we’ll set you up.
+                Membership is €150 per year per company, and every team member is included. Vendors
+                and ISVs can request partner access as long as they contribute in a sales-neutral,
+                knowledge-sharing role.
               </p>
             </div>
             <div className="space-y-3">
-              <a className="btn-primary w-full justify-center bg-white text-atsMidnight hover:opacity-90" href={portalUrl}>
-                Member login
+              <a
+                className="btn-primary w-full justify-center bg-white text-atsMidnight hover:opacity-90"
+                href={`${portalUrl}/signup`}
+              >
+                Become a Member
               </a>
-              <a className="btn-ghost w-full justify-center border-white/30 bg-white/10 text-white hover:bg-white/20" href={`${portalUrl}/signup`}>
-                Request an invite
+              <a
+                className="btn-ghost w-full justify-center border-white/30 bg-white/10 text-white hover:bg-white/20"
+                href="mailto:partnerships@abovethestack.com"
+              >
+                Request an Invite
+              </a>
+              <a
+                className="btn-ghost w-full justify-center border-white/30 bg-white/10 text-white hover:bg-white/20"
+                href={portalUrl}
+              >
+                Log in to Above Connect
               </a>
             </div>
           </div>

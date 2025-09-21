@@ -1,8 +1,8 @@
 import Image from 'next/image'
-import type { FoundingMember } from '@/data/foundingMembers'
+import type { LeadershipMember } from '@/data/leadershipTeam'
 
 type MemberCardProps = {
-  member: FoundingMember
+  member: LeadershipMember
 }
 
 export default function MemberCard({ member }: MemberCardProps) {
