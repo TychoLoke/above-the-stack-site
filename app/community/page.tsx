@@ -15,7 +15,7 @@ const lounges = [
   },
   {
     title: 'Partner strategy space',
-    description: 'Vendor and distributor teams co-design launch plans, explore MDF collaborations, and gather honest product feedback.',
+    description: 'Solution and distribution teams co-design launch plans, explore MDF collaborations, and gather honest product feedback under neutral guardrails.',
   },
 ]
 
@@ -30,8 +30,9 @@ export default function Page() {
           <h1 className="h1 text-balance text-atsMidnight">A private, high-signal portal for MSPs and trusted partners</h1>
           <p className="text-lg leading-relaxed">
             Above Connect is the member portal of Above The Stack — the independent, MSP-first
-            community. It’s where providers, vendors, and ISVs connect to exchange ideas, challenge
-            assumptions, and build the future of managed services together.
+            community. It’s where providers and trusted partners from around the world connect under
+            vendor-neutral guardrails to exchange ideas, challenge assumptions, and build the future
+            of managed services together.
           </p>
           <p className="text-lg leading-relaxed">
             Log in to access curated lounges, download playbooks in progress, and help us build the
@@ -39,9 +40,9 @@ export default function Page() {
             community.
           </p>
           <p className="text-lg leading-relaxed">
-            Company membership is €150 per year per MSP, giving every team member a seat. Vendors and
-            ISVs join as partners in a sales-neutral, knowledge-sharing capacity by requesting
-            curated access.
+            Company membership is €150 / $165 per year per MSP, giving every team member a seat with
+            local currency equivalents available. Partners join in a sales-neutral, knowledge-sharing
+            capacity by requesting curated access.
           </p>
           <div className="flex flex-wrap gap-3">
             <a className="btn-primary" href={`${portalUrl}/signup`}>
@@ -127,8 +128,8 @@ export default function Page() {
         columns="three"
       >
         <Card title="1. Become a member" cta="Become a Member" href={`${portalUrl}/signup`}>
-          Membership is €150 per company and covers every teammate. Vendors and partners use the same
-          flow to request curated, sales-neutral participation.
+          Membership is €150 / $165 per company and covers every teammate, with local currency options
+          available. Partners use the same flow to request curated, sales-neutral participation.
         </Card>
         <Card title="2. Complete your profile">
           Share your role, region, and focus areas. We use this to recommend discussions and small

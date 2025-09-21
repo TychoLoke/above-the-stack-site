@@ -75,7 +75,7 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
               </Link>
               <p className="max-w-sm leading-relaxed">
                 Independent MSP research, actionable playbooks, and Above Connect — our private
-                member portal for managed service leaders across Europe and beyond.
+                member portal for managed service leaders around the globe.
               </p>
               <div className="flex gap-4 text-xs uppercase tracking-[0.2em] text-atsOcean/70">
                 <span>Vendor neutral</span>
@@ -108,7 +108,7 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
             </div>
           </div>
           <div className="container mt-10 flex flex-col gap-3 border-t border-slate-200/70 pt-6 text-xs text-slate-500 md:flex-row md:items-center md:justify-between">
-            <p>© {new Date().getFullYear()} Above The Stack. Launching from Europe for MSPs worldwide.</p>
+            <p>© {new Date().getFullYear()} Above The Stack. Powered by a global MSP community.</p>
             <p className="font-medium text-atsOcean/80">Built together with the community.</p>
           </div>
         </footer>

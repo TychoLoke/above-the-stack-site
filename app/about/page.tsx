@@ -39,7 +39,7 @@ export default function Page() {
         <h1 className="h1 text-balance text-atsMidnight">Building the independent, MSP-first community</h1>
         <p>
           At Above The Stack, our mission is clear: to build the independent, MSP-first community
-          where providers can openly share, learn, and grow stronger together.
+          where providers can openly share, learn, and grow stronger together across every region.
         </p>
         <p>
           Too often, MSPs find themselves in spaces dominated by vendor agendas, sales pitches, or
@@ -72,9 +72,9 @@ export default function Page() {
         <div className="card space-y-4">
           <div>
             <h3 className="text-lg font-semibold text-atsMidnight">MSP membership</h3>
-            <p className="text-sm font-semibold text-atsOcean">€150 per year</p>
+            <p className="text-sm font-semibold text-atsOcean">€150 / $165 per year</p>
             <p className="text-xs uppercase tracking-[0.2em] text-atsOcean/70">
-              Per company — all team members included
+              Per company — all team members included, local currency equivalents available
             </p>
           </div>
           <ul className="space-y-2 text-sm leading-relaxed text-slate-600">

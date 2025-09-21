@@ -6,7 +6,7 @@ export const metadata = { title: 'Research — Above The Stack' }
 const pillars = [
   {
     title: 'Market intelligence',
-    description: 'Sizing, growth trajectories, and the economics behind European MSP service lines and partner ecosystems.',
+    description: 'Sizing, growth trajectories, and the economics behind MSP service lines and partner ecosystems across regions.',
   },
   {
     title: 'Regulation & compliance',
@@ -20,8 +20,8 @@ const pillars = [
 
 const releases = [
   {
-    title: 'European MSP Landscape 2025',
-    description: 'Service mix, profitability signals, and competitive positioning across 120+ MSPs in 14 countries.',
+    title: 'Global MSP Landscape 2025',
+    description: 'Service mix, profitability signals, and competitive positioning across 120+ MSPs in multiple regions.',
   },
   {
     title: 'Vendor Relationship Pulse',
@@ -99,8 +99,8 @@ export default function Page() {
           implement the insights fast.
         </Card>
         <Card title="Global relevance">
-          While we begin in Europe, we compare notes with MSPs worldwide to highlight differences and
-          transferable learnings.
+          We compare notes with MSPs worldwide to highlight regional differences and transferable
+          learnings so insights travel well.
         </Card>
       </Section>
 
