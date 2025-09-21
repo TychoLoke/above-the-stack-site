@@ -3,125 +3,144 @@ import Section from '@/components/Section'
 
 export const metadata = { title: 'About — Above The Stack' }
 
-const principles = [
+const foundingMembers = [
+  { name: 'Ashley Schut', company: 'Arctic Wolf' },
+  { name: 'Tycho Löke', company: 'AvePoint' },
+  { name: 'Pierre Kleine-Schaars', company: 'Q-Cyber' },
+  { name: 'Timon Bergsma', company: 'Pax8' },
+]
+
+const differentiators = [
   {
-    title: 'Independence first',
-    description:
-      'We are not tied to a single vendor or investor agenda. Our editorial line is shaped with the operators inside our community.',
+    title: 'MSP-first',
+    description: 'Decisions, content, and discussions are shaped by MSPs.',
   },
   {
-    title: 'Evidence over noise',
-    description:
-      'Every report and playbook is grounded in data, interviews, and peer validation before it reaches the broader channel.',
+    title: 'Independent & neutral',
+    description: 'No single vendor sets the agenda inside Above The Stack.',
   },
   {
-    title: 'Community powered',
-    description:
-      'The Discourse forum is where drafts are stress-tested, tool stacks are benchmarked, and programs are co-designed.',
+    title: 'Practical & open',
+    description: 'Expect real stories, debates, and resources — not theory.',
+  },
+  {
+    title: 'Community-driven',
+    description: 'Everyone’s voice matters and healthy challenges are encouraged.',
   },
 ]
 
-const team = [
-  {
-    name: 'Merel Van den Berg',
-    role: 'Research & Editorial',
-    bio: 'Former MSP operator turned analyst. Leads our market intelligence and writes the Above The Stack research briefs.',
-  },
-  {
-    name: 'Jamie Carter',
-    role: 'Community & Programs',
-    bio: 'Ex-vendor partnerships lead. Curates roundtables, office hours, and makes sure every discussion is actionable.',
-  },
-  {
-    name: 'Elias Martín',
-    role: 'Product & Platform',
-    bio: 'Built tooling for several European MSPs. Oversees our Discourse implementation and integrates community feedback into playbooks.',
-  },
+const membershipBenefits = [
+  'Access to exclusive playbooks, expert sessions, roundtables, and peer learning.',
+  'Be part of a trusted network of MSPs who want to grow without gatekeeping.',
 ]
+
+const coreRules = ['No Sales', 'No Ego', 'No Exclusions']
 
 export default function Page() {
   return (
     <div className="space-y-24">
       <section className="mx-auto max-w-4xl space-y-6 text-lg leading-relaxed text-slate-700">
-        <span className="eyebrow">Our story</span>
-        <h1 className="h1 text-balance text-atsMidnight">Above The Stack exists to help MSPs build with confidence</h1>
+        <span className="eyebrow">Our mission</span>
+        <h1 className="h1 text-balance text-atsMidnight">Building the independent, MSP-first community</h1>
         <p>
-          We started Above The Stack after years of watching MSPs wade through vendor hype cycles and
-          fragmented guidance. The operators we speak with asked for independent data, actionable
-          frameworks, and a place to compare notes with peers. So we built a platform that combines
-          all three.
+          At Above The Stack, our mission is clear: to build the independent, MSP-first community
+          where providers can openly share, learn, and grow stronger together.
         </p>
         <p>
-          Today we are headquartered in Amsterdam and collaborate with contributors across the
-          continent. Our members include founders, service delivery leads, partner managers, and the
-          vendors who support them. Together we benchmark the European market, share working playbooks,
-          and co-create the partnerships that move the channel forward.
+          Too often, MSPs find themselves in spaces dominated by vendor agendas, sales pitches, or
+          closed circles. We wanted to change that. Above The Stack is designed as a true home for
+          MSPs — a place to discuss challenges, exchange experiences, and get access to practical
+          knowledge without the noise.
+        </p>
+        <p>
+          The initiative is led by four founding members with deep roots in the MSP and channel
+          ecosystem, each bringing unique expertise and prior community experience.
+        </p>
+        <ul className="space-y-2 text-base leading-relaxed text-slate-700">
+          {foundingMembers.map((member) => (
+            <li key={member.name} className="flex gap-3">
+              <span className="mt-2 h-2 w-2 flex-shrink-0 rounded-full bg-atsOcean" />
+              <span>
+                {member.name} – {member.company}
+              </span>
+            </li>
+          ))}
+        </ul>
+        <p className="text-base">
+          Our guiding principle is simple: the MSP is always at the center. We officially launch on
+          November 1st, followed by our first in-person meetup in December.
         </p>
       </section>
 
-      <Section eyebrow="Principles" title="How we show up for the community" columns="three">
-        {principles.map((principle) => (
-          <Card key={principle.title} title={principle.title}>
-            {principle.description}
+      <Section
+        eyebrow="Membership"
+        title="Designed for MSPs with room for partners"
+        description="Membership is intentionally simple so teams can focus on learning, collaborating, and building better services."
+        columns="two"
+      >
+        <div className="card space-y-4">
+          <div>
+            <h3 className="text-lg font-semibold text-atsMidnight">MSP membership</h3>
+            <p className="text-sm font-semibold text-atsOcean">€150 per year</p>
+            <p className="text-xs uppercase tracking-[0.2em] text-atsOcean/70">
+              Per company — all team members included
+            </p>
+          </div>
+          <ul className="space-y-2 text-sm leading-relaxed text-slate-600">
+            {membershipBenefits.map((benefit) => (
+              <li key={benefit} className="flex gap-3">
+                <span className="mt-1 h-2 w-2 flex-shrink-0 rounded-full bg-atsOcean" />
+                <span>{benefit}</span>
+              </li>
+            ))}
+          </ul>
+        </div>
+        <div className="card space-y-3">
+          <h3 className="text-lg font-semibold text-atsMidnight">Vendors &amp; ISVs</h3>
+          <p className="text-sm leading-relaxed text-slate-600">
+            Welcome through custom partnerships designed to be sales-neutral and focused on knowledge
+            sharing.
+          </p>
+          <p className="text-sm leading-relaxed text-slate-600">
+            Collaborate with MSPs on programming that prioritises transparency, shared discovery, and
+            joint problem-solving over pitches.
+          </p>
+        </div>
+      </Section>
+
+      <Section
+        eyebrow="What makes us different"
+        title="What makes Above The Stack different?"
+        columns="two"
+      >
+        {differentiators.map((item) => (
+          <Card key={item.title} title={item.title}>
+            {item.description}
           </Card>
         ))}
       </Section>
 
       <Section
-        eyebrow="Team"
-        title="Meet the editors and facilitators behind Above The Stack"
-        columns="three"
+        eyebrow="Our guardrails"
+        title="The 3 core rules every member signs up for"
+        columns="one"
       >
-        {team.map((member) => (
-          <div key={member.name} className="card space-y-3">
-            <div>
-              <h3 className="text-lg font-semibold text-atsMidnight">{member.name}</h3>
-              <p className="text-sm uppercase tracking-[0.2em] text-atsOcean/70">{member.role}</p>
-            </div>
-            <p className="text-sm leading-relaxed text-slate-600">{member.bio}</p>
-          </div>
-        ))}
-      </Section>
-
-      <Section
-        eyebrow="Collaborators"
-        title="Advisors, data partners, and contributors"
-        description="Our research and programming is enriched by practitioners who open their playbooks and by vendors who share transparent metrics."
-        columns="two"
-      >
-        <Card title="Operator council">
-          A rotating group of MSP founders from Benelux, Nordics, DACH, and the UK who review drafts,
-          sense-check pricing analysis, and highlight regional nuances.
-        </Card>
-        <Card title="Vendor partners">
-          Security, cloud, and SaaS providers participate in workshops and provide anonymised data so
-          we can publish unbiased, comparable benchmarks.
-        </Card>
-        <Card title="Academic network">
-          We collaborate with universities and independent analysts on methodology, ensuring our
-          research meets rigorous standards.
-        </Card>
-        <Card title="Community moderators">
-          Veteran operators and vendor leads who facilitate discussions, ensure psychological safety,
-          and surface themes for deeper dives.
-        </Card>
-      </Section>
-
-      <section className="card mx-auto max-w-4xl space-y-4 bg-white/90">
-        <h2 className="text-2xl font-semibold text-atsMidnight">We would love to hear from you</h2>
-        <p className="text-sm leading-relaxed text-slate-600">
-          Want to contribute research, request a briefing, or explore a partnership? Reach out and we’ll
-          get back to you within two business days.
-        </p>
-        <div className="flex flex-wrap gap-3">
-          <a className="btn-primary" href="mailto:hello@abovethestack.com">
-            Email the team
-          </a>
-          <a className="btn-ghost" href="/community">
-            Explore the community
-          </a>
+        <div className="card space-y-4">
+          <ol className="space-y-3 text-sm leading-relaxed text-slate-600">
+            {coreRules.map((rule, index) => (
+              <li key={rule} className="flex gap-4">
+                <span className="text-sm font-semibold text-atsOcean">{index + 1}.</span>
+                <span className="font-medium text-atsMidnight">{rule}</span>
+              </li>
+            ))}
+          </ol>
+          <p className="text-sm leading-relaxed text-slate-600">
+            Above The Stack is where MSPs — and the partners who support them — can have the
+            conversations that really matter. Together, we’re building a community that is open,
+            honest, and always focused on helping MSPs succeed.
+          </p>
         </div>
-      </section>
+      </Section>
     </div>
   )
 }
