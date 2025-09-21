@@ -13,8 +13,8 @@ export default function Page() {
         <h1 className="h1 text-balance text-atsMidnight">Log in to Above The Stack</h1>
         <p>
           The newsletter has evolved into our community digest. Log in to the member portal to access
-          research drops, playbooks in progress, and the weekly summary of what happened inside the
-          Discourse forum.
+          research drops, playbooks in progress, and the weekly summary of what happened inside Above
+          Connect.
         </p>
         <div className="flex flex-wrap gap-3">
           <a className="btn-primary" href={portalUrl}>
@@ -36,11 +36,12 @@ export default function Page() {
           under five minutes.
         </Card>
         <Card title="Early research access">
-          Chapters from upcoming reports drop first in Discourse — weigh in before the public release.
+          Chapters from upcoming reports drop first in Above Connect — weigh in before the public
+          release.
         </Card>
         <Card title="Event notifications">
           Get alerted to roundtables, workshops, and office hours. RSVP happens directly inside the
-          forum.
+          portal.
         </Card>
       </Section>
 
@@ -50,7 +51,8 @@ export default function Page() {
         columns="two"
       >
         <Card title="Reset your password" href={`${portalUrl}/password-reset`} cta="Reset now">
-          Use the Discourse password reset flow. The link expires after 10 minutes for your security.
+          Use the Above Connect password reset flow. The link expires after 10 minutes for your
+          security.
         </Card>
         <Card title="Contact support" href="mailto:support@abovethestack.com" cta="Email support">
           Reach out if you’re experiencing login issues or want to confirm your membership status.

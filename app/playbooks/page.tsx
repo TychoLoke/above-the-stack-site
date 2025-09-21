@@ -33,7 +33,7 @@ export default function Page() {
         </p>
         <div className="flex flex-wrap gap-3">
           <a className="btn-primary" href={`${portalUrl}/c/playbooks/15`}>
-            Access playbooks in Discourse
+            Access playbooks in Above Connect
           </a>
           <a className="btn-ghost" href="mailto:hello@abovethestack.com">
             Request a custom workshop
@@ -68,8 +68,8 @@ export default function Page() {
           success workflows.
         </Card>
         <Card title="Community feedback loop">
-          Dedicated Discourse threads to surface questions, share outcomes, and collectively improve
-          the material.
+          Dedicated Above Connect threads to surface questions, share outcomes, and collectively
+          improve the material.
         </Card>
       </Section>
 

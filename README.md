@@ -1,7 +1,7 @@
 # Above The Stack — Website (Next.js / Tailwind)
 
 Vendor-neutral insights, playbooks, and community for MSPs.
-MVP built with the App Router, Tailwind CSS, and a Discourse integration for the latest topics.
+MVP built with the App Router, Tailwind CSS, and an Above Connect (Discourse) integration for the latest topics.
 
 ## Quick start
 
@@ -34,7 +34,7 @@ DISC_API_USERNAME=system
 ## Next steps
 
 - Move content to MDX + Contentlayer (to be added later).
-- Implement DiscourseConnect SSO via `/api/auth/discourse` (stub still pending).
+- Implement Above Connect (Discourse) SSO via `/api/auth/discourse` (stub still pending).
 - Power the Events page with a CMS or MDX.
 - Newsletter: replace `YOUR_WEB3FORMS_KEY` or connect to your provider.
 

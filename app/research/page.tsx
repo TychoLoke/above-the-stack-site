@@ -48,7 +48,7 @@ export default function Page() {
         </p>
         <div className="flex flex-wrap gap-3">
           <a className="btn-primary" href={`${portalUrl}/c/research/5`}>
-            Access research threads
+            Access research in Above Connect
           </a>
           <a className="btn-ghost" href="mailto:research@abovethestack.com">
             Contribute data
@@ -91,8 +91,8 @@ export default function Page() {
           data contributor and anonymise results.
         </Card>
         <Card title="Transparent & iterative">
-          Draft findings are posted in Discourse for feedback. Members can challenge assumptions and
-          request deeper cuts before publication.
+          Draft findings are posted in Above Connect for feedback. Members can challenge assumptions
+          and request deeper cuts before publication.
         </Card>
         <Card title="Practical outcomes">
           Each report includes actions, metrics to monitor, and supporting templates so teams can
