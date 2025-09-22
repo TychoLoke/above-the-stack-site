@@ -41,11 +41,11 @@ const whatsInside = [
     description: 'A concise readout distilling the why, the opportunity, and the pitfalls — ready to share with leadership and partners.',
     icon: <FileText aria-hidden="true" className={iconClass} strokeWidth={1.8} />,
   },
-  {
-    title: 'Implementation toolkit',
-    description: 'Templates, checklists, and SOPs to plug directly into your PSA, documentation, and customer success workflows.',
-    icon: <Toolbox aria-hidden="true" className={iconClass} strokeWidth={1.8} />,
-  },
+{
+  title: 'Implementation toolkit',
+  description: 'Templates, checklists, and SOPs to plug directly into your PSA, documentation, and customer success workflows.',
+  icon: <Toolbox aria-hidden="true" className={iconClass} strokeWidth={1.8} />,
+},
   {
     title: 'Community feedback loop',
     description: 'Dedicated Above Connect threads to surface questions, share outcomes, and collectively improve the material.',
