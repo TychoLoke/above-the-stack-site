@@ -36,12 +36,58 @@ function clamp(value: number, min: number, max: number) {
   return Math.min(Math.max(value, min), max)
 }
 
-export default function UpcomingHighlightsTimeline({
+type StaticTimelineProps = Pick<UpcomingHighlightsTimelineProps, 'items'>
+
+function StaticHighlightsTimeline({ items }: StaticTimelineProps) {
+  const itemCount = items.length
+  const gridColumns = itemCount === 1 ? '' : itemCount === 2 ? 'md:grid-cols-2' : 'md:grid-cols-3'
+  const gridClassName = ['grid gap-6 sm:gap-8', gridColumns].filter(Boolean).join(' ')
+
+  return (
+    <div className={gridClassName}>
+      {items.map((item, index) => {
+        const cardClassName = [item.className, 'shadow-glow'].filter(Boolean).join(' ')
+
+        return (
+          <motion.div
+            key={item.title}
+            className="h-full"
+            variants={MOTION_VARIANTS}
+            initial="hidden"
+            animate="visible"
+            transition={{ delay: index * 0.08, duration: 0.6, ease: [0.22, 1, 0.36, 1] }}
+          >
+            <Card
+              eyebrow={item.eyebrow}
+              title={item.title}
+              href={item.href}
+              cta={item.cta}
+              className={cardClassName}
+              icon={item.icon}
+              iconAccent={item.iconAccent}
+            >
+              {item.description}
+            </Card>
+          </motion.div>
+        )
+      })}
+    </div>
+  )
+}
+
+type CarouselTimelineProps = {
+  items: UpcomingHighlight[]
+  autoplay: boolean
+  autoplayInterval: number
+  showControls: boolean
+}
+
+function CarouselHighlightsTimeline({
   items,
-  autoplay = true,
-  autoplayInterval = 6500,
-  showControls = true,
-}: UpcomingHighlightsTimelineProps) {
+  autoplay,
+  autoplayInterval,
+  showControls,
+}: CarouselTimelineProps) {
   const slideCount = items.length
   const hasMultipleSlides = slideCount > 1
   const generatedId = useId()
@@ -307,5 +353,25 @@ export default function UpcomingHighlightsTimeline({
         Highlight {selectedIndex + 1} of {slideCount}
       </div>
     </div>
+  )
+}
+
+export default function UpcomingHighlightsTimeline({
+  items,
+  autoplay = true,
+  autoplayInterval = 6500,
+  showControls = true,
+}: UpcomingHighlightsTimelineProps) {
+  if (items.length <= 3) {
+    return <StaticHighlightsTimeline items={items} />
+  }
+
+  return (
+    <CarouselHighlightsTimeline
+      items={items}
+      autoplay={autoplay}
+      autoplayInterval={autoplayInterval}
+      showControls={showControls}
+    />
   )
 }
