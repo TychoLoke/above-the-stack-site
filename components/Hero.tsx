@@ -12,12 +12,12 @@ export default function Hero() {
   const portalUrl = process.env.NEXT_PUBLIC_PORTAL_URL || 'https://portal.abovethestack.com'
 
   return (
-    <section className="relative overflow-hidden rounded-[2.75rem] border border-white/70 bg-white/80 px-8 py-16 shadow-[0_55px_110px_-60px_rgba(15,31,75,0.65)] backdrop-blur-xl md:px-16 md:py-24">
-      <div className="absolute -top-32 left-1/2 h-80 w-[32rem] -translate-x-1/2 rounded-full bg-gradient-to-r from-atsSky/35 via-white to-atsOcean/35 blur-3xl" />
-      <div className="absolute -bottom-40 right-0 h-96 w-[38rem] translate-x-1/4 rounded-full bg-gradient-to-br from-atsCoral/35 via-atsSky/20 to-transparent blur-3xl" />
+    <section className="relative overflow-hidden rounded-[2rem] border border-white/70 bg-white/80 px-6 py-14 shadow-[0_55px_110px_-60px_rgba(15,31,75,0.65)] backdrop-blur-xl sm:px-10 sm:py-16 lg:rounded-[2.75rem] lg:px-16 lg:py-24">
+      <div className="absolute -top-32 left-1/2 h-72 w-[22rem] -translate-x-1/2 rounded-full bg-gradient-to-r from-atsSky/35 via-white to-atsOcean/35 blur-3xl sm:h-80 sm:w-[32rem]" />
+      <div className="absolute -bottom-40 right-0 h-80 w-[26rem] translate-x-1/4 rounded-full bg-gradient-to-br from-atsCoral/35 via-atsSky/20 to-transparent blur-3xl sm:h-96 sm:w-[38rem]" />
       <div className="absolute inset-0 -z-10 bg-gradient-to-br from-white via-atsSky/5 to-transparent opacity-60" />
 
-      <div className="relative grid items-start gap-12 lg:grid-cols-[1.4fr_1fr]">
+      <div className="relative grid items-start gap-10 lg:grid-cols-[1.4fr_1fr] lg:gap-12">
         <div className="space-y-10 text-left">
           <div className="space-y-5">
             <span className="inline-flex items-center gap-2 rounded-full border border-white/0 bg-atsOcean/10 px-4 py-1 text-sm font-semibold text-atsOcean/80 shadow-inner">
@@ -30,21 +30,21 @@ export default function Hero() {
               Independent research, living playbooks, and Above Connect — a trusted portal where MSPs, MSSPs, and partners work out the future of managed services together. Stay ahead of regulation, pricing, and customer expectations with peers who share openly.
             </p>
           </div>
-          <div className="flex flex-wrap items-center gap-3">
-            <a className="btn-primary" href={`${portalUrl}/signup`}>
+          <div className="flex flex-col gap-3 sm:flex-row sm:flex-wrap sm:items-center">
+            <a className="btn-primary w-full justify-center sm:w-auto" href={`${portalUrl}/signup`}>
               Join the Community
             </a>
-            <Link className="btn-secondary" href="/research">
+            <Link className="btn-secondary w-full justify-center sm:w-auto" href="/research">
               Explore Research
             </Link>
-            <span className="text-sm text-slate-500">
+            <span className="text-sm text-slate-500 sm:text-left">
               Already a member?{' '}
               <a className="font-semibold text-atsOcean hover:underline" href={portalUrl}>
                 Log in
               </a>
             </span>
           </div>
-          <dl className="grid gap-4 pt-4 sm:grid-cols-3">
+          <dl className="grid gap-3 pt-4 sm:grid-cols-3 sm:gap-4">
             {heroStats.map((stat) => (
               <div key={stat.label} className="rounded-2xl border border-white/80 bg-white/80 p-5 shadow-[0_18px_40px_-28px_rgba(15,31,75,0.45)]">
                 <dt className="text-sm font-semibold uppercase tracking-[0.35em] text-atsOcean/70">{stat.label}</dt>
@@ -54,7 +54,7 @@ export default function Hero() {
           </dl>
         </div>
 
-        <div className="card gradient-border space-y-6 bg-white/85 p-8">
+        <div className="card gradient-border space-y-6 bg-white/85 p-6 sm:p-8">
           <div className="flex items-start justify-between gap-3">
             <div>
               <h2 className="text-xl font-semibold text-atsMidnight">Community commitments</h2>
@@ -87,12 +87,12 @@ export default function Hero() {
               </div>
             ))}
           </div>
-          <div className="flex flex-wrap items-center gap-3 text-sm text-slate-600">
+          <div className="flex flex-col gap-2 text-sm text-slate-600 sm:flex-row sm:flex-wrap sm:items-center">
             <Link className="font-semibold text-atsOcean hover:underline" href="/community">
               Tour Above Connect
             </Link>
             <span className="hidden h-1 w-1 rounded-full bg-atsOcean/40 md:inline-block" aria-hidden />
-            <p>Membership is €150/year per company. Every teammate is included.</p>
+            <p className="sm:text-left">Membership is €150/year per company. Every teammate is included.</p>
           </div>
         </div>
       </div>

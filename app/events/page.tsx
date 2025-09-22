@@ -53,17 +53,17 @@ const formats = [
 export default function Page() {
   return (
     <div className="space-y-24">
-      <section className="glass-panel space-y-6 px-10 py-14 text-lg leading-relaxed text-slate-700">
+      <section className="glass-panel space-y-6 px-6 py-12 text-lg leading-relaxed text-slate-700 sm:px-10 sm:py-14">
         <span className="tag">Programs</span>
         <h1 className="h1 text-balance text-atsMidnight">Events, briefings, and working sessions for builders</h1>
         <p>
           Above The Stack events are intentionally small. We curate the room so every participant can contribute, pressure test ideas, and leave with something immediately usable. Recordings and notes live inside the community for members who cannot attend live.
         </p>
-        <div className="flex flex-wrap gap-3">
-          <a className="btn-primary" href={`${portalUrl}/latest`}>
+        <div className="flex flex-col gap-3 sm:flex-row sm:flex-wrap">
+          <a className="btn-primary w-full justify-center sm:w-auto" href={`${portalUrl}/latest`}>
             View schedule in Above Connect
           </a>
-          <a className="btn-secondary" href="mailto:events@abovethestack.com">
+          <a className="btn-secondary w-full justify-center sm:w-auto" href="mailto:events@abovethestack.com">
             Suggest a topic
           </a>
         </div>

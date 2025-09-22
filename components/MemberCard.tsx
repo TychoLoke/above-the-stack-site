@@ -12,7 +12,7 @@ export default function MemberCard({ member }: MemberCardProps) {
 
   return (
     <article className="card h-full overflow-hidden">
-      <div className="flex h-full flex-col gap-8 rounded-[2.25rem] bg-gradient-to-br from-atsOcean/5 via-white to-atsSky/5 px-8 py-9">
+      <div className="flex h-full flex-col gap-6 rounded-[2.25rem] bg-gradient-to-br from-atsOcean/5 via-white to-atsSky/5 px-6 py-7 sm:gap-8 sm:px-8 sm:py-9">
         <div className="flex flex-col gap-6 sm:flex-row sm:items-center">
           <div className="relative aspect-square w-24 shrink-0 rounded-[1.85rem] bg-gradient-to-br from-atsOcean/40 via-atsSky/25 to-atsCoral/30 p-[3px] shadow-[0_18px_32px_-18px_rgba(15,31,75,0.45)] sm:w-28">
             <div className="relative h-full w-full overflow-hidden rounded-[1.4rem] bg-white/85 shadow-[inset_0_1px_0_rgba(255,255,255,0.65)]">

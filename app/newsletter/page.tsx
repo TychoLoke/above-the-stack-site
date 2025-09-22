@@ -21,14 +21,14 @@ export default function Page() {
           currency equivalents available. Partners can request curated participation so
           conversations stay collaborative and sales-neutral.
         </p>
-        <div className="flex flex-wrap gap-3">
-          <a className="btn-primary" href={portalUrl}>
+        <div className="flex flex-col gap-3 sm:flex-row sm:flex-wrap">
+          <a className="btn-primary w-full justify-center sm:w-auto" href={portalUrl}>
             Log in to Above Connect
           </a>
-          <a className="btn-ghost" href={`${portalUrl}/signup`}>
+          <a className="btn-ghost w-full justify-center sm:w-auto" href={`${portalUrl}/signup`}>
             Become a Member
           </a>
-          <a className="btn-ghost" href="mailto:partnerships@abovethestack.com">
+          <a className="btn-ghost w-full justify-center sm:w-auto" href="mailto:partnerships@abovethestack.com">
             Request an Invite
           </a>
         </div>

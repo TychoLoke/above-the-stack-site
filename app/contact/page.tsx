@@ -8,7 +8,7 @@ const portalUrl = process.env.NEXT_PUBLIC_PORTAL_URL || 'https://portal.abovethe
 export default function Page() {
   return (
     <div className="space-y-24">
-      <section className="relative overflow-hidden rounded-[3rem] border border-white/70 bg-gradient-to-br from-atsSky/30 via-white to-atsOcean/20 px-10 py-16 shadow-[0_50px_120px_-80px_rgba(15,31,75,0.65)]">
+      <section className="relative overflow-hidden rounded-[2.5rem] border border-white/70 bg-gradient-to-br from-atsSky/30 via-white to-atsOcean/20 px-6 py-12 shadow-[0_50px_120px_-80px_rgba(15,31,75,0.65)] sm:rounded-[3rem] sm:px-10 sm:py-16">
         <div className="absolute -left-32 top-12 h-72 w-72 rounded-full bg-atsOcean/25 blur-3xl" aria-hidden />
         <div className="absolute -right-24 bottom-0 h-60 w-60 rounded-full bg-atsCoral/20 blur-3xl" aria-hidden />
         <div className="relative space-y-6 text-slate-700">
@@ -17,11 +17,11 @@ export default function Page() {
           <p className="max-w-2xl text-lg leading-relaxed">
             Share the challenge you’re solving, the research you’d like to influence, or the playbook you want to see. We read every message and route it to the right people on the leadership team.
           </p>
-          <div className="flex flex-wrap gap-4 pt-2 text-sm text-atsMidnight/80">
-            <a className="btn-secondary" href={portalUrl}>
+          <div className="flex flex-col gap-3 pt-2 text-sm text-atsMidnight/80 sm:flex-row sm:flex-wrap">
+            <a className="btn-secondary w-full justify-center sm:w-auto" href={portalUrl}>
               Log in to Above Connect
             </a>
-            <a className="btn-ghost" href="mailto:hello@abovethestack.com">
+            <a className="btn-ghost w-full justify-center sm:w-auto" href="mailto:hello@abovethestack.com">
               Email hello@abovethestack.com
             </a>
           </div>

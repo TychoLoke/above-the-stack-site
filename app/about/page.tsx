@@ -63,7 +63,7 @@ export default function Page() {
 
   return (
     <div className="space-y-24">
-      <section className="glass-panel mx-auto max-w-5xl space-y-6 px-10 py-14 text-lg leading-relaxed text-slate-700">
+      <section className="glass-panel mx-auto max-w-5xl space-y-6 px-6 py-12 text-lg leading-relaxed text-slate-700 sm:px-10 sm:py-14">
         <span className="inline-flex items-center gap-2 rounded-full border border-white/0 bg-atsOcean/10 px-4 py-1 text-sm font-semibold text-atsOcean/80">
           <Sparkles aria-hidden="true" className="h-4 w-4" strokeWidth={1.8} /> Our mission
         </span>
@@ -85,11 +85,11 @@ export default function Page() {
         <p className="text-base">
           We officially launch on November 1st with our first in-person meetup in December. Join now to help shape the launch cohort and the programmes that follow.
         </p>
-        <div className="flex flex-wrap gap-3 pt-2">
-          <a className="btn-primary" href={`${portalUrl}/signup`}>
+        <div className="flex flex-col gap-3 pt-2 sm:flex-row sm:flex-wrap">
+          <a className="btn-primary w-full justify-center sm:w-auto" href={`${portalUrl}/signup`}>
             Become a Member
           </a>
-          <a className="btn-secondary" href="mailto:hello@abovethestack.com">
+          <a className="btn-secondary w-full justify-center sm:w-auto" href="mailto:hello@abovethestack.com">
             Talk to the team
           </a>
         </div>

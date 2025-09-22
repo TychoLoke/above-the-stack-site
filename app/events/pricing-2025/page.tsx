@@ -10,12 +10,12 @@ export default function Page() {
       <p>
         Join the newsletter or community to be the first to know when seats become available.
       </p>
-      <div className="flex flex-wrap gap-3">
-        <a className="btn-primary" href="/newsletter">
+      <div className="flex flex-col gap-3 sm:flex-row sm:flex-wrap">
+        <a className="btn-primary w-full justify-center sm:w-auto" href="/newsletter">
           Get event alerts
         </a>
         <a
-          className="btn-ghost"
+          className="btn-ghost w-full justify-center sm:w-auto"
           href={process.env.NEXT_PUBLIC_PORTAL_URL || 'https://portal.abovethestack.com'}
         >
           Discuss with peers

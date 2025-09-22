@@ -88,7 +88,7 @@ const steps = [
 export default function Page() {
   return (
     <div className="space-y-24">
-      <section className="relative grid gap-12 rounded-[2.5rem] border border-white/70 bg-white/80 p-10 shadow-[0_32px_70px_-35px_rgba(15,31,75,0.55)] backdrop-blur-xl lg:grid-cols-[1.2fr_1fr]">
+      <section className="relative grid gap-10 rounded-[2.5rem] border border-white/70 bg-white/80 p-6 shadow-[0_32px_70px_-35px_rgba(15,31,75,0.55)] backdrop-blur-xl sm:p-10 lg:grid-cols-[1.2fr_1fr] lg:gap-12">
         <div className="space-y-6 text-slate-700">
           <span className="inline-flex items-center gap-2 rounded-full border border-white/0 bg-atsOcean/10 px-4 py-1 text-sm font-semibold text-atsOcean/80">
             <Sparkles aria-hidden="true" className="h-4 w-4" strokeWidth={1.8} /> Above Connect
@@ -108,22 +108,22 @@ export default function Page() {
               </li>
             ))}
           </ul>
-          <div className="flex flex-wrap gap-3">
-            <a className="btn-primary" href={`${portalUrl}/signup`}>
+          <div className="flex flex-col gap-3 sm:flex-row sm:flex-wrap">
+            <a className="btn-primary w-full justify-center sm:w-auto" href={`${portalUrl}/signup`}>
               Become a Member
             </a>
-            <a className="btn-secondary" href="mailto:partnerships@abovethestack.com">
+            <a className="btn-secondary w-full justify-center sm:w-auto" href="mailto:partnerships@abovethestack.com">
               Request an Invite
             </a>
-            <a className="btn-secondary" href={portalUrl}>
+            <a className="btn-secondary w-full justify-center sm:w-auto" href={portalUrl}>
               Log in to Above Connect
             </a>
-            <a className="btn-secondary" href="mailto:community@abovethestack.com">
+            <a className="btn-secondary w-full justify-center sm:w-auto" href="mailto:community@abovethestack.com">
               Talk to a moderator
             </a>
           </div>
         </div>
-        <div className="card gradient-border flex h-full flex-col justify-between space-y-6 bg-white/85 p-7">
+        <div className="card gradient-border flex h-full flex-col justify-between space-y-6 bg-white/85 p-6 sm:p-7">
           <div className="space-y-6">
             <div className="flex items-center justify-between gap-3">
               <h2 className="text-xl font-semibold text-atsMidnight">Community commitments</h2>
@@ -176,7 +176,7 @@ export default function Page() {
         description="Log in to Above Connect to view the full threads, join the debate, and access shared files."
         columns="two"
         action={
-          <a className="btn-secondary" href={`${portalUrl}/latest`}>
+          <a className="btn-secondary w-full justify-center sm:w-auto" href={`${portalUrl}/latest`}>
             View all topics
           </a>
         }
