@@ -51,11 +51,6 @@ const whatsInside = [
     iconAccent: 'midnight' as const,
     icon: <ToolCase aria-hidden="true" className={iconClass} strokeWidth={1.8} />,
   },
-{
-  title: 'Implementation toolkit',
-  description: 'Templates, checklists, and SOPs to plug directly into your PSA, documentation, and customer success workflows.',
-  icon: <Toolbox aria-hidden="true" className={iconClass} strokeWidth={1.8} />,
-},
   {
     title: 'Community feedback loop',
     description: 'Dedicated Above Connect threads to surface questions, share outcomes, and collectively improve the material.',
