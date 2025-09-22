@@ -55,18 +55,43 @@ export default function Page() {
             vendor-neutral guardrails to exchange ideas, challenge assumptions, and build the future
             of managed services together.
           </p>
-          <div className="grid gap-4 sm:grid-cols-2">
+          <ul className="space-y-4 text-sm leading-relaxed">
             {highlights.map((item) => (
-              <div
-                key={item.title}
-                className="flex h-full flex-col justify-between rounded-2xl border border-atsOcean/15 bg-gradient-to-br from-white via-atsSky/10 to-atsOcean/5 p-5 text-sm leading-relaxed text-slate-700 shadow-[0_24px_55px_-32px_rgba(15,31,75,0.6)]"
-              >
-                <h3 className="text-base font-semibold text-atsMidnight">{item.title}</h3>
-                <p className="mt-2">{item.description}</p>
-              </div>
+              <li key={item.title} className="flex items-start gap-4">
+                <span className="mt-1 h-2.5 w-2.5 flex-shrink-0 rounded-full bg-gradient-to-br from-atsSky via-atsOcean to-atsCoral shadow-[0_4px_12px_rgba(19,42,93,0.35)]" />
+                <div className="space-y-1">
+                  <h3 className="text-base font-semibold text-atsMidnight">{item.title}</h3>
+                  <p className="text-slate-600">{item.description}</p>
+                </div>
+              </li>
             ))}
+          </ul>
+        </div>
+        <div className="flex h-full flex-col justify-between rounded-[2rem] border border-white/70 bg-gradient-to-br from-white via-atsSky/25 to-atsOcean/10 p-7 text-slate-700 shadow-[0_28px_65px_-32px_rgba(15,31,75,0.55)]">
+          <div className="space-y-6">
+            <div className="flex items-center justify-between gap-3">
+              <h2 className="text-xl font-semibold text-atsMidnight">Community commitments</h2>
+              <span className="hidden rounded-full border border-white/40 bg-white/70 px-3 py-1 text-[0.65rem] font-semibold uppercase tracking-[0.2em] text-atsOcean/80 md:inline-flex">
+                Built with members
+              </span>
+            </div>
+            <ul className="space-y-4 text-sm leading-relaxed text-slate-600">
+              {communityCommitments.map((item) => (
+                <li key={item.title} className="flex items-start gap-4">
+                  <span
+                    className={`mt-1 inline-flex h-10 w-10 flex-shrink-0 items-center justify-center rounded-2xl bg-gradient-to-br ${item.gradient} text-[0.65rem] font-semibold uppercase tracking-wide text-white shadow-glow`}
+                  >
+                    {item.label}
+                  </span>
+                  <div className="space-y-1">
+                    <h3 className="text-sm font-semibold text-atsMidnight">{item.title}</h3>
+                    <p>{item.description}</p>
+                  </div>
+                </li>
+              ))}
+            </ul>
           </div>
-          <div className="flex flex-wrap gap-3">
+          <div className="mt-8 flex flex-wrap gap-3">
             <a className="btn-primary" href={`${portalUrl}/signup`}>
               Become a Member
             </a>
@@ -79,33 +104,6 @@ export default function Page() {
             <a className="btn-ghost" href="mailto:community@abovethestack.com">
               Talk to a moderator
             </a>
-          </div>
-        </div>
-        <div className="card space-y-6 border-transparent bg-gradient-to-br from-white via-atsSky/20 to-atsOcean/10 text-slate-800 shadow-glow">
-          <div className="flex items-center justify-between gap-3">
-            <h2 className="text-xl font-semibold text-atsMidnight">Community commitments</h2>
-            <span className="hidden rounded-full border border-white/50 bg-white/60 px-3 py-1 text-[0.65rem] font-semibold uppercase tracking-[0.2em] text-atsOcean/80 md:inline-flex">
-              Built with members
-            </span>
-          </div>
-          <div className="grid gap-4 md:grid-cols-3">
-            {communityCommitments.map((item) => (
-              <div
-                key={item.title}
-                className="group relative flex h-full flex-col gap-3 overflow-hidden rounded-2xl border border-white/60 bg-white/75 p-5 text-sm leading-relaxed text-slate-600 shadow-[0_25px_55px_-32px_rgba(15,31,75,0.6)] backdrop-blur"
-              >
-                <div
-                  className={`pointer-events-none absolute inset-0 bg-gradient-to-br ${item.gradient} opacity-[0.12] transition-opacity duration-300 group-hover:opacity-25`}
-                />
-                <span
-                  className={`relative inline-flex h-10 w-10 items-center justify-center rounded-2xl bg-gradient-to-br ${item.gradient} text-[0.65rem] font-semibold uppercase tracking-wide text-white shadow-glow`}
-                >
-                  {item.label}
-                </span>
-                <h3 className="relative text-sm font-semibold text-atsMidnight">{item.title}</h3>
-                <p className="relative">{item.description}</p>
-              </div>
-            ))}
           </div>
         </div>
       </section>
