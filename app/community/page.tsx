@@ -108,19 +108,22 @@ export default function Page() {
               Built with members
             </span>
           </div>
-          <div className="grid gap-4 sm:grid-cols-3">
+          <div className="grid gap-4 md:grid-cols-3">
             {commitments.map((item) => (
               <div
                 key={item.title}
-                className="flex h-full flex-col gap-2 rounded-2xl border border-white/60 bg-white/70 p-4 text-sm leading-relaxed text-slate-600 backdrop-blur"
+                className="group relative flex h-full flex-col gap-3 overflow-hidden rounded-2xl border border-white/60 bg-white/75 p-5 text-sm leading-relaxed text-slate-600 shadow-[0_25px_55px_-32px_rgba(15,31,75,0.6)] backdrop-blur"
               >
+                <div
+                  className={`pointer-events-none absolute inset-0 bg-gradient-to-br ${item.gradient} opacity-[0.12] transition-opacity duration-300 group-hover:opacity-25`}
+                />
                 <span
-                  className={`inline-flex h-10 w-10 items-center justify-center rounded-2xl bg-gradient-to-br ${item.gradient} text-[0.65rem] font-semibold uppercase tracking-wide text-white shadow-glow`}
+                  className={`relative inline-flex h-10 w-10 items-center justify-center rounded-2xl bg-gradient-to-br ${item.gradient} text-[0.65rem] font-semibold uppercase tracking-wide text-white shadow-glow`}
                 >
                   {item.label}
                 </span>
-                <h3 className="text-sm font-semibold text-atsMidnight">{item.title}</h3>
-                <p>{item.description}</p>
+                <h3 className="relative text-sm font-semibold text-atsMidnight">{item.title}</h3>
+                <p className="relative">{item.description}</p>
               </div>
             ))}
           </div>
