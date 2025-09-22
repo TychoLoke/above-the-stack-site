@@ -20,7 +20,7 @@ export default function Hero() {
       <div className="relative grid items-start gap-10 lg:grid-cols-[1.4fr_1fr] lg:gap-12">
         <div className="space-y-10 text-left">
           <div className="space-y-5">
-            <span className="inline-flex items-center gap-2 rounded-full border border-white/0 bg-atsOcean/10 px-4 py-1 text-sm font-semibold text-atsOcean/80 shadow-inner">
+            <span className="inline-flex items-center gap-3 rounded-full border border-white/0 bg-atsOcean/10 px-4 py-1 text-sm font-semibold text-atsOcean/80 shadow-inner">
               <Sparkles aria-hidden="true" className="h-4 w-4" strokeWidth={1.8} /> Welcome to Above The Stack
             </span>
             <h1 className="h1 text-balance text-atsMidnight">

@@ -64,7 +64,7 @@ export default function Page() {
   return (
     <div className="space-y-24">
       <section className="glass-panel mx-auto max-w-5xl space-y-6 px-6 py-12 text-lg leading-relaxed text-slate-700 sm:px-10 sm:py-14">
-        <span className="inline-flex items-center gap-2 rounded-full border border-white/0 bg-atsOcean/10 px-4 py-1 text-sm font-semibold text-atsOcean/80">
+        <span className="inline-flex items-center gap-3 rounded-full border border-white/0 bg-atsOcean/10 px-4 py-1 text-sm font-semibold text-atsOcean/80">
           <Sparkles aria-hidden="true" className="h-4 w-4" strokeWidth={1.8} /> Our mission
         </span>
         <h1 className="h1 text-balance text-atsMidnight">Building the independent, MSP-first community</h1>
