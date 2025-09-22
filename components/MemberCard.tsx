@@ -11,9 +11,9 @@ export default function MemberCard({ member }: MemberCardProps) {
   const isDataUriHeadshot = Boolean(headshotSrc?.startsWith('data:image/'))
 
   return (
-    <article className="card h-full space-y-5 p-7">
-      <div className="flex items-center gap-4">
-        <div className="relative h-20 w-20 overflow-hidden rounded-3xl bg-atsOcean/10 ring-1 ring-atsOcean/15">
+    <article className="card h-full space-y-6 p-7">
+      <div className="flex items-center gap-5">
+        <div className="relative h-20 w-20 overflow-hidden rounded-full bg-atsOcean/10 ring-1 ring-atsOcean/15">
           {hasHeadshot && headshotSrc ? (
             <Image
               src={headshotSrc}
@@ -29,7 +29,7 @@ export default function MemberCard({ member }: MemberCardProps) {
             </span>
           )}
         </div>
-        <div className="space-y-1">
+        <div className="space-y-2">
           <h3 className="text-lg font-semibold text-atsMidnight">{member.name}</h3>
           <p className="text-sm font-medium text-atsOcean">{member.role}</p>
           <p className="text-xs uppercase tracking-[0.2em] text-atsOcean/60">{member.region}</p>

@@ -99,9 +99,9 @@ export default function Page() {
           </p>
           <ul className="space-y-4 text-sm leading-relaxed">
             {highlights.map((item) => (
-              <li key={item.title} className="flex items-start gap-4">
+              <li key={item.title} className="flex items-start gap-5">
                 <span className="mt-1 h-2.5 w-2.5 flex-shrink-0 rounded-full bg-gradient-to-br from-atsSky via-atsOcean to-atsCoral shadow-[0_4px_12px_rgba(19,42,93,0.35)]" />
-                <div className="space-y-1">
+                <div className="space-y-2">
                   <h3 className="text-base font-semibold text-atsMidnight">{item.title}</h3>
                   <p className="text-slate-600">{item.description}</p>
                 </div>
@@ -133,13 +133,13 @@ export default function Page() {
             </div>
             <ul className="space-y-4 text-sm leading-relaxed text-slate-600">
               {communityCommitments.map((item) => (
-                <li key={item.title} className="flex items-start gap-4">
+                <li key={item.title} className="flex items-start gap-5">
                   <span
-                    className={`mt-1 inline-flex h-11 w-11 flex-shrink-0 items-center justify-center rounded-2xl bg-gradient-to-br ${item.gradient} text-[0.65rem] font-semibold uppercase tracking-wide text-white shadow-glow`}
+                    className={`mt-1 inline-flex h-12 w-12 flex-shrink-0 items-center justify-center rounded-full bg-gradient-to-br ${item.gradient} text-[0.65rem] font-semibold uppercase tracking-wide text-white shadow-glow`}
                   >
                     {item.label}
                   </span>
-                  <div className="space-y-1">
+                  <div className="space-y-2">
                     <h3 className="text-sm font-semibold text-atsMidnight">{item.title}</h3>
                     <p>{item.description}</p>
                   </div>
@@ -186,7 +186,7 @@ export default function Page() {
           <h3 className="text-lg font-semibold text-atsMidnight">What to expect</h3>
           <ul className="space-y-3 text-sm leading-relaxed text-slate-600">
             {expectations.map((item) => (
-              <li key={item} className="flex items-start gap-3">
+              <li key={item} className="flex items-start gap-4">
                 <span className="mt-1 h-2 w-2 rounded-full bg-atsOcean" />
                 {item}
               </li>

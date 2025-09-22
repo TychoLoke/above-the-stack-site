@@ -73,13 +73,13 @@ export default function Hero() {
                 <div
                   className={`pointer-events-none absolute inset-0 bg-gradient-to-br ${item.gradient} opacity-10 transition-opacity duration-300 group-hover:opacity-25`}
                 />
-                <div className="relative flex items-center gap-4">
+                <div className="relative flex items-center gap-5">
                   <span
-                    className={`inline-flex h-11 w-11 flex-shrink-0 items-center justify-center rounded-2xl bg-gradient-to-br ${item.gradient} text-xs font-semibold uppercase tracking-[0.25em] text-white shadow-glow`}
+                    className={`inline-flex h-12 w-12 flex-shrink-0 items-center justify-center rounded-full bg-gradient-to-br ${item.gradient} text-xs font-semibold uppercase tracking-[0.25em] text-white shadow-glow`}
                   >
                     {item.label}
                   </span>
-                  <div className="space-y-1">
+                  <div className="space-y-2">
                     <h3 className="text-sm font-semibold text-atsMidnight">{item.title}</h3>
                     <p className="text-sm text-slate-600">{item.description}</p>
                   </div>

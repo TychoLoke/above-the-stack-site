@@ -129,8 +129,8 @@ const whyMsps = [
     icon: <ShieldHalf aria-hidden="true" className={iconClass} strokeWidth={1.8} />,
   },
   {
-    title: 'Managed Infrastructure Providers (MIPs)',
-    description: 'Operate critical infrastructure, cloud, and connectivity that power digital businesses — your insights shape our playbooks.',
+    title: 'Managed Intelligence Providers (MIPs)',
+    description: 'AI-centric MSPs weaving automation and intelligence into service delivery — your experiments accelerate every playbook we produce.',
     iconAccent: 'sky' as const,
     icon: <SatelliteDish aria-hidden="true" className={iconClass} strokeWidth={1.8} />,
   },
@@ -285,13 +285,13 @@ export default function HomePage() {
           {membershipBenefits.map((benefit) => (
             <div
               key={benefit.title}
-              className="card flex items-start gap-4 border-white/70 bg-white/90 p-5 text-left shadow-[0_25px_60px_-48px_rgba(15,31,75,0.6)]"
+              className="card flex items-start gap-5 border-white/70 bg-white/90 p-5 text-left shadow-[0_25px_60px_-48px_rgba(15,31,75,0.6)]"
             >
 
-              <IconBadge className="mt-1" size="md" variant={benefit.accent}>
+              <IconBadge className="mt-0.5" size="md" variant={benefit.accent}>
                 {benefit.icon}
               </IconBadge>
-              <div className="space-y-1">
+              <div className="space-y-2">
                 <h4 className="text-base font-semibold text-atsMidnight">{benefit.title}</h4>
                 <p className="text-sm text-slate-600">{benefit.description}</p>
               </div>
