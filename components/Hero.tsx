@@ -1,3 +1,5 @@
+import { communityCommitments } from '@/data/community'
+
 export default function Hero() {
   const portalUrl = process.env.NEXT_PUBLIC_PORTAL_URL || 'https://portal.abovethestack.com'
 
@@ -58,38 +60,31 @@ export default function Hero() {
             </div>
           </dl>
         </div>
-        <div className="card space-y-6 border-atsOcean/20 bg-gradient-to-br from-white via-white to-atsSky/10">
-          <div className="space-y-2">
-            <span className="tag">Next research drop</span>
-            <h3 className="text-2xl font-semibold text-atsMidnight">Global MSP Landscape 2025</h3>
-            <p className="text-sm leading-relaxed text-slate-600">
-              Benchmarks, partner expectations, and pricing signals gathered from 120+ MSP leaders
-              across multiple regions.
-            </p>
+        <div className="card space-y-6 border-transparent bg-gradient-to-br from-white via-atsSky/20 to-atsOcean/10 text-slate-800 shadow-glow">
+          <div className="flex items-center justify-between gap-3">
+            <h2 className="text-xl font-semibold text-atsMidnight">Community commitments</h2>
+            <span className="hidden rounded-full border border-white/50 bg-white/60 px-3 py-1 text-[0.65rem] font-semibold uppercase tracking-[0.2em] text-atsOcean/80 md:inline-flex">
+              Built with members
+            </span>
           </div>
-          <ul className="space-y-3 text-sm text-slate-700">
-            <li className="flex items-start gap-3">
-              <span className="mt-1 h-2 w-2 rounded-full bg-atsOcean" />
-              Comparative data on service mix, ARR per seat, and partner tooling stacks.
-            </li>
-            <li className="flex items-start gap-3">
-              <span className="mt-1 h-2 w-2 rounded-full bg-atsCoral" />
-              Regulation cheatsheets covering NIS2 and DORA implications for MSPs.
-            </li>
-            <li className="flex items-start gap-3">
-              <span className="mt-1 h-2 w-2 rounded-full bg-atsSky" />
-              Operator commentary sourced directly from the Above The Stack community.
-            </li>
-          </ul>
-          <div className="flex flex-col gap-3 rounded-2xl bg-white/70 p-4 text-sm text-slate-600">
-            <div className="flex items-center justify-between text-xs uppercase tracking-[0.25em] text-atsOcean/70">
-              <span>Members</span>
-              <span>Early access</span>
-            </div>
-            <p>
-              Community members receive chapters in-progress, prompts for peer reviews, and live
-              read-outs before publication.
-            </p>
+          <div className="grid gap-4 md:grid-cols-3">
+            {communityCommitments.map((item) => (
+              <div
+                key={item.title}
+                className="group relative flex h-full flex-col gap-3 overflow-hidden rounded-2xl border border-white/60 bg-white/75 p-5 text-sm leading-relaxed text-slate-600 shadow-[0_25px_55px_-32px_rgba(15,31,75,0.6)] backdrop-blur"
+              >
+                <div
+                  className={`pointer-events-none absolute inset-0 bg-gradient-to-br ${item.gradient} opacity-[0.12] transition-opacity duration-300 group-hover:opacity-25`}
+                />
+                <span
+                  className={`relative inline-flex h-10 w-10 items-center justify-center rounded-2xl bg-gradient-to-br ${item.gradient} text-[0.65rem] font-semibold uppercase tracking-wide text-white shadow-glow`}
+                >
+                  {item.label}
+                </span>
+                <h3 className="relative text-sm font-semibold text-atsMidnight">{item.title}</h3>
+                <p className="relative">{item.description}</p>
+              </div>
+            ))}
           </div>
         </div>
       </div>
