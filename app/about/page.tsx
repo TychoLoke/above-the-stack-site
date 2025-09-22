@@ -77,7 +77,7 @@ export default function Page() {
         <p>
           The initiative is stewarded by the Above The Stack Leadership Team — Ashley Schut, Tycho Löke, Pierre Kleine-Schaars, and Timon Bergsma. Their role is to ensure every member’s voice is heard, documented, and turned into action inside Above Connect.
         </p>
-        <div className="grid gap-6 pt-4 sm:grid-cols-2">
+        <div className="grid gap-8 pt-6 sm:grid-cols-2 xl:gap-10">
           {leadershipTeam.map((member) => (
             <MemberCard key={member.name} member={member} />
           ))}

@@ -11,37 +11,41 @@ export default function MemberCard({ member }: MemberCardProps) {
   const isDataUriHeadshot = Boolean(headshotSrc?.startsWith('data:image/'))
 
   return (
-    <article className="card h-full space-y-6 p-7">
-      <div className="flex items-center gap-5">
-        <div className="relative h-20 w-20 overflow-hidden rounded-full bg-atsOcean/10 ring-1 ring-atsOcean/15">
-          {hasHeadshot && headshotSrc ? (
-            <Image
-              src={headshotSrc}
-              alt={`${member.name} headshot`}
-              fill
-              sizes="80px"
-              className="object-cover"
-              unoptimized={isDataUriHeadshot}
-            />
-          ) : (
-            <span className="flex h-full w-full items-center justify-center text-[0.55rem] font-semibold uppercase tracking-[0.3em] text-atsOcean/60">
-              Add headshot
-            </span>
-          )}
+    <article className="card h-full overflow-hidden">
+      <div className="flex h-full flex-col gap-8 rounded-[2.25rem] bg-gradient-to-br from-atsOcean/5 via-white to-atsSky/5 px-8 py-9">
+        <div className="flex flex-col gap-6 sm:flex-row sm:items-center">
+          <div className="relative h-24 w-24 rounded-3xl bg-gradient-to-br from-atsOcean/40 via-atsSky/25 to-atsCoral/30 p-[3px] shadow-[0_18px_32px_-18px_rgba(15,31,75,0.45)]">
+            <div className="relative h-full w-full overflow-hidden rounded-[1.4rem] bg-white/80">
+              {hasHeadshot && headshotSrc ? (
+                <Image
+                  src={headshotSrc}
+                  alt={`${member.name} headshot`}
+                  fill
+                  sizes="96px"
+                  className="object-cover"
+                  unoptimized={isDataUriHeadshot}
+                />
+              ) : (
+                <span className="flex h-full w-full items-center justify-center text-[0.55rem] font-semibold uppercase tracking-[0.3em] text-atsOcean/70">
+                  Add headshot
+                </span>
+              )}
+            </div>
+          </div>
+          <div className="space-y-3 text-center sm:text-left">
+            <h3 className="text-xl font-semibold text-atsMidnight">{member.name}</h3>
+            <p className="text-sm font-semibold uppercase tracking-[0.25em] text-atsOcean/80">{member.region}</p>
+            <p className="text-base font-medium text-atsOcean">{member.role}</p>
+          </div>
         </div>
-        <div className="space-y-2">
-          <h3 className="text-lg font-semibold text-atsMidnight">{member.name}</h3>
-          <p className="text-sm font-medium text-atsOcean">{member.role}</p>
-          <p className="text-xs uppercase tracking-[0.2em] text-atsOcean/60">{member.region}</p>
-        </div>
+        <blockquote className="relative rounded-3xl border border-atsOcean/10 bg-gradient-to-br from-white/90 via-atsOcean/10 to-atsSky/10 px-6 py-5 text-sm font-medium text-atsMidnight/90">
+          <span className="absolute left-5 top-3 text-3xl text-atsOcean/30" aria-hidden>
+            “
+          </span>
+          <p className="pl-6 leading-relaxed">{member.quote}</p>
+        </blockquote>
+        <p className="text-sm leading-relaxed text-slate-600">{member.bio}</p>
       </div>
-      <blockquote className="relative rounded-2xl border border-atsOcean/10 bg-atsOcean/5 p-4 text-sm font-medium text-atsMidnight/90">
-        <span className="absolute left-3 top-0 text-2xl text-atsOcean/30" aria-hidden>
-          “
-        </span>
-        <p className="pl-3 leading-relaxed">{member.quote}</p>
-      </blockquote>
-      <p className="text-sm leading-relaxed text-slate-600">{member.bio}</p>
     </article>
   )
 }

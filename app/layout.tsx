@@ -3,11 +3,11 @@ import './globals.css'
 import Link from 'next/link'
 
 const publicNavigation = [
-  { href: '/research', label: 'Research' },
-  { href: '/playbooks', label: 'Playbooks' },
+  { href: '/insights', label: 'Insights' },
   { href: '/events', label: 'Events' },
   { href: '/community', label: 'Community' },
   { href: '/about', label: 'About' },
+  { href: '/contact', label: 'Contact' },
 ]
 
 const socialLinks = [
