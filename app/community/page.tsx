@@ -1,6 +1,7 @@
 import Card from '@/components/Card'
 import LatestThreads from '@/components/LatestThreads'
 import Section from '@/components/Section'
+import { communityCommitments } from '@/data/community'
 
 export const metadata = { title: 'Community — Above The Stack' }
 
@@ -36,27 +37,6 @@ const highlights = [
     title: 'Membership for whole teams',
     description:
       'Company membership is €150 / $165 per year per MSP with local currency equivalents. Partners join in a sales-neutral, knowledge-sharing capacity by requesting curated access.',
-  },
-]
-
-const commitments = [
-  {
-    label: 'Context',
-    title: 'Lead with context',
-    description: 'Use real names, share context, and show your work so peers can learn alongside you.',
-    gradient: 'from-atsOcean via-atsSky to-atsCoral',
-  },
-  {
-    label: 'Neutral',
-    title: 'Stay vendor-neutral',
-    description: 'Keep discussions focused on member outcomes and be explicit when sharing partner perspectives.',
-    gradient: 'from-atsSky via-atsOcean to-atsMidnight',
-  },
-  {
-    label: 'Reciprocate',
-    title: 'Give back what you take',
-    description: 'If you download a resource or adopt an idea, report back so everyone benefits from the results.',
-    gradient: 'from-atsCoral via-atsSky to-atsOcean',
   },
 ]
 
@@ -109,7 +89,7 @@ export default function Page() {
             </span>
           </div>
           <div className="grid gap-4 md:grid-cols-3">
-            {commitments.map((item) => (
+            {communityCommitments.map((item) => (
               <div
                 key={item.title}
                 className="group relative flex h-full flex-col gap-3 overflow-hidden rounded-2xl border border-white/60 bg-white/75 p-5 text-sm leading-relaxed text-slate-600 shadow-[0_25px_55px_-32px_rgba(15,31,75,0.6)] backdrop-blur"
