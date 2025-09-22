@@ -142,7 +142,7 @@ const collaboration = [
 export default function Page() {
   return (
     <div className="space-y-28">
-      <section className="relative overflow-hidden rounded-[3rem] border border-white/60 bg-gradient-to-br from-atsMidnight via-atsOcean to-atsCoral/80 px-10 py-16 text-white shadow-[0_60px_140px_-80px_rgba(15,31,75,0.85)]">
+      <section className="relative overflow-hidden rounded-[2.5rem] border border-white/60 bg-gradient-to-br from-atsMidnight via-atsOcean to-atsCoral/80 px-6 py-12 text-white shadow-[0_60px_140px_-80px_rgba(15,31,75,0.85)] sm:rounded-[3rem] sm:px-10 sm:py-16">
         <div className="absolute -left-24 top-10 h-64 w-64 rounded-full bg-atsSky/30 blur-3xl" aria-hidden />
         <div className="absolute -bottom-20 right-0 h-72 w-72 rounded-full bg-atsCoral/30 blur-3xl" aria-hidden />
         <div className="relative space-y-8">
@@ -155,11 +155,11 @@ export default function Page() {
           <p className="max-w-2xl text-lg leading-relaxed text-white/80">
             Every release pairs independent market intelligence with practical runbooks. Review early drafts, shape the metrics we track, and ship initiatives with the confidence of a global MSP collective behind you.
           </p>
-          <div className="flex flex-wrap gap-4">
-            <a className="btn-primary bg-white/10 px-6 py-3 text-sm font-semibold text-white hover:bg-white/20" href={`${portalUrl}/c/research/5`}>
+          <div className="flex flex-col gap-3 sm:flex-row sm:flex-wrap">
+            <a className="btn-primary w-full justify-center bg-white/10 px-6 py-3 text-sm font-semibold text-white hover:bg-white/20 sm:w-auto" href={`${portalUrl}/c/research/5`}>
               Explore in Above Connect
             </a>
-            <a className="btn-secondary border-white/30 bg-white/10 text-white hover:border-white/50 hover:bg-white/20" href="mailto:research@abovethestack.com">
+            <a className="btn-secondary w-full justify-center border-white/30 bg-white/10 text-white hover:border-white/50 hover:bg-white/20 sm:w-auto" href="mailto:research@abovethestack.com">
               Pitch a collaboration
             </a>
           </div>
@@ -184,7 +184,7 @@ export default function Page() {
         eyebrow="Research programmes"
         title="Market intelligence shaped with operators"
         description="We investigate the topics MSP leaders vote on, combining surveys, interviews, and curated datasets."
-        className="relative overflow-hidden rounded-[2.5rem] border border-atsOcean/15 bg-gradient-to-br from-white/95 via-atsSky/10 to-transparent px-10 py-14"
+        className="relative overflow-hidden rounded-[2rem] border border-atsOcean/15 bg-gradient-to-br from-white/95 via-atsSky/10 to-transparent px-6 py-10 sm:rounded-[2.5rem] sm:px-10 sm:py-14"
       >
         {researchStreams.map((pillar) => (
           <Card
@@ -203,7 +203,7 @@ export default function Page() {
         eyebrow="In development"
         title="Upcoming releases members are already reviewing"
         description="Join feedback sessions, add your data, and access chapter previews before reports go live."
-        className="relative overflow-hidden rounded-[2.5rem] border border-atsOcean/10 bg-gradient-to-br from-white to-atsOcean/5 px-10 py-14"
+        className="relative overflow-hidden rounded-[2rem] border border-atsOcean/10 bg-gradient-to-br from-white to-atsOcean/5 px-6 py-10 sm:rounded-[2.5rem] sm:px-10 sm:py-14"
       >
         {researchPipeline.map((release) => (
           <Card
@@ -222,7 +222,7 @@ export default function Page() {
         eyebrow="Playbook sprints"
         title="Frameworks that translate insights into outcomes"
         description="Every sprint turns research into action with structured experiments, enablement assets, and reporting guidance."
-        className="relative overflow-hidden rounded-[2.5rem] border border-atsCoral/20 bg-gradient-to-br from-white via-atsCoral/10 to-transparent px-10 py-14"
+        className="relative overflow-hidden rounded-[2rem] border border-atsCoral/20 bg-gradient-to-br from-white via-atsCoral/10 to-transparent px-6 py-10 sm:rounded-[2.5rem] sm:px-10 sm:py-14"
       >
         {playbookTracks.map((item) => (
           <Card
@@ -241,7 +241,7 @@ export default function Page() {
         eyebrow="What you receive"
         title="Inside every release"
         description="Browse the library or request a walkthrough. We tailor implementations with your team when you need deeper support."
-        className="relative overflow-hidden rounded-[2.5rem] border border-atsOcean/10 bg-gradient-to-br from-white to-atsSky/10 px-10 py-14"
+        className="relative overflow-hidden rounded-[2rem] border border-atsOcean/10 bg-gradient-to-br from-white to-atsSky/10 px-6 py-10 sm:rounded-[2.5rem] sm:px-10 sm:py-14"
       >
         {libraryInside.map((item) => (
           <Card
@@ -261,7 +261,7 @@ export default function Page() {
         title="Co-create with the Above The Stack community"
         description="Research and playbooks stay current because members stay involved. Bring your use case and shape the agenda."
         columns="three"
-        className="relative overflow-hidden rounded-[2.5rem] border border-atsOcean/10 bg-gradient-to-br from-white via-atsOcean/5 to-atsCoral/5 px-10 py-14"
+        className="relative overflow-hidden rounded-[2rem] border border-atsOcean/10 bg-gradient-to-br from-white via-atsOcean/5 to-atsCoral/5 px-6 py-10 sm:rounded-[2.5rem] sm:px-10 sm:py-14"
       >
         {collaboration.map((item) => (
           <Card

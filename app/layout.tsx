@@ -1,4 +1,4 @@
-import type { Metadata } from 'next'
+import type { Metadata, Viewport } from 'next'
 import './globals.css'
 import Link from 'next/link'
 
@@ -26,6 +26,11 @@ export const metadata: Metadata = {
     siteName: 'Above The Stack',
   },
   twitter: { card: 'summary_large_image', title: 'Above The Stack' },
+}
+
+export const viewport: Viewport = {
+  width: 'device-width',
+  initialScale: 1,
 }
 
 export default function RootLayout({ children }: { children: React.ReactNode }) {
@@ -60,7 +65,7 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
               </div>
             </div>
             <div className="flex flex-col gap-3 lg:flex-row lg:items-center lg:justify-between lg:gap-12">
-              <nav className="-mx-2 flex items-center gap-2 overflow-x-auto pb-1 text-sm font-medium text-slate-600 lg:mx-0 lg:gap-8">
+              <nav className="flex flex-wrap items-center gap-2 text-sm font-medium text-slate-600 sm:-mx-2 sm:flex-nowrap sm:overflow-x-auto sm:pb-1 lg:mx-0 lg:gap-8">
                 {publicNavigation.map((item) => (
                   <Link
                     key={item.href}
@@ -87,7 +92,7 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
           </div>
         </header>
 
-        <main className="container pb-24 pt-16 lg:pt-24">{children}</main>
+        <main className="container pb-20 pt-14 sm:pt-16 lg:pt-24">{children}</main>
 
         <footer className="mt-24 border-t border-white/70 bg-white/80 py-16 backdrop-blur">
           <div className="container grid gap-12 lg:grid-cols-[2fr_1fr_1fr]">

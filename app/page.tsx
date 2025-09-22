@@ -271,11 +271,11 @@ export default function HomePage() {
               </span>
               Your MSP community is waiting inside Above Connect.
             </div>
-            <div className="flex flex-wrap gap-3">
-              <a className="btn-primary" href={`${portalUrl}/signup`}>
+            <div className="flex flex-col gap-3 sm:flex-row sm:flex-wrap">
+              <a className="btn-primary w-full justify-center sm:w-auto" href={`${portalUrl}/signup`}>
                 Become a Member
               </a>
-              <a className="btn-secondary" href="mailto:partnerships@abovethestack.com">
+              <a className="btn-secondary w-full justify-center sm:w-auto" href="mailto:partnerships@abovethestack.com">
                 Talk to the team
               </a>
             </div>
@@ -310,7 +310,7 @@ export default function HomePage() {
         }
         columns="two"
         action={
-          <a className="btn-secondary" href={`${portalUrl}/signup`}>
+          <a className="btn-secondary w-full justify-center sm:w-auto" href={`${portalUrl}/signup`}>
             Join the portal
           </a>
         }
