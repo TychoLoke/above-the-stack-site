@@ -1,5 +1,6 @@
 import Link from 'next/link'
 import type { ReactNode } from 'react'
+import IconBadge, { type IconBadgeVariant } from './IconBadge'
 
 type CardProps = {
   title: string
@@ -9,9 +10,19 @@ type CardProps = {
   cta?: string
   className?: string
   icon?: ReactNode
+  iconAccent?: IconBadgeVariant
 }
 
-export default function Card({ title, href, children, eyebrow, cta, className, icon }: CardProps) {
+export default function Card({
+  title,
+  href,
+  children,
+  eyebrow,
+  cta,
+  className,
+  icon,
+  iconAccent,
+}: CardProps) {
   const baseClasses = ['card', 'h-full', 'group', className].filter(Boolean).join(' ')
 
   const iconMarkup =
@@ -24,9 +35,7 @@ export default function Card({ title, href, children, eyebrow, cta, className, i
   const content = (
     <div className="space-y-4">
       {icon && (
-        <div className="relative inline-flex h-12 w-12 items-center justify-center rounded-2xl bg-gradient-to-br from-atsSky/15 via-white to-atsOcean/15 text-atsMidnight shadow-[0_12px_30px_-18px_rgba(15,31,75,0.45)]">
-          {iconMarkup}
-        </div>
+        <IconBadge variant={iconAccent}>{iconMarkup}</IconBadge>
       )}
       {eyebrow && <span className="eyebrow text-[0.65rem] text-atsOcean/60">{eyebrow}</span>}
       <h3 className="text-lg font-semibold text-atsMidnight md:text-xl">{title}</h3>

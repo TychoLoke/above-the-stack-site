@@ -2,29 +2,36 @@ import Card from '@/components/Card'
 import Section from '@/components/Section'
 import MemberCard from '@/components/MemberCard'
 import { leadershipTeam } from '@/data/leadershipTeam'
+import { Compass, FlaskConical, Scale, Sparkles, UsersRound } from 'lucide-react'
 
 export const metadata = { title: 'About — Above The Stack' }
+
+const iconClass = 'h-5 w-5'
 
 const differentiators = [
   {
     title: 'MSP-first, always',
     description: 'Every programme, playbook, and decision is shaped by MSP operators. Partners participate in support of member outcomes.',
-    icon: '🧭',
+    iconAccent: 'midnight' as const,
+    icon: <Compass aria-hidden="true" className={iconClass} strokeWidth={1.8} />,
   },
   {
     title: 'Independent & neutral',
     description: 'No single vendor funds the agenda. Guardrails keep discussions transparent, accountable, and sales-neutral.',
-    icon: '⚖️',
+    iconAccent: 'ocean' as const,
+    icon: <Scale aria-hidden="true" className={iconClass} strokeWidth={1.8} />,
   },
   {
     title: 'Practical & open',
     description: 'We ship research and playbooks iteratively with member feedback baked in, not theory written in a vacuum.',
-    icon: '🧪',
+    iconAccent: 'sky' as const,
+    icon: <FlaskConical aria-hidden="true" className={iconClass} strokeWidth={1.8} />,
   },
   {
     title: 'Community-powered',
     description: 'Moderators curate, but members lead. Anyone can propose research, facilitate sessions, or contribute assets.',
-    icon: '🤲',
+    iconAccent: 'coral' as const,
+    icon: <UsersRound aria-hidden="true" className={iconClass} strokeWidth={1.8} />,
   },
 ]
 
@@ -56,7 +63,7 @@ export default function Page() {
     <div className="space-y-24">
       <section className="glass-panel mx-auto max-w-5xl space-y-6 px-10 py-14 text-lg leading-relaxed text-slate-700">
         <span className="inline-flex items-center gap-2 rounded-full border border-white/0 bg-atsOcean/10 px-4 py-1 text-sm font-semibold text-atsOcean/80">
-          <span aria-hidden>👋</span> Our mission
+          <Sparkles aria-hidden="true" className="h-4 w-4" strokeWidth={1.8} /> Our mission
         </span>
         <h1 className="h1 text-balance text-atsMidnight">Building the independent, MSP-first community</h1>
         <p>
@@ -126,7 +133,12 @@ export default function Page() {
         columns="two"
       >
         {differentiators.map((item) => (
-          <Card key={item.title} title={item.title} icon={item.icon}>
+          <Card
+            key={item.title}
+            title={item.title}
+            icon={item.icon}
+            iconAccent={item.iconAccent}
+          >
             {item.description}
           </Card>
         ))}

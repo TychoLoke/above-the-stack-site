@@ -3,9 +3,34 @@ import Section from '@/components/Section'
 import Card from '@/components/Card'
 import LatestThreads from '@/components/LatestThreads'
 import MemberCard from '@/components/MemberCard'
+import IconBadge from '@/components/IconBadge'
 import { leadershipTeam } from '@/data/leadershipTeam'
+import {
+  BarChart3,
+  BrainCircuit,
+  CalendarClock,
+  Compass,
+  Globe2,
+  Handshake,
+  Library,
+  Lightbulb,
+  MicVocal,
+  Puzzle,
+  Radar,
+  RadioTower,
+  Satellite,
+  SatelliteDish,
+  Search,
+  ShieldCheck,
+  ShieldHalf,
+  Sparkles,
+  UsersRound,
+  Vote,
+} from 'lucide-react'
 
 const defaultPortalUrl = process.env.NEXT_PUBLIC_PORTAL_URL || 'https://portal.abovethestack.com'
+
+const iconClass = 'h-5 w-5'
 
 const upcomingHighlights = [
   {
@@ -16,7 +41,8 @@ const upcomingHighlights = [
     href: '/research',
     cta: 'Read the outline',
     className: 'border-transparent bg-gradient-to-br from-white via-atsSky/15 to-atsOcean/10',
-    icon: '📊',
+    iconAccent: 'midnight' as const,
+    icon: <BarChart3 aria-hidden="true" className={iconClass} strokeWidth={1.8} />,
   },
   {
     eyebrow: 'Playbook',
@@ -25,7 +51,8 @@ const upcomingHighlights = [
       'Implementation workflows, customer comms, and pricing guidance created by operators already living the directive.',
     href: '/playbooks',
     cta: 'See the chapters',
-    icon: '🛡️',
+    iconAccent: 'ocean' as const,
+    icon: <ShieldCheck aria-hidden="true" className={iconClass} strokeWidth={1.8} />,
   },
   {
     eyebrow: 'Roundtable',
@@ -35,7 +62,8 @@ const upcomingHighlights = [
     href: '/events',
     cta: 'Reserve your seat',
     className: 'border-transparent bg-gradient-to-br from-white via-atsCoral/20 to-atsSky/10',
-    icon: '🤝',
+    iconAccent: 'coral' as const,
+    icon: <Handshake aria-hidden="true" className={iconClass} strokeWidth={1.8} />,
   },
 ]
 
@@ -43,17 +71,20 @@ const memberDesigned = [
   {
     title: 'Signals shaped by peers',
     description: 'Members vote on the research we publish, share data, and co-author playbooks that are reviewed in the open.',
-    icon: '🗳️',
+    iconAccent: 'midnight' as const,
+    icon: <Vote aria-hidden="true" className={iconClass} strokeWidth={1.8} />,
   },
   {
     title: 'Transparent collaboration',
     description: 'Every conversation happens under real names with context so operators can learn together, not in silos.',
-    icon: '🔍',
+    iconAccent: 'sky' as const,
+    icon: <Search aria-hidden="true" className={iconClass} strokeWidth={1.8} />,
   },
   {
     title: 'Global reach, local nuance',
     description: 'Chapters across EMEA, North America, and APAC compare regulation, pricing pressure, and service design.',
-    icon: '🌍',
+    iconAccent: 'coral' as const,
+    icon: <Globe2 aria-hidden="true" className={iconClass} strokeWidth={1.8} />,
   },
 ]
 
@@ -61,22 +92,26 @@ const membershipBenefits = [
   {
     title: 'All employees included',
     description: 'One €150/year company membership covers your whole team with local currency equivalents.',
-    icon: '👥',
+    accent: 'ocean' as const,
+    icon: <UsersRound aria-hidden="true" className="h-5 w-5" strokeWidth={1.8} />,
   },
   {
     title: 'Guided onboarding',
     description: 'Meet moderators, get recommendations for lounges, and receive a personal Above Connect orientation.',
-    icon: '🧭',
+    accent: 'sky' as const,
+    icon: <Compass aria-hidden="true" className="h-5 w-5" strokeWidth={1.8} />,
   },
   {
     title: 'Living library',
     description: 'Research, playbooks, and templates are refreshed as the community reports back on what works.',
-    icon: '📚',
+    accent: 'slate' as const,
+    icon: <Library aria-hidden="true" className="h-5 w-5" strokeWidth={1.8} />,
   },
   {
     title: 'Member-led programmes',
     description: 'Roundtables, office hours, and partner workshops run every month — all recorded inside Above Connect.',
-    icon: '🎙️',
+    accent: 'coral' as const,
+    icon: <MicVocal aria-hidden="true" className="h-5 w-5" strokeWidth={1.8} />,
   },
 ]
 
@@ -84,27 +119,32 @@ const whyMsps = [
   {
     title: 'Managed Service Providers (MSPs)',
     description: 'Deliver the ongoing customer experience, run the stack, and keep clients productive. You sit at the heart of every decision we make.',
-    icon: '💡',
+    iconAccent: 'ocean' as const,
+    icon: <Lightbulb aria-hidden="true" className={iconClass} strokeWidth={1.8} />,
   },
   {
     title: 'Managed Security Service Providers (MSSPs)',
     description: 'Bring deep security expertise, compliance stewardship, and incident response knowledge that strengthens the whole community.',
-    icon: '🛡️',
+    iconAccent: 'midnight' as const,
+    icon: <ShieldHalf aria-hidden="true" className={iconClass} strokeWidth={1.8} />,
   },
   {
     title: 'Managed Infrastructure Providers (MIPs)',
     description: 'Operate critical infrastructure, cloud, and connectivity that power digital businesses — your insights shape our playbooks.',
-    icon: '🛰️',
+    iconAccent: 'sky' as const,
+    icon: <SatelliteDish aria-hidden="true" className={iconClass} strokeWidth={1.8} />,
   },
   {
     title: 'Service Providers (SPs)',
     description: 'From telecom to vertical IT specialists, your service delivery models keep customers connected and confident.',
-    icon: '📡',
+    iconAccent: 'slate' as const,
+    icon: <RadioTower aria-hidden="true" className={iconClass} strokeWidth={1.8} />,
   },
   {
     title: 'Consultancies & advisors',
     description: 'Advisors who build managed offerings or guide MSPs on transformation are welcome. Bring your frameworks and learnings.',
-    icon: '🧠',
+    iconAccent: 'coral' as const,
+    icon: <BrainCircuit aria-hidden="true" className={iconClass} strokeWidth={1.8} />,
   },
 ]
 
@@ -135,28 +175,32 @@ const programs = [
     description: '12-person rooms moderated by the editorial team to unpack pricing, delivery, and growth bets with peers.',
     href: '/events',
     cta: 'Explore sessions',
-    icon: '🧩',
+    iconAccent: 'midnight' as const,
+    icon: <Puzzle aria-hidden="true" className={iconClass} strokeWidth={1.8} />,
   },
   {
     title: 'Research briefings',
     description: 'Monthly walkthroughs of upcoming reports with the analysts and members who provided the data.',
     href: '/research',
     cta: 'Get notified',
-    icon: '🛰️',
+    iconAccent: 'ocean' as const,
+    icon: <Radar aria-hidden="true" className={iconClass} strokeWidth={1.8} />,
   },
   {
     title: 'Partner workshops',
     description: 'Neutral collaboration spaces where vendors, distributors, and MSPs stress test roadmaps.',
     href: '/community',
     cta: 'Request an invite',
-    icon: '🤝',
+    iconAccent: 'coral' as const,
+    icon: <Handshake aria-hidden="true" className={iconClass} strokeWidth={1.8} />,
   },
   {
     title: 'Office hours',
     description: 'Weekly clinics with members and moderators to debug tooling, share dashboards, and swap templates.',
     href: `${defaultPortalUrl}/latest`,
     cta: 'See schedule',
-    icon: '🗓️',
+    iconAccent: 'sky' as const,
+    icon: <CalendarClock aria-hidden="true" className={iconClass} strokeWidth={1.8} />,
   },
 ]
 
@@ -181,6 +225,7 @@ export default function HomePage() {
             cta={item.cta}
             className={`${item.className ?? ''} shadow-glow`}
             icon={item.icon}
+            iconAccent={item.iconAccent}
           >
             {item.description}
           </Card>
@@ -193,7 +238,12 @@ export default function HomePage() {
         description="Above The Stack is more than a portal — it’s a working studio for MSPs, MSSPs, and partners who believe in building together."
       >
         {memberDesigned.map((feature) => (
-          <Card key={feature.title} title={feature.title} icon={feature.icon}>
+          <Card
+            key={feature.title}
+            title={feature.title}
+            icon={feature.icon}
+            iconAccent={feature.iconAccent}
+          >
             {feature.description}
           </Card>
         ))}
@@ -215,9 +265,9 @@ export default function HomePage() {
             </p>
           </div>
           <div className="space-y-3 text-sm text-slate-600">
-            <div className="flex items-center gap-2 text-atsMidnight">
-              <span className="text-lg" aria-hidden>
-                ✨
+            <div className="flex items-center gap-3 text-atsMidnight">
+              <span className="inline-flex h-9 w-9 flex-shrink-0 items-center justify-center rounded-full bg-atsOcean/10 text-atsOcean">
+                <Sparkles aria-hidden="true" className="h-4 w-4" strokeWidth={1.8} />
               </span>
               Your MSP community is waiting inside Above Connect.
             </div>
@@ -237,9 +287,9 @@ export default function HomePage() {
               key={benefit.title}
               className="card flex items-start gap-4 border-white/70 bg-white/90 p-5 text-left shadow-[0_25px_60px_-48px_rgba(15,31,75,0.6)]"
             >
-              <span className="mt-1 text-2xl" aria-hidden>
+              <IconBadge className="mt-1" size="md" variant={benefit.accent}>
                 {benefit.icon}
-              </span>
+              </IconBadge>
               <div className="space-y-1">
                 <h4 className="text-base font-semibold text-atsMidnight">{benefit.title}</h4>
                 <p className="text-sm text-slate-600">{benefit.description}</p>
@@ -294,7 +344,12 @@ export default function HomePage() {
         columns="three"
       >
         {whyMsps.map((item) => (
-          <Card key={item.title} title={item.title} icon={item.icon}>
+          <Card
+            key={item.title}
+            title={item.title}
+            icon={item.icon}
+            iconAccent={item.iconAccent}
+          >
             {item.description}
           </Card>
         ))}
@@ -307,7 +362,14 @@ export default function HomePage() {
         columns="two"
       >
         {programs.map((program) => (
-          <Card key={program.title} title={program.title} href={program.href} cta={program.cta} icon={program.icon}>
+          <Card
+            key={program.title}
+            title={program.title}
+            href={program.href}
+            cta={program.cta}
+            icon={program.icon}
+            iconAccent={program.iconAccent}
+          >
             {program.description}
           </Card>
         ))}

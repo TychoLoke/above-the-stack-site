@@ -1,5 +1,6 @@
 import Card from '@/components/Card'
 import Section from '@/components/Section'
+import { Handshake, Lightbulb, Presentation, UsersRound } from 'lucide-react'
 
 export const metadata = { title: 'Events & Roundtables — Above The Stack' }
 
@@ -26,21 +27,26 @@ const sessions = [
   },
 ]
 
+const iconClass = 'h-5 w-5'
+
 const formats = [
   {
     title: 'Operator roundtables',
     description: 'Curated rooms of 10–12 MSP leaders facilitated by Above The Stack. Expect candid discussions and shared documents.',
-    icon: '🗣️',
+    iconAccent: 'midnight' as const,
+    icon: <UsersRound aria-hidden="true" className={iconClass} strokeWidth={1.8} />,
   },
   {
     title: 'Research briefings',
     description: 'Live walkthroughs of upcoming reports with the analysts who produced them, plus access to the working datasets.',
-    icon: '📡',
+    iconAccent: 'ocean' as const,
+    icon: <Presentation aria-hidden="true" className={iconClass} strokeWidth={1.8} />,
   },
   {
     title: 'Partner workshops',
     description: 'Co-creation sessions pairing MSPs with vendors to stress test roadmaps and improve go-to-market motions.',
-    icon: '🤝',
+    iconAccent: 'coral' as const,
+    icon: <Handshake aria-hidden="true" className={iconClass} strokeWidth={1.8} />,
   },
 ]
 
@@ -82,17 +88,34 @@ export default function Page() {
 
       <Section eyebrow="Formats" title="Choose how you want to collaborate">
         {formats.map((format) => (
-          <Card key={format.title} title={format.title} icon={format.icon}>
+          <Card
+            key={format.title}
+            title={format.title}
+            icon={format.icon}
+            iconAccent={format.iconAccent}
+          >
             {format.description}
           </Card>
         ))}
       </Section>
 
       <Section eyebrow="Host with us" title="Bring your topic to the Above The Stack community" columns="two">
-        <Card title="Submit a session idea" href="mailto:events@abovethestack.com" cta="Share your proposal" icon="💡">
+        <Card
+          title="Submit a session idea"
+          href="mailto:events@abovethestack.com"
+          cta="Share your proposal"
+          icon={<Lightbulb aria-hidden="true" className={iconClass} strokeWidth={1.8} />}
+          iconAccent="sky"
+        >
           We welcome ideas from members and partners. Tell us the challenge you want to unpack, the audience you hope to gather, and what success looks like.
         </Card>
-        <Card title="Partner opportunities" href="mailto:partnerships@abovethestack.com" cta="Discuss collaboration" icon="🤝">
+        <Card
+          title="Partner opportunities"
+          href="mailto:partnerships@abovethestack.com"
+          cta="Discuss collaboration"
+          icon={<Handshake aria-hidden="true" className={iconClass} strokeWidth={1.8} />}
+          iconAccent="coral"
+        >
           Vendors can co-host educational sessions. We work with you to keep the content practical and bias-free.
         </Card>
       </Section>
