@@ -2,7 +2,6 @@
 
 import Link from 'next/link'
 import { Sparkles } from 'lucide-react'
-import { motion, type Variants } from 'framer-motion'
 
 import { communityCommitments } from '@/data/community'
 import HeroBackground from './hero/HeroBackground'
@@ -12,21 +11,6 @@ const heroStats = [
   { value: '40+', label: 'Member-led sessions' },
   { value: '6', label: 'Playbooks in motion' },
 ]
-
-const MotionLink = motion(Link)
-
-const statVariants: Variants = {
-  hidden: { opacity: 0, y: 24 },
-  visible: (index: number) => ({
-    opacity: 1,
-    y: 0,
-    transition: {
-      delay: index * 0.08,
-      duration: 0.6,
-      ease: [0.16, 1, 0.3, 1],
-    },
-  }),
-}
 
 export default function Hero() {
   const portalUrl = process.env.NEXT_PUBLIC_PORTAL_URL || 'https://portal.abovethestack.com'
@@ -47,24 +31,18 @@ export default function Hero() {
             </p>
           </div>
           <div className="flex flex-col gap-3 sm:flex-row sm:flex-wrap sm:items-center">
-            <motion.a
-              className="btn-primary btn-kinetic w-full justify-center sm:w-auto"
+            <a
+              className="btn-primary btn-kinetic w-full justify-center transition-transform duration-200 hover:-translate-y-0.5 focus-visible:-translate-y-0.5 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-atsOcean/40 sm:w-auto"
               href={`${portalUrl}/signup`}
-              whileHover={{ y: -2, scale: 1.015 }}
-              whileFocus={{ y: -2, scale: 1.015 }}
-              whileTap={{ scale: 0.97 }}
             >
               Join the Community
-            </motion.a>
-            <MotionLink
-              className="btn-secondary btn-kinetic w-full justify-center sm:w-auto"
+            </a>
+            <Link
+              className="btn-secondary btn-kinetic w-full justify-center transition-transform duration-200 hover:-translate-y-0.5 focus-visible:-translate-y-0.5 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-atsOcean/40 sm:w-auto"
               href="/research"
-              whileHover={{ y: -2, scale: 1.01 }}
-              whileFocus={{ y: -2, scale: 1.01 }}
-              whileTap={{ scale: 0.97 }}
             >
               Explore Research
-            </MotionLink>
+            </Link>
             <span className="text-sm text-slate-500 sm:text-left">
               Already a member?{' '}
               <a className="font-semibold text-atsOcean hover:underline" href={portalUrl}>
@@ -73,19 +51,14 @@ export default function Hero() {
             </span>
           </div>
           <dl className="grid gap-3 pt-4 sm:grid-cols-3 sm:gap-4">
-            {heroStats.map((stat, index) => (
-              <motion.div
+            {heroStats.map((stat) => (
+              <div
                 key={stat.label}
-                className="rounded-2xl border border-white/80 bg-white/80 p-5 shadow-[0_18px_40px_-28px_rgba(15,31,75,0.45)]"
-                variants={statVariants}
-                initial="hidden"
-                whileInView="visible"
-                viewport={{ once: true, amount: 0.6 }}
-                custom={index}
+                className="rounded-2xl border border-white/80 bg-white/80 p-5 shadow-[0_18px_40px_-28px_rgba(15,31,75,0.45)] transition-transform duration-300 hover:-translate-y-1"
               >
                 <dt className="text-sm font-semibold uppercase tracking-[0.35em] text-atsOcean/70">{stat.label}</dt>
                 <dd className="mt-2 text-2xl font-semibold text-atsMidnight">{stat.value}</dd>
-              </motion.div>
+              </div>
             ))}
           </dl>
         </div>

@@ -151,7 +151,7 @@ export function MobileNavigation({ items, portalUrl }: MobileNavigationProps) {
             id={menuId}
             role="dialog"
             aria-modal="true"
-            className="fixed inset-x-4 top-24 z-50 max-h-[80vh] overflow-y-auto rounded-3xl border border-white/60 bg-white/95 p-6 shadow-2xl focus:outline-none"
+            className="fixed inset-x-4 top-[var(--space-nav-drawer-offset)] z-50 max-h-[80vh] overflow-y-auto rounded-3xl border border-white/60 bg-white/95 p-6 shadow-2xl focus:outline-none"
           >
             <div className="flex items-center justify-between gap-4">
               <div className="flex flex-col text-[0.65rem] font-semibold uppercase tracking-[0.3em] text-atsOcean/60">

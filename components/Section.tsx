@@ -2,7 +2,6 @@
 
 import type { ReactNode } from 'react'
 import { useEffect, useId, useRef, useState } from 'react'
-import { motion, useScroll, useTransform } from 'framer-motion'
 
 type AccentColor = 'ocean' | 'sky' | 'coral' | 'midnight' | 'slate'
 
@@ -39,41 +38,73 @@ export default function Section({
   showConnector = false,
   parallaxOffset = 72,
 }: SectionProps) {
-  const marginClasses = showConnector
-    ? 'mt-28 md:mt-32 lg:mt-36'
-    : 'mt-24 md:mt-28 lg:mt-32'
+  const paddingClasses = showConnector
+    ? 'pt-[var(--space-section-connected)] pb-[var(--space-section-connected)]'
+    : ''
+  const spacingClasses = showConnector
+    ? 'mt-[calc(var(--space-section-connected)*0.8)] first:mt-0'
+    : ''
 
-  const paddingClasses = showConnector ? 'pt-12 md:pt-16 pb-12 md:pb-16' : ''
-
-  const sectionClass = ['relative isolate first:mt-0', marginClasses, paddingClasses, className]
+  const sectionClass = ['relative isolate', spacingClasses, paddingClasses, className]
     .filter(Boolean)
     .join(' ')
 
   const sectionRef = useRef<HTMLElement | null>(null)
-  const { scrollYProgress } = useScroll({
-    target: sectionRef,
-    offset: ['start end', 'end start'],
-  })
-
-  const [hasMounted, setHasMounted] = useState(false)
+  const [accentOffset, setAccentOffset] = useState(0)
 
   useEffect(() => {
-    setHasMounted(true)
-  }, [])
+    if (!accentColor) {
+      setAccentOffset(0)
+      return
+    }
 
-  const parallaxDistance = Math.max(0, parallaxOffset)
-  const accentParallax = useTransform(scrollYProgress, [0, 1], [0, parallaxDistance])
-  const accentY = hasMounted ? accentParallax : 0
+    const updateOffset = () => {
+      const element = sectionRef.current
+      if (!element) {
+        setAccentOffset(0)
+        return
+      }
+
+      const rect = element.getBoundingClientRect()
+      const viewportHeight = window.innerHeight || 1
+      const totalDistance = rect.height + viewportHeight
+      const progress = 1 - rect.bottom / totalDistance
+      const clampedProgress = Math.min(Math.max(progress, 0), 1)
+      const nextOffset = clampedProgress * Math.max(0, parallaxOffset)
+
+      setAccentOffset((previous) => {
+        if (Math.abs(previous - nextOffset) < 0.5) {
+          return previous
+        }
+
+        return nextOffset
+      })
+    }
+
+    updateOffset()
+
+    const handleScroll = () => updateOffset()
+    const handleResize = () => updateOffset()
+
+    window.addEventListener('scroll', handleScroll, { passive: true })
+    window.addEventListener('resize', handleResize)
+
+    return () => {
+      window.removeEventListener('scroll', handleScroll)
+      window.removeEventListener('resize', handleResize)
+    }
+  }, [accentColor, parallaxOffset])
 
   const rawGradientId = useId().replace(/:/g, '')
   const gradientId = `section-divider-${rawGradientId}`
 
+  const gridBase = 'grid gap-[var(--space-card-gap)]'
   const gridColumns =
     columns === 'one'
-      ? 'grid gap-6 sm:gap-8'
+      ? gridBase
       : columns === 'two'
-        ? 'grid gap-6 sm:gap-8 md:grid-cols-2'
-        : 'grid gap-6 sm:gap-8 md:grid-cols-2 xl:grid-cols-3'
+        ? `${gridBase} md:grid-cols-2`
+        : `${gridBase} md:grid-cols-2 xl:grid-cols-3`
 
   const connectorTone = accentColor ?? 'ocean'
   const accentClassName = accentColor ? accentClasses[accentColor] : ''
@@ -81,10 +112,10 @@ export default function Section({
   return (
     <section ref={sectionRef} className={sectionClass}>
       {accentColor && (
-        <motion.div
+        <div
           aria-hidden="true"
           className={`section-accent ${accentClassName}`}
-          style={{ y: accentY }}
+          style={{ transform: `translateY(${accentOffset}px)` }}
         >
           <svg className="section-accent__divider" viewBox="0 0 1440 320" preserveAspectRatio="none">
             <defs>
@@ -101,7 +132,7 @@ export default function Section({
               strokeWidth="3"
             />
           </svg>
-        </motion.div>
+        </div>
       )}
 
       {showConnector && (
@@ -112,8 +143,8 @@ export default function Section({
       )}
 
       <div className="relative z-10">
-        <div className="mb-10 flex flex-col gap-5 sm:mb-12 sm:gap-6 md:flex-row md:items-end md:justify-between">
-          <div className="space-y-4">
+        <div className="mb-[var(--space-section-header)] flex flex-col gap-[var(--space-section-stack)] sm:gap-[var(--space-section-stack)] md:flex-row md:items-end md:justify-between sm:mb-[calc(var(--space-section-header)*1.1)]">
+          <div className="space-y-[calc(var(--space-section-stack)*0.85)]">
             {eyebrow && <span className="eyebrow text-xs text-atsOcean/70">{eyebrow}</span>}
             <h2 className="h2 text-balance text-atsMidnight">{title}</h2>
             {description && (
@@ -121,7 +152,7 @@ export default function Section({
             )}
           </div>
           {action && (
-            <div className="flex flex-col gap-3 sm:flex-row sm:flex-wrap sm:items-center md:flex-nowrap md:flex-shrink-0">
+            <div className="flex flex-col gap-[calc(var(--space-section-stack)*0.75)] sm:flex-row sm:flex-wrap sm:items-center md:flex-nowrap md:flex-shrink-0">
               {action}
             </div>
           )}
