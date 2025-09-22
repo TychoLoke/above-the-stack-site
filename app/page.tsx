@@ -216,6 +216,9 @@ export default function HomePage() {
         eyebrow="Fresh intelligence"
         title="What’s shipping to members next"
         description="Every release is shaped with community feedback before it goes live. Get a preview of the next drops the team is polishing."
+        accentColor="ocean"
+        showConnector
+        parallaxOffset={96}
       >
         <UpcomingHighlightsTimeline items={upcomingHighlights} autoplay showControls />
       </Section>
@@ -224,6 +227,9 @@ export default function HomePage() {
         eyebrow="By members, for members"
         title="The community runs on open contributions and peer accountability"
         description="Above The Stack is more than a portal — it’s a working studio for MSPs, MSSPs, and partners who believe in building together."
+        accentColor="coral"
+        showConnector
+        parallaxOffset={88}
       >
         {memberDesigned.map((feature) => (
           <Card
@@ -242,6 +248,9 @@ export default function HomePage() {
         title="One simple membership for your entire company"
         description="€150 per year per company. No per-seat math, no hidden tiers. Every teammate gets access to Above Connect and the resources the community is building."
         columns="two"
+        accentColor="sky"
+        showConnector
+        parallaxOffset={82}
       >
         <div className="card gradient-border space-y-6 bg-white/90">
           <div>
@@ -302,6 +311,7 @@ export default function HomePage() {
             Join the portal
           </a>
         }
+        accentColor="midnight"
       >
         <div className="card space-y-5">
           <h3 className="text-lg font-semibold text-atsMidnight">Inside the threads</h3>

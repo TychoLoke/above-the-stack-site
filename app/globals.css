@@ -175,6 +175,170 @@ body {
   mask-composite: exclude;
 }
 
+.section-accent {
+  position: absolute;
+  inset: -14rem -30vw;
+  pointer-events: none;
+  z-index: -10;
+}
+
+.section-accent::before,
+.section-accent::after {
+  content: '';
+  position: absolute;
+  inset: 0;
+  margin: auto;
+  width: clamp(48rem, 85vw, 74rem);
+  aspect-ratio: 16 / 9;
+  border-radius: 4rem;
+  transform: skewY(-6deg);
+  transition: opacity 0.6s ease;
+}
+
+.section-accent::before {
+  background: var(
+    --section-accent-gradient,
+    linear-gradient(135deg, rgba(38, 65, 214, 0.16), rgba(15, 31, 75, 0.08))
+  );
+  opacity: 0.85;
+}
+
+.section-accent::after {
+  inset: 6%;
+  background: var(
+    --section-accent-overlay,
+    radial-gradient(circle at 50% 45%, rgba(38, 65, 214, 0.28), transparent 70%)
+  );
+  opacity: 0.6;
+  mask-image: radial-gradient(circle at 50% 40%, rgba(0, 0, 0, 0.85), transparent 72%);
+  -webkit-mask-image: radial-gradient(circle at 50% 40%, rgba(0, 0, 0, 0.85), transparent 72%);
+}
+
+.section-accent__divider {
+  position: absolute;
+  bottom: clamp(-5rem, -8vw, -2rem);
+  left: 50%;
+  width: clamp(40rem, 90vw, 72rem);
+  transform: translateX(-50%);
+  color: var(--section-accent-stroke, rgba(38, 65, 214, 0.35));
+}
+
+.section-accent__divider path {
+  filter: drop-shadow(0 32px 68px rgba(15, 31, 75, 0.18));
+}
+
+.section-accent--ocean {
+  --section-accent-gradient: linear-gradient(135deg, rgba(38, 65, 214, 0.18), rgba(56, 156, 255, 0.12));
+  --section-accent-overlay:
+    radial-gradient(circle at 20% 25%, rgba(56, 156, 255, 0.32), transparent 65%),
+    radial-gradient(circle at 75% 45%, rgba(255, 122, 89, 0.18), transparent 68%);
+  --section-accent-stroke: rgba(38, 65, 214, 0.4);
+}
+
+.section-accent--sky {
+  --section-accent-gradient: linear-gradient(135deg, rgba(56, 156, 255, 0.18), rgba(171, 205, 255, 0.12));
+  --section-accent-overlay:
+    radial-gradient(circle at 18% 30%, rgba(146, 196, 255, 0.35), transparent 62%),
+    radial-gradient(circle at 80% 40%, rgba(56, 156, 255, 0.18), transparent 70%);
+  --section-accent-stroke: rgba(56, 156, 255, 0.38);
+}
+
+.section-accent--coral {
+  --section-accent-gradient: linear-gradient(135deg, rgba(255, 122, 89, 0.22), rgba(255, 196, 176, 0.16));
+  --section-accent-overlay:
+    radial-gradient(circle at 22% 30%, rgba(255, 160, 140, 0.32), transparent 60%),
+    radial-gradient(circle at 80% 45%, rgba(255, 191, 153, 0.24), transparent 72%);
+  --section-accent-stroke: rgba(255, 122, 89, 0.45);
+}
+
+.section-accent--midnight {
+  --section-accent-gradient: linear-gradient(135deg, rgba(15, 31, 75, 0.28), rgba(38, 65, 214, 0.2));
+  --section-accent-overlay:
+    radial-gradient(circle at 20% 25%, rgba(56, 156, 255, 0.18), transparent 65%),
+    radial-gradient(circle at 82% 50%, rgba(15, 31, 75, 0.35), transparent 70%);
+  --section-accent-stroke: rgba(15, 31, 75, 0.45);
+}
+
+.section-accent--slate {
+  --section-accent-gradient: linear-gradient(135deg, rgba(59, 83, 117, 0.22), rgba(15, 31, 75, 0.16));
+  --section-accent-overlay:
+    radial-gradient(circle at 25% 30%, rgba(119, 140, 170, 0.28), transparent 62%),
+    radial-gradient(circle at 78% 48%, rgba(59, 83, 117, 0.22), transparent 72%);
+  --section-accent-stroke: rgba(59, 83, 117, 0.38);
+}
+
+.section-connector {
+  position: absolute;
+  left: 50%;
+  width: 1px;
+  transform: translateX(-50%);
+  background: linear-gradient(
+    180deg,
+    transparent,
+    var(--section-connector-color, rgba(38, 65, 214, 0.2)) 55%,
+    transparent
+  );
+  pointer-events: none;
+  z-index: -20;
+  opacity: 0.95;
+}
+
+.section-connector::after {
+  content: '';
+  position: absolute;
+  left: 50%;
+  width: 140px;
+  height: 140px;
+  border-radius: 9999px;
+  transform: translate(-50%, -50%);
+  background: radial-gradient(circle, var(--section-connector-glow, rgba(38, 65, 214, 0.22)), transparent 65%);
+  filter: blur(60px);
+  opacity: 0.85;
+}
+
+.section-connector--top {
+  top: -5.5rem;
+  height: 5rem;
+}
+
+.section-connector--top::after {
+  top: 0;
+}
+
+.section-connector--bottom {
+  bottom: -5.5rem;
+  height: 5rem;
+}
+
+.section-connector--bottom::after {
+  bottom: 0;
+}
+
+.section-connector--ocean {
+  --section-connector-color: rgba(38, 65, 214, 0.22);
+  --section-connector-glow: rgba(56, 156, 255, 0.22);
+}
+
+.section-connector--sky {
+  --section-connector-color: rgba(56, 156, 255, 0.24);
+  --section-connector-glow: rgba(171, 205, 255, 0.28);
+}
+
+.section-connector--coral {
+  --section-connector-color: rgba(255, 122, 89, 0.28);
+  --section-connector-glow: rgba(255, 160, 140, 0.32);
+}
+
+.section-connector--midnight {
+  --section-connector-color: rgba(15, 31, 75, 0.26);
+  --section-connector-glow: rgba(38, 65, 214, 0.22);
+}
+
+.section-connector--slate {
+  --section-connector-color: rgba(59, 83, 117, 0.26);
+  --section-connector-glow: rgba(119, 140, 170, 0.28);
+}
+
 .hero-glow {
   position: absolute;
   top: -35%;
