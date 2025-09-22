@@ -8,7 +8,7 @@
 
 html,
 body {
-  @apply min-h-screen bg-white text-slate-900 antialiased;
+  @apply min-h-screen bg-white text-slate-900 antialiased overflow-x-hidden;
   background-image:
     radial-gradient(circle at 20% -10%, rgba(51, 199, 255, 0.22), transparent 58%),
     radial-gradient(circle at 80% 0%, rgba(38, 65, 214, 0.18), transparent 60%),
