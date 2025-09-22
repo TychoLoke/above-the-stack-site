@@ -39,7 +39,13 @@ export default function Section({
   showConnector = false,
   parallaxOffset = 72,
 }: SectionProps) {
-  const sectionClass = ['relative isolate mt-20 md:mt-24 lg:mt-28', className]
+  const marginClasses = showConnector
+    ? 'mt-28 md:mt-32 lg:mt-36'
+    : 'mt-24 md:mt-28 lg:mt-32'
+
+  const paddingClasses = showConnector ? 'pt-12 md:pt-16 pb-12 md:pb-16' : ''
+
+  const sectionClass = ['relative isolate first:mt-0', marginClasses, paddingClasses, className]
     .filter(Boolean)
     .join(' ')
 
