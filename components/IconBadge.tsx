@@ -11,8 +11,8 @@ const variantStyles: Record<IconBadgeVariant, string> = {
 }
 
 const sizeStyles = {
-  lg: 'h-12 w-12 rounded-2xl text-base',
-  md: 'h-10 w-10 rounded-xl text-sm',
+  lg: 'h-14 w-14 rounded-full text-base',
+  md: 'h-12 w-12 rounded-full text-sm',
 }
 
 type IconBadgeProps = {
@@ -29,7 +29,7 @@ export default function IconBadge({
   className,
 }: IconBadgeProps) {
   const classes = [
-    'inline-flex items-center justify-center bg-gradient-to-br shadow-[0_18px_40px_-32px_rgba(15,31,75,0.55)] ring-1 ring-inset ring-white/60',
+    'inline-flex flex-shrink-0 items-center justify-center bg-gradient-to-br shadow-[0_18px_40px_-32px_rgba(15,31,75,0.55)] ring-1 ring-inset ring-white/60',
     variantStyles[variant],
     sizeStyles[size],
     className,

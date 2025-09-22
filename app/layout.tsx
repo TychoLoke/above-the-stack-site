@@ -44,7 +44,7 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
                 href="/"
                 className="flex items-center gap-3 text-lg font-semibold tracking-tight text-atsMidnight transition hover:text-atsOcean"
               >
-                <span className="inline-flex h-11 w-11 items-center justify-center rounded-[1rem] bg-gradient-to-br from-atsSky via-atsOcean to-atsCoral text-base font-bold text-white shadow-glow">
+                <span className="inline-flex h-12 w-12 items-center justify-center rounded-full bg-gradient-to-br from-atsSky via-atsOcean to-atsCoral text-base font-bold text-white shadow-glow">
                   ATS
                 </span>
                 <span className="hidden sm:inline">Above The Stack</span>
