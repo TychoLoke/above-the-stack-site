@@ -218,6 +218,7 @@ export default function HomePage() {
         description="Every release is shaped with community feedback before it goes live. Get a preview of the next drops the team is polishing."
         accentColor="ocean"
         showConnector
+        columns="one"
         parallaxOffset={96}
       >
         <UpcomingHighlightsTimeline items={upcomingHighlights} autoplay showControls />
