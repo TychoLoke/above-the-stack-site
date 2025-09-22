@@ -59,7 +59,7 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
               <MobileNavigation items={publicNavigation} portalUrl={portalUrl} />
             </div>
             <div className="hidden w-full lg:flex lg:items-center lg:justify-between lg:gap-12">
-              <nav className="flex flex-wrap items-center gap-2 text-sm font-medium text-slate-600 sm:-mx-2 sm:flex-nowrap sm:overflow-x-auto sm:pb-1 lg:mx-0 lg:gap-8">
+              <nav className="flex flex-wrap items-center gap-2 text-sm font-medium text-slate-600 sm:-mx-2 sm:flex-nowrap lg:mx-0 lg:gap-8">
                 {publicNavigation.map((item) => (
                   <Link
                     key={item.href}
