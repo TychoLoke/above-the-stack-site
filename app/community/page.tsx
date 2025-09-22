@@ -5,29 +5,30 @@ import { communityCommitments } from '@/data/community'
 
 export const metadata = { title: 'Community — Above The Stack' }
 
+const portalUrl = process.env.NEXT_PUBLIC_PORTAL_URL || 'https://portal.abovethestack.com'
+
 const lounges = [
   {
     title: 'Operator lounge',
     description: 'MSP founders and leadership teams swap pricing experiments, customer success tactics, and hiring frameworks.',
-    accent: 'border-transparent bg-gradient-to-br from-white via-atsSky/15 to-atsOcean/10 shadow-glow',
+    icon: '🧭',
   },
   {
     title: 'Service delivery guild',
-    description: 'Technicians and delivery leads compare tooling stacks, workflow automations, and best practices for resilient operations.',
-    accent: 'border-transparent bg-gradient-to-br from-white via-atsOcean/15 to-atsSky/10 shadow-glow',
+    description: 'Technicians and delivery leads compare tooling stacks, workflow automations, and resilient operations.',
+    icon: '🛠️',
   },
   {
     title: 'Partner strategy space',
     description: 'Solution and distribution teams co-design launch plans, explore MDF collaborations, and gather honest product feedback under neutral guardrails.',
-    accent: 'border-transparent bg-gradient-to-br from-white via-atsCoral/20 to-atsSky/15 shadow-glow',
+    icon: '🤝',
   },
 ]
 
 const highlights = [
   {
     title: 'Curated lounges & living playbooks',
-    description:
-      'Log in to access curated lounges, download playbooks in progress, and help us build the benchmarks you need next.',
+    description: 'Log in to access themed lounges, download playbooks in progress, and help us build the benchmarks you need next.',
   },
   {
     title: 'Searchable, accountable knowledge',
@@ -40,20 +41,43 @@ const highlights = [
   },
 ]
 
-export default function Page() {
-  const portalUrl = process.env.NEXT_PUBLIC_PORTAL_URL || 'https://portal.abovethestack.com'
+const expectations = [
+  'Weekly prompts from the Above The Stack editorial team to spark discussion.',
+  'Member-led AMAs covering tooling migrations, partner contracts, and compliance.',
+  'Dropboxes with templates, customer decks, and dashboards contributed by the community.',
+]
 
+const steps = [
+  {
+    title: 'Become a member',
+    description: 'Membership is €150 / $165 per company and covers every teammate. Partners use the same flow to request curated, sales-neutral participation.',
+    href: `${portalUrl}/signup`,
+    cta: 'Become a Member',
+    icon: '🪄',
+  },
+  {
+    title: 'Complete your profile',
+    description: 'Share your role, region, and focus areas so moderators can recommend discussions and connect you with peers.',
+    icon: '🧾',
+  },
+  {
+    title: 'Engage with intent',
+    description: 'Introduce yourself, react to a prompt, or request feedback on a challenge. The more context you give, the richer the responses.',
+    icon: '💬',
+  },
+]
+
+export default function Page() {
   return (
     <div className="space-y-24">
-      <section className="grid gap-10 rounded-[2.5rem] border border-atsOcean/10 bg-gradient-to-br from-white via-white to-atsSky/20 p-10 shadow-[0_32px_70px_-35px_rgba(15,31,75,0.55)] lg:grid-cols-[1.2fr_1fr]">
+      <section className="relative grid gap-12 rounded-[2.5rem] border border-white/70 bg-white/80 p-10 shadow-[0_32px_70px_-35px_rgba(15,31,75,0.55)] backdrop-blur-xl lg:grid-cols-[1.2fr_1fr]">
         <div className="space-y-6 text-slate-700">
-          <span className="tag">Above Connect</span>
+          <span className="inline-flex items-center gap-2 rounded-full border border-white/0 bg-atsOcean/10 px-4 py-1 text-sm font-semibold text-atsOcean/80">
+            <span aria-hidden>👋</span> Above Connect
+          </span>
           <h1 className="h1 text-balance text-atsMidnight">A private, high-signal portal for MSPs and trusted partners</h1>
           <p className="text-lg leading-relaxed">
-            Above Connect is the member portal of Above The Stack — the independent, MSP-first
-            community. It’s where providers and trusted partners from around the world connect under
-            vendor-neutral guardrails to exchange ideas, challenge assumptions, and build the future
-            of managed services together.
+            Above Connect is the member portal of Above The Stack — the independent, MSP-first community. It’s where providers and trusted partners from around the world connect under vendor-neutral guardrails to exchange ideas, challenge assumptions, and build the future of managed services together.
           </p>
           <ul className="space-y-4 text-sm leading-relaxed">
             {highlights.map((item) => (
@@ -66,20 +90,34 @@ export default function Page() {
               </li>
             ))}
           </ul>
+          <div className="flex flex-wrap gap-3">
+            <a className="btn-primary" href={`${portalUrl}/signup`}>
+              Become a Member
+            </a>
+            <a className="btn-secondary" href="mailto:partnerships@abovethestack.com">
+              Request an Invite
+            </a>
+            <a className="btn-secondary" href={portalUrl}>
+              Log in to Above Connect
+            </a>
+            <a className="btn-secondary" href="mailto:community@abovethestack.com">
+              Talk to a moderator
+            </a>
+          </div>
         </div>
-        <div className="flex h-full flex-col justify-between rounded-[2rem] border border-white/70 bg-gradient-to-br from-white via-atsSky/25 to-atsOcean/10 p-7 text-slate-700 shadow-[0_28px_65px_-32px_rgba(15,31,75,0.55)]">
+        <div className="card gradient-border flex h-full flex-col justify-between space-y-6 bg-white/85 p-7">
           <div className="space-y-6">
             <div className="flex items-center justify-between gap-3">
               <h2 className="text-xl font-semibold text-atsMidnight">Community commitments</h2>
               <span className="hidden rounded-full border border-white/40 bg-white/70 px-3 py-1 text-[0.65rem] font-semibold uppercase tracking-[0.2em] text-atsOcean/80 md:inline-flex">
-                Built with members
+                Member-led
               </span>
             </div>
             <ul className="space-y-4 text-sm leading-relaxed text-slate-600">
               {communityCommitments.map((item) => (
                 <li key={item.title} className="flex items-start gap-4">
                   <span
-                    className={`mt-1 inline-flex h-10 w-10 flex-shrink-0 items-center justify-center rounded-2xl bg-gradient-to-br ${item.gradient} text-[0.65rem] font-semibold uppercase tracking-wide text-white shadow-glow`}
+                    className={`mt-1 inline-flex h-11 w-11 flex-shrink-0 items-center justify-center rounded-2xl bg-gradient-to-br ${item.gradient} text-[0.65rem] font-semibold uppercase tracking-wide text-white shadow-glow`}
                   >
                     {item.label}
                   </span>
@@ -91,19 +129,8 @@ export default function Page() {
               ))}
             </ul>
           </div>
-          <div className="mt-8 flex flex-wrap gap-3">
-            <a className="btn-primary" href={`${portalUrl}/signup`}>
-              Become a Member
-            </a>
-            <a className="btn-ghost" href="mailto:partnerships@abovethestack.com">
-              Request an Invite
-            </a>
-            <a className="btn-ghost" href={portalUrl}>
-              Log in to Above Connect
-            </a>
-            <a className="btn-ghost" href="mailto:community@abovethestack.com">
-              Talk to a moderator
-            </a>
+          <div className="rounded-2xl border border-atsOcean/15 bg-atsOcean/5 p-4 text-sm text-atsMidnight">
+            Membership is €150 / $165 per company. We verify MSP status, curate partner participation, and protect member time with moderated, sales-neutral guardrails.
           </div>
         </div>
       </section>
@@ -112,10 +139,9 @@ export default function Page() {
         eyebrow="Lounges"
         title="Spaces inside the community"
         description="Membership unlocks themed lounges designed to keep discussions focused and actionable."
-        columns="three"
       >
         {lounges.map((item) => (
-          <Card key={item.title} title={item.title} className={item.accent}>
+          <Card key={item.title} title={item.title} icon={item.icon}>
             {item.description}
           </Card>
         ))}
@@ -127,53 +153,38 @@ export default function Page() {
         description="Log in to Above Connect to view the full threads, join the debate, and access shared files."
         columns="two"
         action={
-          <a className="btn-ghost" href={`${portalUrl}/latest`}>
+          <a className="btn-secondary" href={`${portalUrl}/latest`}>
             View all topics
           </a>
         }
       >
         <LatestThreads />
-        <div className="card space-y-4 border-transparent bg-gradient-to-br from-white via-atsSky/15 to-atsOcean/10 shadow-glow">
+        <div className="card space-y-4 border-transparent bg-gradient-to-br from-white via-atsSky/15 to-atsOcean/10">
           <h3 className="text-lg font-semibold text-atsMidnight">What to expect</h3>
           <ul className="space-y-3 text-sm leading-relaxed text-slate-600">
-            <li className="flex items-start gap-3">
-              <span className="mt-1 h-2 w-2 rounded-full bg-atsOcean" />
-              Weekly prompts from the Above The Stack editorial team to spark discussion.
-            </li>
-            <li className="flex items-start gap-3">
-              <span className="mt-1 h-2 w-2 rounded-full bg-atsSky" />
-              Member-led AMAs covering tooling migrations, partner contracts, and compliance.
-            </li>
-            <li className="flex items-start gap-3">
-              <span className="mt-1 h-2 w-2 rounded-full bg-atsCoral" />
-              Dropboxes with templates, customer decks, and dashboards contributed by the community.
-            </li>
+            {expectations.map((item) => (
+              <li key={item} className="flex items-start gap-3">
+                <span className="mt-1 h-2 w-2 rounded-full bg-atsOcean" />
+                {item}
+              </li>
+            ))}
           </ul>
         </div>
       </Section>
 
-      <Section
-        eyebrow="Getting started"
-        title="Join in three steps"
-        columns="three"
-      >
-        <Card
-          title="1. Become a member"
-          cta="Become a Member"
-          href={`${portalUrl}/signup`}
-          className="border-transparent bg-gradient-to-br from-white via-atsSky/15 to-atsOcean/10 shadow-glow"
-        >
-          Membership is €150 / $165 per company and covers every teammate, with local currency options
-          available. Partners use the same flow to request curated, sales-neutral participation.
-        </Card>
-        <Card title="2. Complete your profile">
-          Share your role, region, and focus areas. We use this to recommend discussions and small
-          group sessions.
-        </Card>
-        <Card title="3. Engage with intent">
-          Introduce yourself, react to a prompt, or request feedback on a challenge. The more context
-          you give, the richer the responses.
-        </Card>
+      <Section eyebrow="Getting started" title="Join in three steps">
+        {steps.map((step) => (
+          <Card
+            key={step.title}
+            title={step.title}
+            icon={step.icon}
+            href={step.href}
+            cta={step.cta}
+            className={step.href ? 'border-transparent bg-gradient-to-br from-white via-atsSky/15 to-atsOcean/10' : undefined}
+          >
+            {step.description}
+          </Card>
+        ))}
       </Section>
     </div>
   )

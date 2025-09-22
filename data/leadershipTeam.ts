@@ -3,6 +3,7 @@ export type LeadershipMember = {
   role: string
   region: string
   bio: string
+  quote: string
   headshot?: string
 }
 
@@ -18,7 +19,7 @@ const createMonogramHeadshot = (initials: string, gradient: [string, string]) =>
     '</linearGradient>',
     '</defs>',
     `<rect width="128" height="128" rx="28" fill="url(#${gradientId})"/>`,
-    '<text x="50%" y="50%" dominant-baseline="central" text-anchor="middle" font-family="\'Inter\', \'Segoe UI\', sans-serif" font-size="52" font-weight="600" fill="#F8FAFC" letter-spacing="2">',
+    "<text x='50%' y='50%' dominant-baseline='central' text-anchor='middle' font-family='\\'Inter\\', \\'Segoe UI\\', sans-serif' font-size='52' font-weight='600' fill='#F8FAFC' letter-spacing='2'>",
     sanitizedInitials,
     '</text>',
     '</svg>',
@@ -33,6 +34,7 @@ export const leadershipTeam: LeadershipMember[] = [
     role: 'Channel Pre-Sales Solutions Engineer @ AvePoint',
     region: 'Global programs (based in Benelux, Nordics, Baltics)',
     bio: 'Tycho has spent eight years immersed in the MSP ecosystem. After leading enablement on the provider side, he now works with platform providers and MSPs to support go-to-market execution and service design without losing sight of the operator perspective. He is a committed knowledge sharer and evangelist for MSP success worldwide.',
+    quote: 'We built Above The Stack so operators can compare notes without the vendor noise crowding other rooms.',
     headshot: createMonogramHeadshot('TL', ['#0EA5E9', '#1D4ED8']),
   },
   {
@@ -40,6 +42,7 @@ export const leadershipTeam: LeadershipMember[] = [
     role: 'Channel Account Manager @ Arctic Wolf',
     region: 'Global programs (based in Benelux)',
     bio: 'Ashley brings eight years of experience supporting the channel, including seven years at ESET before joining Arctic Wolf. She lives and breathes cybersecurity while championing vendor-neutral spaces where MSPs can thrive.',
+    quote: 'Community works when security and trust lead every discussion — that is the heartbeat of Above The Stack.',
     headshot: createMonogramHeadshot('AS', ['#F97316', '#C2410C']),
   },
   {
@@ -47,6 +50,7 @@ export const leadershipTeam: LeadershipMember[] = [
     role: 'Sales Director @ Pax8',
     region: 'Global programs (based in Benelux and France)',
     bio: 'Timon is a true enabler who knows how to connect MSPs and partners around the right opportunities without turning the dialogue into a pitch. His people-first approach helps build collaborations that unlock the best in every team, making him a natural leader in community spaces.',
+    quote: 'MSPs grow faster when we create space to be honest, generous, and a little bit human together.',
     headshot: createMonogramHeadshot('TB', ['#10B981', '#047857']),
   },
   {
@@ -54,6 +58,7 @@ export const leadershipTeam: LeadershipMember[] = [
     role: 'Founder @ Q-Cyber',
     region: 'Global programs (based in Netherlands)',
     bio: 'Pierre is a veteran of the channel with a track record of launching successful businesses and ideas. Today he brings deep expertise across AI, automation, and cybersecurity to help the community push the industry forward with a truly global mindset.',
+    quote: 'The future of the channel is transparent, data-driven, and global — exactly how we steward Above The Stack.',
     headshot: createMonogramHeadshot('PK', ['#A855F7', '#6D28D9']),
   },
 ]

@@ -9,47 +9,80 @@
 html,
 body {
   @apply min-h-screen bg-white text-slate-900 antialiased;
-  background: linear-gradient(180deg, #f7faff 0%, #ffffff 38%, #f3f6ff 100%);
+  background-image:
+    radial-gradient(circle at 20% -10%, rgba(51, 199, 255, 0.22), transparent 58%),
+    radial-gradient(circle at 80% 0%, rgba(38, 65, 214, 0.18), transparent 60%),
+    linear-gradient(180deg, #f8fbff 0%, #ffffff 45%, #f3f6ff 100%);
   font-feature-settings: 'liga' on, 'kern' on;
 }
 
 .container {
-  @apply mx-auto max-w-7xl px-5 md:px-8;
+  @apply mx-auto max-w-7xl px-6 md:px-10;
 }
 
 .btn {
-  @apply inline-flex items-center gap-2 rounded-full px-4 py-2 font-medium transition focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-offset-2 focus-visible:ring-atsOcean;
+  @apply inline-flex items-center gap-2 rounded-full px-5 py-2.5 text-sm font-medium transition duration-300 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-offset-2 focus-visible:ring-atsOcean;
 }
+
 .btn-primary {
-  @apply btn bg-gradient-to-r from-atsSky via-atsOcean to-atsCoral text-white shadow-glow hover:opacity-95;
+  @apply btn bg-gradient-to-r from-atsSky via-atsOcean to-atsCoral text-white shadow-[0_18px_45px_-20px_rgba(38,65,214,0.65)];
+  background-size: 180% 180%;
+  animation: gradientShift 12s ease infinite;
 }
+
+.btn-primary:hover {
+  @apply opacity-95 shadow-glow;
+}
+
+.btn-secondary {
+  @apply btn border border-atsOcean/20 bg-white text-atsMidnight hover:border-atsOcean/40 hover:bg-atsOcean/5;
+}
+
 .btn-ghost {
-  @apply btn border border-slate-200 bg-white text-atsOcean hover:bg-slate-50;
+  @apply btn-secondary;
 }
 
 .card {
-  @apply relative overflow-hidden rounded-3xl border border-slate-200/70 bg-white/80 p-6 shadow-[0_22px_45px_-22px_rgba(15,31,75,0.45)] backdrop-blur-sm transition duration-300;
+  @apply relative overflow-hidden rounded-3xl border border-white/80 bg-white/80 p-6 shadow-[0_40px_90px_-45px_rgba(15,31,75,0.55)] backdrop-blur-lg transition duration-300;
+}
+
+.card::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  border-radius: inherit;
+  background: linear-gradient(135deg, rgba(38, 65, 214, 0.14), transparent 60%);
+  opacity: 0;
+  transition: opacity 0.4s ease;
+  pointer-events: none;
 }
 
 .card:hover {
-  @apply border-atsOcean/40 shadow-glow;
+  @apply -translate-y-1 shadow-glow;
 }
+
+.card:hover::before {
+  opacity: 1;
+}
+
 .h1 {
-  @apply text-4xl md:text-5xl font-bold tracking-tight;
+  @apply text-4xl font-bold tracking-tight md:text-6xl;
 }
+
 .h2 {
-  @apply text-2xl md:text-3xl font-semibold;
+  @apply text-3xl font-semibold tracking-tight md:text-4xl;
 }
+
 .muted {
   @apply text-slate-600;
 }
 
 .eyebrow {
-  @apply text-xs font-semibold uppercase tracking-[0.3em] text-atsOcean/80;
+  @apply text-[0.7rem] font-semibold uppercase tracking-[0.35em] text-atsOcean/80;
 }
 
 .tag {
-  @apply inline-flex items-center rounded-full border border-atsOcean/30 bg-atsOcean/5 px-3 py-1 text-xs font-medium uppercase tracking-wider text-atsOcean;
+  @apply inline-flex items-center rounded-full border border-atsOcean/30 bg-atsOcean/10 px-3 py-1 text-[0.7rem] font-semibold uppercase tracking-[0.3em] text-atsOcean;
 }
 
 .prose-list li {
@@ -58,4 +91,63 @@ body {
 
 .text-balance {
   text-wrap: balance;
+}
+
+.section-divider {
+  @apply mx-auto my-24 h-px max-w-5xl bg-gradient-to-r from-transparent via-atsOcean/15 to-transparent;
+}
+
+.animate-gradient {
+  background-size: 200% 200%;
+  animation: gradientShift 16s ease infinite;
+}
+
+@keyframes gradientShift {
+  0% {
+    background-position: 0% 50%;
+  }
+  50% {
+    background-position: 100% 50%;
+  }
+  100% {
+    background-position: 0% 50%;
+  }
+}
+
+@keyframes float {
+  0%,
+  100% {
+    transform: translateY(0px);
+  }
+  50% {
+    transform: translateY(-8px);
+  }
+}
+
+.float-slow {
+  animation: float 8s ease-in-out infinite;
+}
+
+.glass-panel {
+  @apply rounded-[2.5rem] border border-white/70 bg-white/75 shadow-[0_35px_90px_-50px_rgba(15,31,75,0.65)] backdrop-blur-xl;
+}
+
+.subtle-shadow {
+  @apply shadow-[0_18px_38px_-22px_rgba(15,31,75,0.45)];
+}
+
+.gradient-border {
+  position: relative;
+}
+
+.gradient-border::after {
+  content: '';
+  position: absolute;
+  inset: -1px;
+  border-radius: inherit;
+  padding: 1px;
+  background: linear-gradient(135deg, rgba(38, 65, 214, 0.35), rgba(255, 122, 89, 0.35));
+  -webkit-mask: linear-gradient(#fff 0 0) content-box, linear-gradient(#fff 0 0);
+  -webkit-mask-composite: xor;
+  mask-composite: exclude;
 }
