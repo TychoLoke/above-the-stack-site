@@ -71,6 +71,7 @@ const methodology = [
     title: 'Transparent & iterative',
     description: 'Draft findings are posted in Above Connect for feedback. Members challenge assumptions before publication.',
     iconAccent: 'sky' as const,
+
     icon: <RefreshCcw aria-hidden="true" className={iconClass} strokeWidth={1.8} />,
   },
   {
@@ -83,6 +84,7 @@ const methodology = [
     title: 'Global relevance',
     description: 'We compare insights with MSPs worldwide to highlight regional differences and transferable learnings.',
     iconAccent: 'slate' as const,
+
     icon: <Globe2 aria-hidden="true" className={iconClass} strokeWidth={1.8} />,
   },
 ]

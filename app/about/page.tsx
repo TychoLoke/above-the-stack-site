@@ -6,7 +6,9 @@ import { Compass, FlaskConical, Scale, Sparkles, UsersRound } from 'lucide-react
 
 export const metadata = { title: 'About — Above The Stack' }
 
+
 const iconClass = 'h-5 w-5'
+
 
 const differentiators = [
   {

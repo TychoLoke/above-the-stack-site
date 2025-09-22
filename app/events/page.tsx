@@ -105,7 +105,7 @@ export default function Page() {
           href="mailto:events@abovethestack.com"
           cta="Share your proposal"
           icon={<Lightbulb aria-hidden="true" className={iconClass} strokeWidth={1.8} />}
-          iconAccent="sky"
+         iconAccent="sky"
         >
           We welcome ideas from members and partners. Tell us the challenge you want to unpack, the audience you hope to gather, and what success looks like.
         </Card>

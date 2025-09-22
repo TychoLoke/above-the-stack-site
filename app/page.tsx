@@ -287,6 +287,7 @@ export default function HomePage() {
               key={benefit.title}
               className="card flex items-start gap-4 border-white/70 bg-white/90 p-5 text-left shadow-[0_25px_60px_-48px_rgba(15,31,75,0.6)]"
             >
+
               <IconBadge className="mt-1" size="md" variant={benefit.accent}>
                 {benefit.icon}
               </IconBadge>

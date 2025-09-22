@@ -28,6 +28,7 @@ const lounges = [
   {
     title: 'Service delivery guild',
     description: 'Technicians and delivery leads compare tooling stacks, workflow automations, and resilient operations.',
+
     iconAccent: 'ocean' as const,
     icon: <Wrench aria-hidden="true" className={iconClass} strokeWidth={1.8} />,
   },
