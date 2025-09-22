@@ -4,6 +4,7 @@ import Card from '@/components/Card'
 import LatestThreads from '@/components/LatestThreads'
 import MemberCard from '@/components/MemberCard'
 import IconBadge from '@/components/IconBadge'
+import UpcomingHighlightsTimeline from '@/components/UpcomingHighlightsTimeline'
 import { leadershipTeam } from '@/data/leadershipTeam'
 import {
   BarChart3,
@@ -216,20 +217,7 @@ export default function HomePage() {
         title="What’s shipping to members next"
         description="Every release is shaped with community feedback before it goes live. Get a preview of the next drops the team is polishing."
       >
-        {upcomingHighlights.map((item) => (
-          <Card
-            key={item.title}
-            eyebrow={item.eyebrow}
-            title={item.title}
-            href={item.href}
-            cta={item.cta}
-            className={`${item.className ?? ''} shadow-glow`}
-            icon={item.icon}
-            iconAccent={item.iconAccent}
-          >
-            {item.description}
-          </Card>
-        ))}
+        <UpcomingHighlightsTimeline items={upcomingHighlights} autoplay showControls />
       </Section>
 
       <Section
