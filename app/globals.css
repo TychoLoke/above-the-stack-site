@@ -22,6 +22,7 @@ body {
 
 .btn {
   @apply inline-flex items-center gap-2 rounded-full px-5 py-2.5 text-sm font-medium transition duration-300 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-offset-2 focus-visible:ring-atsOcean;
+  will-change: transform, box-shadow;
 }
 
 .btn-primary {
@@ -36,6 +37,28 @@ body {
 
 .btn-secondary {
   @apply btn border border-atsOcean/20 bg-white text-atsMidnight hover:border-atsOcean/40 hover:bg-atsOcean/5;
+}
+
+.btn-kinetic {
+  position: relative;
+  isolation: isolate;
+  transition-property: transform, box-shadow, background-position, opacity;
+}
+
+.btn-kinetic::after {
+  content: '';
+  position: absolute;
+  inset: 0;
+  border-radius: inherit;
+  background: radial-gradient(circle at 30% -20%, rgba(255, 255, 255, 0.55), transparent 65%);
+  opacity: 0;
+  transition: opacity 0.45s ease;
+  pointer-events: none;
+}
+
+.btn-kinetic:hover::after,
+.btn-kinetic:focus-visible::after {
+  opacity: 0.8;
 }
 
 .btn-ghost {
@@ -150,4 +173,94 @@ body {
   -webkit-mask: linear-gradient(#fff 0 0) content-box, linear-gradient(#fff 0 0);
   -webkit-mask-composite: xor;
   mask-composite: exclude;
+}
+
+.hero-glow {
+  position: absolute;
+  top: -35%;
+  left: 55%;
+  width: 32rem;
+  height: 32rem;
+  transform: translate3d(-50%, 0, 0);
+  border-radius: 9999px;
+  background:
+    radial-gradient(circle at 30% 35%, rgba(56, 156, 255, 0.55), transparent 60%),
+    radial-gradient(circle at 70% 65%, rgba(255, 122, 89, 0.38), transparent 65%);
+  filter: blur(70px);
+  opacity: 0.55;
+  pointer-events: none;
+  animation: heroGlowOrbit 28s ease-in-out infinite;
+}
+
+.hero-glow--secondary {
+  position: absolute;
+  top: auto;
+  bottom: -30%;
+  left: 15%;
+  width: 26rem;
+  height: 26rem;
+  background:
+    radial-gradient(circle at 40% 40%, rgba(56, 156, 255, 0.28), transparent 60%),
+    radial-gradient(circle at 70% 60%, rgba(38, 65, 214, 0.32), transparent 70%);
+  opacity: 0.4;
+  pointer-events: none;
+  animation: heroGlowDrift 32s ease-in-out infinite;
+}
+
+.hero-grid {
+  position: absolute;
+  inset: -30% -20% -35%;
+  background-image: radial-gradient(circle at center, rgba(15, 31, 75, 0.06) 0.5px, transparent 0.5px);
+  background-size: 32px 32px;
+  mix-blend-mode: soft-light;
+  transform: rotate(2deg);
+  animation: heroGridFloat 26s ease-in-out infinite;
+  pointer-events: none;
+  z-index: -10;
+}
+
+.hero-noise {
+  position: absolute;
+  inset: 0;
+  background-image: url('data:image/svg+xml,%3Csvg xmlns="http://www.w3.org/2000/svg" width="180" height="180" viewBox="0 0 180 180"%3E%3Cfilter id="n" x="0" y="0" width="1" height="1"%3E%3CfeTurbulence type="fractalNoise" baseFrequency="0.7" numOctaves="4" stitchTiles="stitch"/%3E%3C/filter%3E%3Crect width="180" height="180" filter="url(%23n)" opacity="0.22"/%3E%3C/svg%3E');
+  opacity: 0.12;
+  mix-blend-mode: soft-light;
+  pointer-events: none;
+  z-index: -10;
+}
+
+@keyframes heroGlowOrbit {
+  0% {
+    transform: translate3d(-45%, 0, 0) scale(0.96) rotate(0deg);
+  }
+  50% {
+    transform: translate3d(-50%, 3%, 0) scale(1.05) rotate(12deg);
+  }
+  100% {
+    transform: translate3d(-45%, 0, 0) scale(0.96) rotate(0deg);
+  }
+}
+
+@keyframes heroGlowDrift {
+  0% {
+    transform: translate3d(-10%, 8%, 0) scale(0.9) rotate(-4deg);
+  }
+  50% {
+    transform: translate3d(4%, -4%, 0) scale(1.05) rotate(6deg);
+  }
+  100% {
+    transform: translate3d(-10%, 8%, 0) scale(0.9) rotate(-4deg);
+  }
+}
+
+@keyframes heroGridFloat {
+  0% {
+    transform: translate3d(0, 0, 0) rotate(2deg) scale(1);
+  }
+  50% {
+    transform: translate3d(-1%, 1%, 0) rotate(1deg) scale(1.02);
+  }
+  100% {
+    transform: translate3d(0, 0, 0) rotate(2deg) scale(1);
+  }
 }
