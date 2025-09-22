@@ -1,5 +1,7 @@
+"use client"
+
 import { motion, useMotionTemplate, useMotionValue, useSpring, useTransform } from 'framer-motion'
-import { type PropsWithChildren, useCallback } from 'react'
+import { type PointerEvent, type PropsWithChildren, useCallback } from 'react'
 
 interface HeroBackgroundProps {
   className?: string
@@ -21,7 +23,7 @@ export default function HeroBackground({ children, className }: PropsWithChildre
   `
 
   const handlePointerMove = useCallback(
-    (event: React.PointerEvent<HTMLElement>) => {
+    (event: PointerEvent<HTMLElement>) => {
       const bounds = event.currentTarget.getBoundingClientRect()
       const x = ((event.clientX - bounds.left) / bounds.width) * 100
       const y = ((event.clientY - bounds.top) / bounds.height) * 100

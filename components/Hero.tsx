@@ -1,6 +1,8 @@
+"use client"
+
 import Link from 'next/link'
 import { Sparkles } from 'lucide-react'
-import { motion } from 'framer-motion'
+import { motion, type Variants } from 'framer-motion'
 
 import { communityCommitments } from '@/data/community'
 import HeroBackground from './hero/HeroBackground'
@@ -13,7 +15,7 @@ const heroStats = [
 
 const MotionLink = motion(Link)
 
-const statVariants = {
+const statVariants: Variants = {
   hidden: { opacity: 0, y: 24 },
   visible: (index: number) => ({
     opacity: 1,
@@ -21,7 +23,7 @@ const statVariants = {
     transition: {
       delay: index * 0.08,
       duration: 0.6,
-      ease: 'easeOut',
+      ease: [0.16, 1, 0.3, 1],
     },
   }),
 }
