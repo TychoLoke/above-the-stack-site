@@ -1,25 +1,37 @@
 import Card from '@/components/Card'
 import Section from '@/components/Section'
+import {
+  Bot,
+  ChartSpline,
+  FileText,
+  Lightbulb,
+  MessagesSquare,
+  PenLine,
+  ScrollText,
+  ToolCase,
+} from 'lucide-react'
 
 export const metadata = { title: 'Playbooks — Above The Stack' }
 
 const portalUrl = process.env.NEXT_PUBLIC_PORTAL_URL || 'https://portal.abovethestack.com'
 
+const iconClass = 'h-5 w-5 text-atsMidnight'
+
 const playbooks = [
   {
     title: 'NIS2 readiness kit',
     description: 'Gap assessment templates, customer comms, and service packaging guidance to operationalise the directive.',
-    icon: '🧾',
+    icon: <ScrollText aria-hidden="true" className={iconClass} strokeWidth={1.8} />,
   },
   {
     title: 'AI service launch framework',
     description: 'Positioning, pricing, and delivery runbooks for rolling out AI-enabled support without eroding trust.',
-    icon: '🤖',
+    icon: <Bot aria-hidden="true" className={iconClass} strokeWidth={1.8} />,
   },
   {
     title: 'Customer success dashboard',
     description: 'A full measurement model linking support signals to retention, expansion, and advocacy metrics.',
-    icon: '📊',
+    icon: <ChartSpline aria-hidden="true" className={iconClass} strokeWidth={1.8} />,
   },
 ]
 
@@ -27,17 +39,17 @@ const whatsInside = [
   {
     title: 'Executive summary',
     description: 'A concise readout distilling the why, the opportunity, and the pitfalls — ready to share with leadership and partners.',
-    icon: '🧠',
+    icon: <FileText aria-hidden="true" className={iconClass} strokeWidth={1.8} />,
   },
   {
     title: 'Implementation toolkit',
     description: 'Templates, checklists, and SOPs to plug directly into your PSA, documentation, and customer success workflows.',
-    icon: '🧰',
+    icon: <ToolCase aria-hidden="true" className={iconClass} strokeWidth={1.8} />,
   },
   {
     title: 'Community feedback loop',
     description: 'Dedicated Above Connect threads to surface questions, share outcomes, and collectively improve the material.',
-    icon: '💬',
+    icon: <MessagesSquare aria-hidden="true" className={iconClass} strokeWidth={1.8} />,
   },
 ]
 
@@ -81,10 +93,20 @@ export default function Page() {
       </Section>
 
       <Section eyebrow="Contribute" title="Help us build the next playbook" columns="two">
-        <Card title="Suggest a topic" href="mailto:hello@abovethestack.com" cta="Submit an idea" icon="💡">
+        <Card
+          title="Suggest a topic"
+          href="mailto:hello@abovethestack.com"
+          cta="Submit an idea"
+          icon={<Lightbulb aria-hidden="true" className={iconClass} strokeWidth={1.8} />}
+        >
           Let us know which challenge you want solved next. We co-create outlines with members and invite operators to share their working documents.
         </Card>
-        <Card title="Become a reviewer" href={`${portalUrl}/groups/reviewers`} cta="Join the reviewer group" icon="📝">
+        <Card
+          title="Become a reviewer"
+          href={`${portalUrl}/groups/reviewers`}
+          cta="Join the reviewer group"
+          icon={<PenLine aria-hidden="true" className={iconClass} strokeWidth={1.8} />}
+        >
           Review drafts ahead of release, contribute examples, and receive shout-outs in the published editions.
         </Card>
       </Section>

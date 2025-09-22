@@ -1,4 +1,5 @@
 import Link from 'next/link'
+import { Sparkles } from 'lucide-react'
 import { communityCommitments } from '@/data/community'
 
 const heroStats = [
@@ -20,7 +21,7 @@ export default function Hero() {
         <div className="space-y-10 text-left">
           <div className="space-y-5">
             <span className="inline-flex items-center gap-2 rounded-full border border-white/0 bg-atsOcean/10 px-4 py-1 text-sm font-semibold text-atsOcean/80 shadow-inner">
-              <span aria-hidden>👋</span> Welcome to Above The Stack
+              <Sparkles aria-hidden="true" className="h-4 w-4" strokeWidth={1.8} /> Welcome to Above The Stack
             </span>
             <h1 className="h1 text-balance text-atsMidnight">
               Your MSP community is waiting
