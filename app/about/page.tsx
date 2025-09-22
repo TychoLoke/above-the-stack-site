@@ -6,27 +6,33 @@ import { Compass, FlaskConical, Scale, Sparkles, UsersRound } from 'lucide-react
 
 export const metadata = { title: 'About — Above The Stack' }
 
-const iconClass = 'h-5 w-5 text-atsMidnight'
+
+const iconClass = 'h-5 w-5'
+
 
 const differentiators = [
   {
     title: 'MSP-first, always',
     description: 'Every programme, playbook, and decision is shaped by MSP operators. Partners participate in support of member outcomes.',
+    iconAccent: 'midnight' as const,
     icon: <Compass aria-hidden="true" className={iconClass} strokeWidth={1.8} />,
   },
   {
     title: 'Independent & neutral',
     description: 'No single vendor funds the agenda. Guardrails keep discussions transparent, accountable, and sales-neutral.',
+    iconAccent: 'ocean' as const,
     icon: <Scale aria-hidden="true" className={iconClass} strokeWidth={1.8} />,
   },
   {
     title: 'Practical & open',
     description: 'We ship research and playbooks iteratively with member feedback baked in, not theory written in a vacuum.',
+    iconAccent: 'sky' as const,
     icon: <FlaskConical aria-hidden="true" className={iconClass} strokeWidth={1.8} />,
   },
   {
     title: 'Community-powered',
     description: 'Moderators curate, but members lead. Anyone can propose research, facilitate sessions, or contribute assets.',
+    iconAccent: 'coral' as const,
     icon: <UsersRound aria-hidden="true" className={iconClass} strokeWidth={1.8} />,
   },
 ]
@@ -129,7 +135,12 @@ export default function Page() {
         columns="two"
       >
         {differentiators.map((item) => (
-          <Card key={item.title} title={item.title} icon={item.icon}>
+          <Card
+            key={item.title}
+            title={item.title}
+            icon={item.icon}
+            iconAccent={item.iconAccent}
+          >
             {item.description}
           </Card>
         ))}

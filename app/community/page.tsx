@@ -16,22 +16,26 @@ export const metadata = { title: 'Community — Above The Stack' }
 
 const portalUrl = process.env.NEXT_PUBLIC_PORTAL_URL || 'https://portal.abovethestack.com'
 
-const iconClass = 'h-5 w-5 text-atsMidnight'
+const iconClass = 'h-5 w-5'
 
 const lounges = [
   {
     title: 'Operator lounge',
     description: 'MSP founders and leadership teams swap pricing experiments, customer success tactics, and hiring frameworks.',
+    iconAccent: 'midnight' as const,
     icon: <Compass aria-hidden="true" className={iconClass} strokeWidth={1.8} />,
   },
   {
     title: 'Service delivery guild',
     description: 'Technicians and delivery leads compare tooling stacks, workflow automations, and resilient operations.',
+
+    iconAccent: 'ocean' as const,
     icon: <Wrench aria-hidden="true" className={iconClass} strokeWidth={1.8} />,
   },
   {
     title: 'Partner strategy space',
     description: 'Solution and distribution teams co-design launch plans, explore MDF collaborations, and gather honest product feedback under neutral guardrails.',
+    iconAccent: 'coral' as const,
     icon: <Handshake aria-hidden="true" className={iconClass} strokeWidth={1.8} />,
   },
 ]
@@ -64,16 +68,19 @@ const steps = [
     description: 'Membership is €150 / $165 per company and covers every teammate. Partners use the same flow to request curated, sales-neutral participation.',
     href: `${portalUrl}/signup`,
     cta: 'Become a Member',
+    iconAccent: 'midnight' as const,
     icon: <WandSparkles aria-hidden="true" className={iconClass} strokeWidth={1.8} />,
   },
   {
     title: 'Complete your profile',
     description: 'Share your role, region, and focus areas so moderators can recommend discussions and connect you with peers.',
+    iconAccent: 'ocean' as const,
     icon: <ClipboardList aria-hidden="true" className={iconClass} strokeWidth={1.8} />,
   },
   {
     title: 'Engage with intent',
     description: 'Introduce yourself, react to a prompt, or request feedback on a challenge. The more context you give, the richer the responses.',
+    iconAccent: 'coral' as const,
     icon: <MessageCircle aria-hidden="true" className={iconClass} strokeWidth={1.8} />,
   },
 ]
@@ -152,7 +159,12 @@ export default function Page() {
         description="Membership unlocks themed lounges designed to keep discussions focused and actionable."
       >
         {lounges.map((item) => (
-          <Card key={item.title} title={item.title} icon={item.icon}>
+          <Card
+            key={item.title}
+            title={item.title}
+            icon={item.icon}
+            iconAccent={item.iconAccent}
+          >
             {item.description}
           </Card>
         ))}
@@ -189,6 +201,7 @@ export default function Page() {
             key={step.title}
             title={step.title}
             icon={step.icon}
+            iconAccent={step.iconAccent}
             href={step.href}
             cta={step.cta}
             className={step.href ? 'border-transparent bg-gradient-to-br from-white via-atsSky/15 to-atsOcean/10' : undefined}
