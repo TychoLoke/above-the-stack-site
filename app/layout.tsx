@@ -39,13 +39,13 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
 
   return (
     <html lang="en">
-      <body className="relative min-h-screen bg-slate-50 text-slate-900">
+      <body className="relative flex min-h-screen flex-col bg-slate-50 text-slate-900">
         <div className="pointer-events-none absolute inset-x-0 top-0 -z-10 h-[520px] bg-gradient-to-b from-atsSky/15 via-transparent to-transparent" />
         <div className="pointer-events-none absolute inset-x-0 bottom-0 -z-10 h-[420px] bg-gradient-to-t from-atsOcean/5 via-transparent to-transparent" />
 
         <header className="sticky top-0 z-50 border-b border-white/70 bg-white/85 backdrop-blur-xl">
-          <div className="container flex flex-col gap-4 py-4 lg:flex-row lg:items-center lg:justify-between">
-            <div className="flex w-full items-center justify-between gap-6">
+          <div className="container flex flex-col gap-[var(--space-nav-stack)] py-[var(--space-nav-block)] lg:flex-row lg:items-center lg:justify-between">
+            <div className="flex w-full items-center justify-between gap-[var(--space-nav-inline)]">
               <Link
                 href="/"
                 className="flex items-center gap-3 text-lg font-semibold tracking-tight text-atsMidnight transition hover:text-atsOcean"
@@ -58,8 +58,8 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
               </Link>
               <MobileNavigation items={publicNavigation} portalUrl={portalUrl} />
             </div>
-            <div className="hidden w-full lg:flex lg:items-center lg:justify-between lg:gap-12">
-              <nav className="flex flex-wrap items-center gap-2 text-sm font-medium text-slate-600 sm:-mx-2 sm:flex-nowrap lg:mx-0 lg:gap-8">
+            <div className="hidden w-full lg:flex lg:items-center lg:justify-between lg:gap-[var(--space-nav-inline)]">
+              <nav className="flex flex-wrap items-center gap-2 text-sm font-medium text-slate-600 lg:flex-nowrap lg:gap-[var(--space-nav-inline)]">
                 {publicNavigation.map((item) => (
                   <Link
                     key={item.href}
@@ -70,7 +70,7 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
                   </Link>
                 ))}
               </nav>
-              <div className="flex items-center gap-3">
+              <div className="flex items-center gap-[var(--space-nav-stack)]">
                 <div className="flex flex-col text-[0.65rem] font-semibold uppercase tracking-[0.3em] text-atsOcean/60">
                   <span>Above Connect</span>
                 </div>
@@ -86,11 +86,13 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
           </div>
         </header>
 
-        <main className="container pb-20 pt-14 sm:pt-16 lg:pt-24">{children}</main>
+        <main className="container flex-1 space-y-[var(--space-section)] pb-[var(--space-page-bottom)] pt-[var(--space-page-top)]">
+          {children}
+        </main>
 
-        <footer className="mt-24 border-t border-white/70 bg-white/80 py-16 backdrop-blur">
-          <div className="container grid gap-12 lg:grid-cols-[2fr_1fr_1fr]">
-            <div className="space-y-6">
+        <footer className="mt-[var(--space-section)] border-t border-white/70 bg-white/80 py-[var(--space-footer-block)] backdrop-blur">
+          <div className="container grid gap-[var(--space-footer-stack)] lg:grid-cols-[2fr_1fr_1fr]">
+            <div className="space-y-[var(--space-section-stack)]">
               <Link href="/" className="text-xl font-semibold text-atsMidnight transition hover:text-atsOcean">
                 Above The Stack
               </Link>
@@ -114,7 +116,7 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
               </form>
               <p className="text-xs text-slate-500">Monthly digest. No noise — just highlights from the community.</p>
             </div>
-            <div className="space-y-4">
+            <div className="space-y-[var(--space-section-stack)]">
               <h3 className="text-sm font-semibold text-atsMidnight">Explore</h3>
               <div className="flex flex-col gap-2 text-sm text-slate-600">
                 {publicNavigation.map((item) => (
@@ -124,7 +126,7 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
                 ))}
               </div>
             </div>
-            <div className="space-y-4">
+            <div className="space-y-[var(--space-section-stack)]">
               <h3 className="text-sm font-semibold text-atsMidnight">Above Connect</h3>
               <div className="flex flex-col gap-2 text-sm text-slate-600">
                 <Link className="transition hover:text-atsOcean" href={`${portalUrl}/signup`}>
@@ -142,7 +144,7 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
               </div>
             </div>
           </div>
-          <div className="container mt-12 flex flex-col gap-6 border-t border-white/70 pt-6 text-xs text-slate-500 md:flex-row md:items-center md:justify-between">
+          <div className="container mt-[var(--space-footer-meta)] flex flex-col gap-[var(--space-footer-meta)] border-t border-white/70 pt-[var(--space-footer-meta)] text-xs text-slate-500 md:flex-row md:items-center md:justify-between">
             <p>© {new Date().getFullYear()} Above The Stack. Built together with the MSP community.</p>
             <div className="flex flex-wrap items-center gap-4">
               {socialLinks.map((item) => (

@@ -1,9 +1,16 @@
 'use client'
 
-import { useCallback, useEffect, useId, useMemo, useRef, useState, type FocusEvent, type ReactNode } from 'react'
-import useEmblaCarousel from 'embla-carousel-react'
-import type { EmblaCarouselType } from 'embla-carousel'
-import { motion } from 'framer-motion'
+import {
+  useCallback,
+  useEffect,
+  useId,
+  useMemo,
+  useRef,
+  useState,
+  type FocusEvent,
+  type PointerEvent as ReactPointerEvent,
+  type ReactNode,
+} from 'react'
 import { ArrowLeft, ArrowRight } from 'lucide-react'
 
 import Card from './Card'
@@ -27,15 +34,6 @@ export type UpcomingHighlightsTimelineProps = {
   showControls?: boolean
 }
 
-const MOTION_VARIANTS = {
-  hidden: { opacity: 0, y: 28 },
-  visible: { opacity: 1, y: 0 },
-}
-
-function clamp(value: number, min: number, max: number) {
-  return Math.min(Math.max(value, min), max)
-}
-
 type StaticTimelineProps = Pick<UpcomingHighlightsTimelineProps, 'items'>
 
 function StaticHighlightsTimeline({ items }: StaticTimelineProps) {
@@ -45,18 +43,11 @@ function StaticHighlightsTimeline({ items }: StaticTimelineProps) {
 
   return (
     <div className={gridClassName}>
-      {items.map((item, index) => {
+      {items.map((item) => {
         const cardClassName = [item.className, 'shadow-glow'].filter(Boolean).join(' ')
 
         return (
-          <motion.div
-            key={item.title}
-            className="h-full"
-            variants={MOTION_VARIANTS}
-            initial="hidden"
-            animate="visible"
-            transition={{ delay: index * 0.08, duration: 0.6, ease: [0.22, 1, 0.36, 1] }}
-          >
+          <div key={item.title} className="h-full">
             <Card
               eyebrow={item.eyebrow}
               title={item.title}
@@ -68,7 +59,7 @@ function StaticHighlightsTimeline({ items }: StaticTimelineProps) {
             >
               {item.description}
             </Card>
-          </motion.div>
+          </div>
         )
       })}
     </div>
@@ -92,145 +83,64 @@ function CarouselHighlightsTimeline({
   const hasMultipleSlides = slideCount > 1
   const generatedId = useId()
   const carouselDomId = generatedId.replace(/:/g, '')
-  const [emblaRef, emblaApi] = useEmblaCarousel({ align: 'start', loop: hasMultipleSlides })
-  const [selectedIndex, setSelectedIndex] = useState(0)
-  const [scrollProgress, setScrollProgress] = useState(0)
-  const [canScrollPrev, setCanScrollPrev] = useState(false)
-  const [canScrollNext, setCanScrollNext] = useState(false)
-  const autoplayTimeoutRef = useRef<ReturnType<typeof setTimeout> | null>(null)
-  const isPausedRef = useRef(false)
+  const [currentIndex, setCurrentIndex] = useState(0)
+  const [isPaused, setIsPaused] = useState(false)
+  const pointerStartRef = useRef<number | null>(null)
+  const pointerActiveRef = useRef(false)
 
-  const clearAutoplay = useCallback(() => {
-    if (autoplayTimeoutRef.current) {
-      clearTimeout(autoplayTimeoutRef.current)
-      autoplayTimeoutRef.current = null
-    }
-  }, [])
+  useEffect(() => {
+    setCurrentIndex(0)
+  }, [slideCount])
 
-  const requestAutoplay = useCallback(() => {
-    if (!emblaApi || !autoplay || !hasMultipleSlides || isPausedRef.current) {
+  useEffect(() => {
+    if (!autoplay || !hasMultipleSlides || isPaused) {
       return
     }
 
-    clearAutoplay()
-
-    autoplayTimeoutRef.current = setTimeout(() => {
-      if (!emblaApi || isPausedRef.current) {
-        return
-      }
-
-      if (emblaApi.canScrollNext()) {
-        emblaApi.scrollNext()
-      } else {
-        emblaApi.scrollTo(0)
-      }
+    const intervalId = window.setInterval(() => {
+      setCurrentIndex((previous) => (previous + 1) % slideCount)
     }, autoplayInterval)
-  }, [autoplay, autoplayInterval, clearAutoplay, emblaApi, hasMultipleSlides])
-
-  const updateStateFromEmbla = useCallback(
-    (api: EmblaCarouselType) => {
-      setSelectedIndex(api.selectedScrollSnap())
-      setScrollProgress(api.scrollProgress())
-      setCanScrollPrev(api.canScrollPrev())
-      setCanScrollNext(api.canScrollNext())
-    },
-    []
-  )
-
-  useEffect(() => {
-    if (!emblaApi) {
-      return
-    }
-
-    const onSelect = () => {
-      updateStateFromEmbla(emblaApi)
-      requestAutoplay()
-    }
-
-    const onScroll = () => {
-      setScrollProgress(emblaApi.scrollProgress())
-    }
-
-    const onReInit = () => {
-      updateStateFromEmbla(emblaApi)
-      requestAutoplay()
-    }
-
-    emblaApi.on('select', onSelect)
-    emblaApi.on('scroll', onScroll)
-    emblaApi.on('reInit', onReInit)
-
-    onReInit()
 
     return () => {
-      emblaApi.off('select', onSelect)
-      emblaApi.off('scroll', onScroll)
-      emblaApi.off('reInit', onReInit)
+      window.clearInterval(intervalId)
     }
-  }, [emblaApi, requestAutoplay, updateStateFromEmbla])
+  }, [autoplay, autoplayInterval, hasMultipleSlides, isPaused, slideCount])
 
-  useEffect(() => {
-    if (!emblaApi || !hasMultipleSlides) {
-      clearAutoplay()
-      return
-    }
+  const goToPrevious = useCallback(() => {
+    setCurrentIndex((previous) => (previous - 1 + slideCount) % slideCount)
+  }, [slideCount])
 
-    if (!autoplay) {
-      isPausedRef.current = true
-      clearAutoplay()
-      return
-    }
+  const goToNext = useCallback(() => {
+    setCurrentIndex((previous) => (previous + 1) % slideCount)
+  }, [slideCount])
 
-    isPausedRef.current = false
-    requestAutoplay()
-
-    const onPointerDown = () => {
-      isPausedRef.current = true
-      clearAutoplay()
-    }
-
-    const onPointerUp = () => {
-      isPausedRef.current = false
-      requestAutoplay()
-    }
-
-    emblaApi.on('pointerDown', onPointerDown)
-    emblaApi.on('pointerUp', onPointerUp)
-
-    return () => {
-      emblaApi.off('pointerDown', onPointerDown)
-      emblaApi.off('pointerUp', onPointerUp)
-      clearAutoplay()
-    }
-  }, [autoplay, clearAutoplay, emblaApi, hasMultipleSlides, requestAutoplay])
-
-  useEffect(() => () => clearAutoplay(), [clearAutoplay])
-
-  const pauseAutoplay = useCallback(() => {
+  const handleMouseEnter = useCallback(() => {
     if (!autoplay || !hasMultipleSlides) {
       return
     }
 
-    isPausedRef.current = true
-    clearAutoplay()
-  }, [autoplay, clearAutoplay, hasMultipleSlides])
+    setIsPaused(true)
+  }, [autoplay, hasMultipleSlides])
 
-  const resumeAutoplay = useCallback(() => {
+  const handleMouseLeave = useCallback(() => {
     if (!autoplay || !hasMultipleSlides) {
       return
     }
 
-    isPausedRef.current = false
-    requestAutoplay()
-  }, [autoplay, hasMultipleSlides, requestAutoplay])
+    setIsPaused(false)
+  }, [autoplay, hasMultipleSlides])
 
   const handleFocusCapture = useCallback(() => {
-    pauseAutoplay()
-  }, [pauseAutoplay])
+    if (!hasMultipleSlides) {
+      return
+    }
+
+    setIsPaused(true)
+  }, [hasMultipleSlides])
 
   const handleBlurCapture = useCallback(
     (event: FocusEvent<HTMLDivElement>) => {
-      if (!autoplay || !hasMultipleSlides) {
+      if (!hasMultipleSlides) {
         return
       }
 
@@ -239,43 +149,88 @@ function CarouselHighlightsTimeline({
         return
       }
 
-      resumeAutoplay()
+      setIsPaused(false)
     },
-    [autoplay, hasMultipleSlides, resumeAutoplay]
+    [hasMultipleSlides],
   )
 
-  const scrollPrev = useCallback(() => {
-    if (!emblaApi) {
-      return
-    }
+  const finalizePointer = useCallback(
+    (event: ReactPointerEvent<HTMLDivElement>) => {
+      if (!pointerActiveRef.current) {
+        return
+      }
 
-    emblaApi.scrollPrev()
-    requestAutoplay()
-  }, [emblaApi, requestAutoplay])
+      const start = pointerStartRef.current
+      pointerActiveRef.current = false
+      pointerStartRef.current = null
 
-  const scrollNext = useCallback(() => {
-    if (!emblaApi) {
-      return
-    }
+      if (event.currentTarget.hasPointerCapture(event.pointerId)) {
+        event.currentTarget.releasePointerCapture(event.pointerId)
+      }
 
-    emblaApi.scrollNext()
-    requestAutoplay()
-  }, [emblaApi, requestAutoplay])
+      if (start !== null) {
+        const delta = event.clientX - start
+        const threshold = Math.max(event.currentTarget.clientWidth * 0.12, 48)
+
+        if (delta > threshold) {
+          goToPrevious()
+        } else if (delta < -threshold) {
+          goToNext()
+        }
+      }
+
+      if (autoplay && hasMultipleSlides) {
+        setIsPaused(false)
+      }
+    },
+    [autoplay, goToNext, goToPrevious, hasMultipleSlides],
+  )
+
+  const handlePointerDown = useCallback(
+    (event: ReactPointerEvent<HTMLDivElement>) => {
+      pointerActiveRef.current = true
+      pointerStartRef.current = event.clientX
+
+      if (event.currentTarget.setPointerCapture) {
+        event.currentTarget.setPointerCapture(event.pointerId)
+      }
+
+      if (autoplay && hasMultipleSlides) {
+        setIsPaused(true)
+      }
+    },
+    [autoplay, hasMultipleSlides],
+  )
+
+  const handlePointerUp = useCallback(
+    (event: ReactPointerEvent<HTMLDivElement>) => {
+      finalizePointer(event)
+    },
+    [finalizePointer],
+  )
+
+  const handlePointerCancel = useCallback(
+    (event: ReactPointerEvent<HTMLDivElement>) => {
+      finalizePointer(event)
+    },
+    [finalizePointer],
+  )
 
   const progressValue = useMemo(() => {
     if (!hasMultipleSlides) {
       return 1
     }
 
-    const basedOnIndex = (selectedIndex + 1) / slideCount
-    return clamp(Math.max(scrollProgress, basedOnIndex), 0.05, 1)
-  }, [hasMultipleSlides, scrollProgress, selectedIndex, slideCount])
+    return (currentIndex + 1) / slideCount
+  }, [currentIndex, hasMultipleSlides, slideCount])
+
+  const containerStyle = useMemo(() => ({ transform: `translateX(-${currentIndex * 100}%)` }), [currentIndex])
 
   return (
     <div
       className="timeline"
-      onMouseEnter={pauseAutoplay}
-      onMouseLeave={resumeAutoplay}
+      onMouseEnter={handleMouseEnter}
+      onMouseLeave={handleMouseLeave}
       onFocusCapture={handleFocusCapture}
       onBlurCapture={handleBlurCapture}
     >
@@ -288,20 +243,20 @@ function CarouselHighlightsTimeline({
             <button
               type="button"
               className="timeline__nav-button"
-              onClick={scrollPrev}
+              onClick={goToPrevious}
               aria-controls={carouselDomId}
               aria-label="View previous highlight"
-              disabled={!hasMultipleSlides || !canScrollPrev}
+              disabled={!hasMultipleSlides}
             >
               <ArrowLeft aria-hidden size={18} strokeWidth={1.8} />
             </button>
             <button
               type="button"
               className="timeline__nav-button"
-              onClick={scrollNext}
+              onClick={goToNext}
               aria-controls={carouselDomId}
               aria-label="View next highlight"
-              disabled={!hasMultipleSlides || !canScrollNext}
+              disabled={!hasMultipleSlides}
             >
               <ArrowRight aria-hidden size={18} strokeWidth={1.8} />
             </button>
@@ -311,26 +266,24 @@ function CarouselHighlightsTimeline({
 
       <div
         className="timeline__viewport"
-        ref={emblaRef}
         id={carouselDomId}
         aria-roledescription="carousel"
         aria-label="Upcoming highlights"
+        onPointerDown={handlePointerDown}
+        onPointerUp={handlePointerUp}
+        onPointerCancel={handlePointerCancel}
       >
-        <div className="timeline__container">
+        <div className="timeline__container" style={containerStyle}>
           {items.map((item, index) => {
             const cardClassName = [item.className, 'shadow-glow'].filter(Boolean).join(' ')
 
             return (
-              <motion.div
+              <div
                 key={item.title}
                 className="timeline__slide"
                 role="group"
                 aria-roledescription="slide"
                 aria-label={`Highlight ${index + 1} of ${slideCount}`}
-                variants={MOTION_VARIANTS}
-                initial="hidden"
-                animate="visible"
-                transition={{ delay: index * 0.12, duration: 0.6, ease: [0.22, 1, 0.36, 1] }}
               >
                 <Card
                   eyebrow={item.eyebrow}
@@ -343,14 +296,14 @@ function CarouselHighlightsTimeline({
                 >
                   {item.description}
                 </Card>
-              </motion.div>
+              </div>
             )
           })}
         </div>
       </div>
 
       <div className="sr-only" aria-live={autoplay ? 'polite' : 'off'}>
-        Highlight {selectedIndex + 1} of {slideCount}
+        Highlight {currentIndex + 1} of {slideCount}
       </div>
     </div>
   )
