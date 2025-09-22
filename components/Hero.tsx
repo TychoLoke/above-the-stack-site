@@ -1,6 +1,11 @@
+"use client"
+
 import Link from 'next/link'
 import { Sparkles } from 'lucide-react'
+import { motion, type Variants } from 'framer-motion'
+
 import { communityCommitments } from '@/data/community'
+import HeroBackground from './hero/HeroBackground'
 
 const heroStats = [
   { value: '18+', label: 'Countries represented' },
@@ -8,15 +13,26 @@ const heroStats = [
   { value: '6', label: 'Playbooks in motion' },
 ]
 
+const MotionLink = motion(Link)
+
+const statVariants: Variants = {
+  hidden: { opacity: 0, y: 24 },
+  visible: (index: number) => ({
+    opacity: 1,
+    y: 0,
+    transition: {
+      delay: index * 0.08,
+      duration: 0.6,
+      ease: [0.16, 1, 0.3, 1],
+    },
+  }),
+}
+
 export default function Hero() {
   const portalUrl = process.env.NEXT_PUBLIC_PORTAL_URL || 'https://portal.abovethestack.com'
 
   return (
-    <section className="relative overflow-hidden rounded-[2rem] border border-white/70 bg-white/80 px-6 py-14 shadow-[0_55px_110px_-60px_rgba(15,31,75,0.65)] backdrop-blur-xl sm:px-10 sm:py-16 lg:rounded-[2.75rem] lg:px-16 lg:py-24">
-      <div className="absolute -top-32 left-1/2 h-72 w-[22rem] -translate-x-1/2 rounded-full bg-gradient-to-r from-atsSky/35 via-white to-atsOcean/35 blur-3xl sm:h-80 sm:w-[32rem]" />
-      <div className="absolute -bottom-40 right-0 h-80 w-[26rem] translate-x-1/4 rounded-full bg-gradient-to-br from-atsCoral/35 via-atsSky/20 to-transparent blur-3xl sm:h-96 sm:w-[38rem]" />
-      <div className="absolute inset-0 -z-10 bg-gradient-to-br from-white via-atsSky/5 to-transparent opacity-60" />
-
+    <HeroBackground>
       <div className="relative grid items-start gap-10 lg:grid-cols-[1.4fr_1fr] lg:gap-12">
         <div className="space-y-10 text-left">
           <div className="space-y-5">
@@ -31,12 +47,24 @@ export default function Hero() {
             </p>
           </div>
           <div className="flex flex-col gap-3 sm:flex-row sm:flex-wrap sm:items-center">
-            <a className="btn-primary w-full justify-center sm:w-auto" href={`${portalUrl}/signup`}>
+            <motion.a
+              className="btn-primary btn-kinetic w-full justify-center sm:w-auto"
+              href={`${portalUrl}/signup`}
+              whileHover={{ y: -2, scale: 1.015 }}
+              whileFocus={{ y: -2, scale: 1.015 }}
+              whileTap={{ scale: 0.97 }}
+            >
               Join the Community
-            </a>
-            <Link className="btn-secondary w-full justify-center sm:w-auto" href="/research">
+            </motion.a>
+            <MotionLink
+              className="btn-secondary btn-kinetic w-full justify-center sm:w-auto"
+              href="/research"
+              whileHover={{ y: -2, scale: 1.01 }}
+              whileFocus={{ y: -2, scale: 1.01 }}
+              whileTap={{ scale: 0.97 }}
+            >
               Explore Research
-            </Link>
+            </MotionLink>
             <span className="text-sm text-slate-500 sm:text-left">
               Already a member?{' '}
               <a className="font-semibold text-atsOcean hover:underline" href={portalUrl}>
@@ -45,11 +73,19 @@ export default function Hero() {
             </span>
           </div>
           <dl className="grid gap-3 pt-4 sm:grid-cols-3 sm:gap-4">
-            {heroStats.map((stat) => (
-              <div key={stat.label} className="rounded-2xl border border-white/80 bg-white/80 p-5 shadow-[0_18px_40px_-28px_rgba(15,31,75,0.45)]">
+            {heroStats.map((stat, index) => (
+              <motion.div
+                key={stat.label}
+                className="rounded-2xl border border-white/80 bg-white/80 p-5 shadow-[0_18px_40px_-28px_rgba(15,31,75,0.45)]"
+                variants={statVariants}
+                initial="hidden"
+                whileInView="visible"
+                viewport={{ once: true, amount: 0.6 }}
+                custom={index}
+              >
                 <dt className="text-sm font-semibold uppercase tracking-[0.35em] text-atsOcean/70">{stat.label}</dt>
                 <dd className="mt-2 text-2xl font-semibold text-atsMidnight">{stat.value}</dd>
-              </div>
+              </motion.div>
             ))}
           </dl>
         </div>
@@ -96,6 +132,6 @@ export default function Hero() {
           </div>
         </div>
       </div>
-    </section>
+    </HeroBackground>
   )
 }
