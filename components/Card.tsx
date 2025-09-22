@@ -33,7 +33,7 @@ export default function Card({
     )
 
   const content = (
-    <div className="space-y-5">
+    <div className="flex flex-col gap-5">
       {icon && (
         <IconBadge variant={iconAccent}>{iconMarkup}</IconBadge>
       )}
