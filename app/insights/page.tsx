@@ -146,7 +146,7 @@ export default function Page() {
         <div className="absolute -left-24 top-10 h-64 w-64 rounded-full bg-atsSky/30 blur-3xl" aria-hidden />
         <div className="absolute -bottom-20 right-0 h-72 w-72 rounded-full bg-atsCoral/30 blur-3xl" aria-hidden />
         <div className="relative space-y-8">
-          <span className="inline-flex items-center gap-2 rounded-full border border-white/30 bg-white/10 px-4 py-1 text-sm font-semibold uppercase tracking-[0.3em]">
+          <span className="inline-flex items-center gap-3 rounded-full border border-white/30 bg-white/10 px-4 py-1 text-sm font-semibold uppercase tracking-[0.3em]">
             <Sparkle aria-hidden="true" className="h-4 w-4" strokeWidth={1.8} /> Insight library
           </span>
           <h1 className="h1 max-w-3xl text-balance text-white">

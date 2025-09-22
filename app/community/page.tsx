@@ -90,7 +90,7 @@ export default function Page() {
     <div className="space-y-24">
       <section className="relative grid gap-10 rounded-[2.5rem] border border-white/70 bg-white/80 p-6 shadow-[0_32px_70px_-35px_rgba(15,31,75,0.55)] backdrop-blur-xl sm:p-10 lg:grid-cols-[1.2fr_1fr] lg:gap-12">
         <div className="space-y-6 text-slate-700">
-          <span className="inline-flex items-center gap-2 rounded-full border border-white/0 bg-atsOcean/10 px-4 py-1 text-sm font-semibold text-atsOcean/80">
+          <span className="inline-flex items-center gap-3 rounded-full border border-white/0 bg-atsOcean/10 px-4 py-1 text-sm font-semibold text-atsOcean/80">
             <Sparkles aria-hidden="true" className="h-4 w-4" strokeWidth={1.8} /> Above Connect
           </span>
           <h1 className="h1 text-balance text-atsMidnight">A private, high-signal portal for MSPs and trusted partners</h1>

@@ -130,7 +130,7 @@ export function MobileNavigation({ items, portalUrl }: MobileNavigationProps) {
       <button
         ref={toggleRef}
         type="button"
-        className="inline-flex items-center gap-2 rounded-full border border-slate-200 bg-white px-4 py-2 text-sm font-semibold text-atsMidnight shadow-sm transition hover:border-atsOcean/30 hover:text-atsOcean focus:outline-none focus:ring-2 focus:ring-atsOcean/50"
+        className="inline-flex items-center gap-3 rounded-full border border-slate-200 bg-white px-4 py-2 text-sm font-semibold text-atsMidnight shadow-sm transition hover:border-atsOcean/30 hover:text-atsOcean focus:outline-none focus:ring-2 focus:ring-atsOcean/50"
         aria-expanded={isOpen}
         aria-controls={menuId}
         onClick={() => setIsOpen((previous) => !previous)}

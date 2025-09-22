@@ -70,11 +70,7 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
                   </Link>
                 ))}
               </nav>
-              <div className="flex items-center gap-[var(--space-nav-stack)]">
-                <div className="flex flex-col text-[0.65rem] font-semibold uppercase tracking-[0.3em] text-atsOcean/60">
-                  <span>Above Connect</span>
-                </div>
-                <div className="hidden h-8 w-px bg-slate-200/70 lg:block" aria-hidden />
+              <div className="flex items-center gap-3 lg:gap-[var(--space-nav-inline)]">
                 <Link className="btn-secondary" href={portalUrl}>
                   Log in
                 </Link>
