@@ -85,6 +85,7 @@ function CarouselHighlightsTimeline({
   const carouselDomId = generatedId.replace(/:/g, '')
   const [currentIndex, setCurrentIndex] = useState(0)
   const [isPaused, setIsPaused] = useState(false)
+  const [isManuallyPaused, setIsManuallyPaused] = useState(false)
   const pointerStartRef = useRef<number | null>(null)
   const pointerActiveRef = useRef(false)
 
@@ -127,8 +128,8 @@ function CarouselHighlightsTimeline({
       return
     }
 
-    setIsPaused(false)
-  }, [autoplay, hasMultipleSlides])
+    setIsPaused((previous) => (isManuallyPaused ? previous : false))
+  }, [autoplay, hasMultipleSlides, isManuallyPaused])
 
   const handleFocusCapture = useCallback(() => {
     if (!hasMultipleSlides) {
@@ -149,9 +150,9 @@ function CarouselHighlightsTimeline({
         return
       }
 
-      setIsPaused(false)
+      setIsPaused((previous) => (isManuallyPaused ? previous : false))
     },
-    [hasMultipleSlides],
+    [hasMultipleSlides, isManuallyPaused],
   )
 
   const finalizePointer = useCallback(
@@ -180,10 +181,10 @@ function CarouselHighlightsTimeline({
       }
 
       if (autoplay && hasMultipleSlides) {
-        setIsPaused(false)
+        setIsPaused((previous) => (isManuallyPaused ? previous : false))
       }
     },
-    [autoplay, goToNext, goToPrevious, hasMultipleSlides],
+    [autoplay, goToNext, goToPrevious, hasMultipleSlides, isManuallyPaused],
   )
 
   const handlePointerDown = useCallback(
@@ -226,6 +227,18 @@ function CarouselHighlightsTimeline({
 
   const containerStyle = useMemo(() => ({ transform: `translateX(-${currentIndex * 100}%)` }), [currentIndex])
 
+  const handlePauseToggle = useCallback(() => {
+    setIsManuallyPaused((previous) => {
+      const next = !previous
+      setIsPaused(next)
+      return next
+    })
+  }, [])
+
+  const goToSlide = useCallback((index: number) => {
+    setCurrentIndex(index)
+  }, [])
+
   return (
     <div
       className="timeline"
@@ -238,7 +251,7 @@ function CarouselHighlightsTimeline({
         <div className="timeline__progress" aria-hidden>
           <div className="timeline__progress-bar" style={{ transform: `scaleX(${progressValue})` }} />
         </div>
-        {showControls && (
+        {showControls && hasMultipleSlides && (
           <div className="timeline__controls" aria-label="Timeline controls">
             <button
               type="button"
@@ -249,6 +262,16 @@ function CarouselHighlightsTimeline({
               disabled={!hasMultipleSlides}
             >
               <ArrowLeft aria-hidden size={18} strokeWidth={1.8} />
+            </button>
+            <button
+              type="button"
+              className="timeline__nav-button timeline__playback-button"
+              onClick={handlePauseToggle}
+              aria-controls={carouselDomId}
+              aria-pressed={isManuallyPaused}
+              aria-label={isManuallyPaused ? 'Resume automatic highlight rotation' : 'Pause automatic highlight rotation'}
+            >
+              {isManuallyPaused ? 'Play' : 'Pause'}
             </button>
             <button
               type="button"
@@ -305,6 +328,28 @@ function CarouselHighlightsTimeline({
       <div className="sr-only" aria-live={autoplay ? 'polite' : 'off'}>
         Highlight {currentIndex + 1} of {slideCount}
       </div>
+
+      {hasMultipleSlides && (
+        <ol className="timeline__indicator-list" aria-label="Select highlight">
+          {items.map((item, index) => {
+            const isActive = index === currentIndex
+
+            return (
+              <li key={item.title} className="timeline__indicator-item">
+                <button
+                  type="button"
+                  className={`timeline__indicator-button${isActive ? ' timeline__indicator-button--active' : ''}`}
+                  onClick={() => goToSlide(index)}
+                  aria-label={`View highlight ${index + 1}`}
+                  aria-current={isActive ? 'true' : undefined}
+                >
+                  <span className="sr-only">{`Highlight ${index + 1}`}</span>
+                </button>
+              </li>
+            )
+          })}
+        </ol>
+      )}
     </div>
   )
 }
