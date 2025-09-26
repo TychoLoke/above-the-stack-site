@@ -51,7 +51,10 @@ export default function Card({
 
   if (href) {
     return (
-      <Link href={href} className={`${baseClasses} block transform transition-transform duration-300 hover:-translate-y-1.5`}>
+      <Link
+        href={href}
+        className={`${baseClasses} block transform transition-transform duration-300 hover:-translate-y-1.5 focus-visible:card-focus focus-visible:outline-none`}
+      >
         {content}
       </Link>
     )
