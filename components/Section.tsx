@@ -50,11 +50,52 @@ export default function Section({
     .join(' ')
 
   const sectionRef = useRef<HTMLElement | null>(null)
+  const [prefersReducedMotion, setPrefersReducedMotion] = useState(() => {
+    if (typeof window === 'undefined') {
+      return false
+    }
+
+    return window.matchMedia('(prefers-reduced-motion: reduce)').matches
+  })
   const [accentOffset, setAccentOffset] = useState(0)
+
+  useEffect(() => {
+    if (typeof window === 'undefined') {
+      return
+    }
+
+    const mediaQuery = window.matchMedia('(prefers-reduced-motion: reduce)')
+
+    const handleChange = (event: MediaQueryListEvent) => {
+      setPrefersReducedMotion(event.matches)
+    }
+
+    // Sync state in case the preference changed between renders
+    setPrefersReducedMotion(mediaQuery.matches)
+
+    if (typeof mediaQuery.addEventListener === 'function') {
+      mediaQuery.addEventListener('change', handleChange)
+
+      return () => {
+        mediaQuery.removeEventListener('change', handleChange)
+      }
+    }
+
+    mediaQuery.addListener(handleChange)
+
+    return () => {
+      mediaQuery.removeListener(handleChange)
+    }
+  }, [])
 
   useEffect(() => {
     if (!accentColor) {
       setAccentOffset(0)
+      return
+    }
+
+    if (prefersReducedMotion) {
+      setAccentOffset(Math.max(0, parallaxOffset) / 2)
       return
     }
 
@@ -93,7 +134,7 @@ export default function Section({
       window.removeEventListener('scroll', handleScroll)
       window.removeEventListener('resize', handleResize)
     }
-  }, [accentColor, parallaxOffset])
+  }, [accentColor, parallaxOffset, prefersReducedMotion])
 
   const rawGradientId = useId().replace(/:/g, '')
   const gradientId = `section-divider-${rawGradientId}`
@@ -115,7 +156,7 @@ export default function Section({
         <div
           aria-hidden="true"
           className={`section-accent ${accentClassName}`}
-          style={{ transform: `translateY(${accentOffset}px)` }}
+          style={{ transform: `translateY(${accentOffset - Math.max(0, parallaxOffset) / 2}px)` }}
         >
           <svg className="section-accent__divider" viewBox="0 0 1440 320" preserveAspectRatio="none">
             <defs>
