@@ -56,7 +56,7 @@ export default function LatestThreads() {
           <a
             key={t.id}
             href={`${portal}/t/${t.slug}/${t.id}`}
-            className="card group flex h-full flex-col justify-between"
+            className="card group flex h-full flex-col justify-between focus-visible:card-focus focus-visible:outline-none"
           >
             <div className="space-y-2">
               <div className="text-sm font-semibold uppercase tracking-[0.2em] text-atsOcean/60">

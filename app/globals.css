@@ -102,6 +102,16 @@ body {
   @apply -translate-y-1 shadow-glow;
 }
 
+.card:focus-visible,
+.card-focus {
+  @apply -translate-y-1 shadow-glow outline-none ring-2 ring-atsOcean/60 ring-offset-2 ring-offset-white;
+}
+
+.card:focus-visible::before,
+.card-focus::before {
+  opacity: 1;
+}
+
 .card:hover::before {
   opacity: 1;
 }
