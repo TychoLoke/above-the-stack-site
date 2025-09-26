@@ -5,6 +5,35 @@ type MemberCardProps = {
   member: LeadershipMember
 }
 
+function getInitials(name: string) {
+  const parts = name
+    .trim()
+    .split(/\s+/)
+    .filter(Boolean)
+
+  if (parts.length >= 2) {
+    const [firstName] = parts
+    const lastName = parts[parts.length - 1]
+    return `${firstName[0]}${lastName[0]}`.toUpperCase()
+  }
+
+  if (parts.length === 1) {
+    return parts[0].slice(0, 2).toUpperCase()
+  }
+
+  return ''
+}
+
+export function MemberInitialsBadge({ name }: { name: string }) {
+  const initials = getInitials(name)
+
+  return (
+    <div className="flex h-full w-full items-center justify-center rounded-[1.4rem] bg-gradient-to-br from-atsOcean/65 via-atsSky/50 to-atsCoral/65 text-lg font-semibold uppercase tracking-[0.2em] text-white shadow-[inset_0_1px_0_rgba(255,255,255,0.4)]">
+      <span>{initials}</span>
+    </div>
+  )
+}
+
 export default function MemberCard({ member }: MemberCardProps) {
   const hasHeadshot = Boolean(member.headshot)
   const headshotSrc = member.headshot
@@ -26,9 +55,7 @@ export default function MemberCard({ member }: MemberCardProps) {
                   unoptimized={isDataUriHeadshot}
                 />
               ) : (
-                <span className="flex h-full w-full items-center justify-center text-[0.55rem] font-semibold uppercase tracking-[0.3em] text-atsOcean/70">
-                  Add headshot
-                </span>
+                <MemberInitialsBadge name={member.name} />
               )}
             </div>
           </div>
