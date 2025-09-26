@@ -375,6 +375,26 @@ export default function HomePage() {
         ))}
       </Section>
 
+      <section className="relative mt-24">
+        <div className="card flex flex-col gap-6 border-transparent bg-gradient-to-br from-white via-atsSky/20 to-atsOcean/10 p-8 text-slate-700 shadow-[0_28px_60px_-40px_rgba(15,31,75,0.6)] sm:flex-row sm:items-center sm:justify-between">
+          <div className="max-w-2xl space-y-3">
+            <span className="tag text-xs">New</span>
+            <h2 className="text-2xl font-semibold text-atsMidnight">Introducing the Beyond The Stack podcast</h2>
+            <p className="text-sm leading-relaxed">
+              Join hosts Tycho Löke and Ashley Schut as they dig into strategy, security, and the community moves redefining the managed services channel.
+            </p>
+          </div>
+          <div className="flex flex-col gap-3 sm:flex-row sm:items-center">
+            <a className="btn-primary w-full justify-center sm:w-auto" href="/podcast/beyond-the-stack">
+              Explore the show
+            </a>
+            <a className="btn-secondary w-full justify-center sm:w-auto" href="/newsletter">
+              Get episode alerts
+            </a>
+          </div>
+        </div>
+      </section>
+
       <Section
         eyebrow="Member voices"
         title="What our members are saying"
