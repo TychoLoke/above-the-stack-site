@@ -1,6 +1,13 @@
 "use client"
 
-import { type PointerEvent, type PropsWithChildren, useCallback, useMemo, useState } from 'react'
+import {
+  type PointerEvent,
+  type PropsWithChildren,
+  useCallback,
+  useEffect,
+  useMemo,
+  useState,
+} from 'react'
 
 interface HeroBackgroundProps {
   className?: string
@@ -8,8 +15,45 @@ interface HeroBackgroundProps {
 
 export default function HeroBackground({ children, className }: PropsWithChildren<HeroBackgroundProps>) {
   const [pointerPosition, setPointerPosition] = useState({ x: 50, y: 50 })
+  const [isReducedMotion, setIsReducedMotion] = useState(false)
+
+  useEffect(() => {
+    if (typeof window === 'undefined' || typeof window.matchMedia !== 'function') {
+      return
+    }
+
+    const mediaQuery = window.matchMedia('(prefers-reduced-motion: reduce)')
+
+    const handleChange = () => {
+      setIsReducedMotion(mediaQuery.matches)
+    }
+
+    handleChange()
+
+    if (typeof mediaQuery.addEventListener === 'function') {
+      mediaQuery.addEventListener('change', handleChange)
+
+      return () => {
+        mediaQuery.removeEventListener('change', handleChange)
+      }
+    }
+
+    if (typeof mediaQuery.addListener === 'function') {
+      mediaQuery.addListener(handleChange)
+
+      return () => {
+        mediaQuery.removeListener(handleChange)
+      }
+    }
+
+    return undefined
+  }, [])
 
   const handlePointerMove = useCallback((event: PointerEvent<HTMLElement>) => {
+    if (isReducedMotion) {
+      return
+    }
+
     const bounds = event.currentTarget.getBoundingClientRect()
     const relativeX = ((event.clientX - bounds.left) / bounds.width) * 100
     const relativeY = ((event.clientY - bounds.top) / bounds.height) * 100
@@ -24,9 +68,13 @@ export default function HeroBackground({ children, className }: PropsWithChildre
 
       return { x: nextX, y: nextY }
     })
-  }, [])
+  }, [isReducedMotion])
 
   const handlePointerLeave = useCallback(() => {
+    if (isReducedMotion) {
+      return
+    }
+
     setPointerPosition((previous) => {
       if (Math.abs(previous.x - 50) < 0.2 && Math.abs(previous.y - 50) < 0.2) {
         return previous
@@ -34,18 +82,25 @@ export default function HeroBackground({ children, className }: PropsWithChildre
 
       return { x: 50, y: 50 }
     })
-  }, [])
+  }, [isReducedMotion])
 
-  const gradient = useMemo(
-    () =>
-      `radial-gradient(160% 160% at ${pointerPosition.x}% ${pointerPosition.y}%, rgba(56, 156, 255, 0.34), transparent 62%),
-      radial-gradient(120% 120% at calc(${pointerPosition.x}% + 18%) calc(${pointerPosition.y}% - 12%), rgba(255, 122, 89, 0.28), transparent 65%),
-      linear-gradient(160deg, rgba(255, 255, 255, 0.92), rgba(241, 248, 255, 0.65) 45%, rgba(235, 244, 255, 0.92))`,
-    [pointerPosition.x, pointerPosition.y],
+  const gradient = useMemo(() => {
+    const x = isReducedMotion ? 50 : pointerPosition.x
+    const y = isReducedMotion ? 50 : pointerPosition.y
+
+    return `radial-gradient(160% 160% at ${x}% ${y}%, rgba(56, 156, 255, 0.34), transparent 62%),
+      radial-gradient(120% 120% at calc(${x}% + 18%) calc(${y}% - 12%), rgba(255, 122, 89, 0.28), transparent 65%),
+      linear-gradient(160deg, rgba(255, 255, 255, 0.92), rgba(241, 248, 255, 0.65) 45%, rgba(235, 244, 255, 0.92))`
+  }, [isReducedMotion, pointerPosition.x, pointerPosition.y])
+
+  const rotation = useMemo(
+    () => (isReducedMotion ? 0 : ((pointerPosition.x - 50) / 50) * 4.8),
+    [isReducedMotion, pointerPosition.x],
   )
-
-  const rotation = useMemo(() => ((pointerPosition.x - 50) / 50) * 4.8, [pointerPosition.x])
-  const tilt = useMemo(() => ((50 - pointerPosition.y) / 50) * 3.2, [pointerPosition.y])
+  const tilt = useMemo(
+    () => (isReducedMotion ? 0 : ((50 - pointerPosition.y) / 50) * 3.2),
+    [isReducedMotion, pointerPosition.y],
+  )
 
   const classes = ['relative overflow-hidden rounded-[2rem] border border-white/70 bg-white/80 px-6 py-14 shadow-[0_55px_110px_-60px_rgba(15,31,75,0.65)] backdrop-blur-xl sm:px-10 sm:py-16 lg:rounded-[2.75rem] lg:px-16 lg:py-24', className]
     .filter(Boolean)
@@ -63,7 +118,7 @@ export default function HeroBackground({ children, className }: PropsWithChildre
     <section
       onPointerMove={handlePointerMove}
       onPointerLeave={handlePointerLeave}
-      className={`${classes} transition-transform duration-700 ease-out`}
+      className={`${classes} ${isReducedMotion ? 'transition-none' : 'transition-transform duration-700 ease-out'}`}
       style={style}
     >
       <div className="pointer-events-none absolute inset-0 -z-10 bg-gradient-to-br from-white via-atsSky/10 to-transparent opacity-80" />
